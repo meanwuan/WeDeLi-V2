@@ -29,14 +29,8 @@
 
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Models\DTO\" />
     <Folder Include="log\" />
-    <Folder Include="Middleware\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Hubs\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="service\" />
-    <Folder Include="Repositories\Interface\" />
     <Folder Include="validators\" />
   </ItemGroup>
 

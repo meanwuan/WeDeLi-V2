@@ -8,13 +8,14 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
-using WeDeli.API.Middleware;
-using WeDeli.Core.Interfaces;
-using WeDeli.Core.Services;
-using WeDeli.Infrastructure.Data;
-using WeDeli.Infrastructure.Repositories;
-using WeDeli.Infrastructure.Services;
+using wedeli.Infrastructure;
+using wedeli.Middleware;
 using wedeli.Models.Domain.Data;
+using wedeli.Repositories.Interface;
+using wedeli.Repositories.Repo;
+using wedeli.service;
+using wedeli.service.Implementation;
+using wedeli.service.Interface;
 
 // ============================================
 // BƯỚC 1: Khởi tạo WebApplicationBuilder
@@ -52,56 +53,57 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 // 2.2 Repository Pattern
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+//builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 // Đăng ký các Repositories cụ thể
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+//builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+//builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IDriverRepository, DriverRepository>();
 builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
-builder.Services.AddScoped<IRouteRepository, RouteRepository>();
-builder.Services.AddScoped<ITripRepository, TripRepository>();
-builder.Services.AddScoped<IWarehouseStaffRepository, WarehouseStaffRepository>();
-builder.Services.AddScoped<ITransportCompanyRepository, TransportCompanyRepository>();
-builder.Services.AddScoped<ICODTransactionRepository, CODTransactionRepository>();
+//builder.Services.AddScoped<IRouteRepository, RouteRepository>();
+//builder.Services.AddScoped<ITripRepository, TripRepository>();
+//builder.Services.AddScoped<IWarehouseStaffRepository, WarehouseStaffRepository>();
+//builder.Services.AddScoped<ITransportCompanyRepository, TransportCompanyRepository>();
+builder.Services.AddScoped<ICodTransactionRepository, CodTransactionRepository>();
 builder.Services.AddScoped<IOrderPhotoRepository, OrderPhotoRepository>();
-builder.Services.AddScoped<IOrderStatusHistoryRepository, OrderStatusHistoryRepository>();
-builder.Services.AddScoped<ICompanyPartnershipRepository, CompanyPartnershipRepository>();
-builder.Services.AddScoped<IOrderTransferRepository, OrderTransferRepository>();
-builder.Services.AddScoped<IRatingRepository, RatingRepository>();
-builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
-builder.Services.AddScoped<ICustomerAddressRepository, CustomerAddressRepository>();
-builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-builder.Services.AddScoped<IPeriodicInvoiceRepository, PeriodicInvoiceRepository>();
+//builder.Services.AddScoped<IOrderStatusHistoryRepository, OrderStatusHistoryRepository>();
+//builder.Services.AddScoped<ICompanyPartnershipRepository, CompanyPartnershipRepository>();
+//builder.Services.AddScoped<IOrderTransferRepository, OrderTransferRepository>();
+//builder.Services.AddScoped<IRatingRepository, RatingRepository>();
+//builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
+//builder.Services.AddScoped<ICustomerAddressRepository, CustomerAddressRepository>();
+//builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+//builder.Services.AddScoped<IPeriodicInvoiceRepository, PeriodicInvoiceRepository>();
 
 // 2.3 Business Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICodTransactionService, CodTransactionService>();
+//builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IDriverService, DriverService>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
-builder.Services.AddScoped<IRouteService, RouteService>();
-builder.Services.AddScoped<ITripService, TripService>();
-builder.Services.AddScoped<IWarehouseService, WarehouseService>();
-builder.Services.AddScoped<ICODService, CODService>();
-builder.Services.AddScoped<IReportService, ReportService>();
-builder.Services.AddScoped<IPartnershipService, PartnershipService>();
-builder.Services.AddScoped<ITransferService, TransferService>();
-builder.Services.AddScoped<IRatingService, RatingService>();
-builder.Services.AddScoped<IComplaintService, ComplaintService>();
-builder.Services.AddScoped<IPaymentService, PaymentService>();
-builder.Services.AddScoped<INotificationService, NotificationService>();
-builder.Services.AddScoped<ICompanyService, CompanyService>();
-builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddScoped<IRouteService, RouteService>();
+//builder.Services.AddScoped<ITripService, TripService>();
+//builder.Services.AddScoped<IWarehouseService, WarehouseService>();
+//builder.Services.AddScoped<ICODService, CODService>();
+//builder.Services.AddScoped<IReportService, ReportService>();
+//builder.Services.AddScoped<IPartnershipService, PartnershipService>();
+//builder.Services.AddScoped<ITransferService, TransferService>();
+//builder.Services.AddScoped<IRatingService, RatingService>();
+//builder.Services.AddScoped<IComplaintService, ComplaintService>();
+//builder.Services.AddScoped<IPaymentService, PaymentService>();
+//builder.Services.AddScoped<INotificationService, NotificationService>();
+//builder.Services.AddScoped<ICompanyService, CompanyService>();
+//builder.Services.AddScoped<IUserService, UserService>();
 
 // 2.4 Infrastructure Services
 builder.Services.AddSingleton<IJwtService, JwtService>();
 builder.Services.AddSingleton<ICloudinaryService, CloudinaryService>();
-builder.Services.AddTransient<IEmailService, EmailService>();
-builder.Services.AddTransient<ISmsService, SmsService>();
+//builder.Services.AddTransient<IEmailService, EmailService>();
+//builder.Services.AddTransient<ISmsService, SmsService>();
 
 // 2.5 AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -113,7 +115,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 // 2.7 JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var secretKey = jwtSettings["SecretKey"];
+var secretKey = jwtSettings["SecretKey"] ?? throw new InvalidOperationException("JWT SecretKey is not configured");
 
 builder.Services.AddAuthentication(options =>
 {
@@ -168,11 +170,12 @@ builder.Services.AddAuthorization(options =>
 
 // 2.8 CORS
 var corsSettings = builder.Configuration.GetSection("Cors");
-var allowedOrigins = corsSettings.GetSection("AllowedOrigins").Get<string[]>();
+var allowedOrigins = corsSettings.GetSection("AllowedOrigins").Get<string[]>() ?? new[] { "*" };
+var policyName = corsSettings["PolicyName"] ?? "DefaultCorsPolicy";
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(corsSettings["PolicyName"], policy =>
+    options.AddPolicy(policyName, policy =>
     {
         policy.WithOrigins(allowedOrigins)
               .AllowAnyMethod()
@@ -235,20 +238,20 @@ builder.Services.AddSignalR(options =>
 });
 
 // 2.11 Redis Cache (Optional)
-var redisConnection = builder.Configuration.GetConnectionString("RedisConnection");
-if (!string.IsNullOrEmpty(redisConnection))
-{
-    builder.Services.AddStackExchangeRedisCache(options =>
-    {
-        options.Configuration = redisConnection;
-        options.InstanceName = "WeDeli_";
-    });
-}
-else
-{
-    // Fallback to Memory Cache
+//var redisConnection = builder.Configuration.GetConnectionString("RedisConnection");
+//if (!string.IsNullOrEmpty(redisConnection))
+//{
+//    builder.Services.AddStackExchangeRedisCache(options =>
+//    {
+//        options.Configuration = redisConnection;
+//        options.InstanceName = "WeDeli_";
+//    });
+//}
+//else
+//{
+//    // Fallback to Memory Cache
     builder.Services.AddMemoryCache();
-}
+//}
 
 // 2.12 Response Caching
 builder.Services.AddResponseCaching();
@@ -288,7 +291,7 @@ builder.Services.AddHttpContextAccessor();
 
 // 2.15 Health Checks
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<ApplicationDbContext>();
+    .AddDbContextCheck<AppDbContext>();
 
 // ============================================
 // BƯỚC 3: Build Application

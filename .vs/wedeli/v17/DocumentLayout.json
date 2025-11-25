@@ -3,24 +3,244 @@
   "WorkspaceRootPath": "C:\\Users\\wuan\\source\\wedeli\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\implementation\\driverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\implementation\\driverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controllers\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controllers\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\interface\\idriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\interface\\idriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\repo\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\repo\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\driverdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\driverdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\interface\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\interface\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\vehicledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\vehicledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\implementation\\vehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\implementation\\vehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\interface\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\interface\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\repo\\vehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\repo\\vehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\domain\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\repo\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\repo\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\repo\\orderphotorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\repo\\orderphotorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\repo\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\repo\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\interface\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\interface\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\infrastructure\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\infrastructure\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controllers\\photoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controllers\\photoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\interface\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\interface\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\orderphotodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\orderphotodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\hubs\\trackinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\hubs\\trackinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\interface\\iorderphotorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\interface\\iorderphotorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\implementation\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\implementation\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\interface\\icloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\interface\\icloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\extensions\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\extensions\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\validators\\ordervalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\validators\\ordervalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\implementation\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\implementation\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\interface\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\interface\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\repositories\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\repositories\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\orderstatushistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\domain\\orderstatushistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\domain\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\interface\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\interface\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\extensions\\middlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\extensions\\middlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\extensions\\authorizationextensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\extensions\\authorizationextensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\requirements\\staffonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\requirements\\staffonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\requirements\\customeronlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\requirements\\customeronlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\requirements\\warehouseonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\requirements\\warehouseonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\requirements\\driveronlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\requirements\\driveronlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\attributes\\adminonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\attributes\\adminonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\policies\\companyaccesshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\policies\\companyaccesshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\policies\\authorizationpolicies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\policies\\authorizationpolicies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\policies\\companyaccessrequirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\policies\\companyaccessrequirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\authorization\\requirements\\activeuserrequirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\authorization\\requirements\\activeuserrequirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\middleware\\roleauthorizationmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\middleware\\roleauthorizationmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\implementation\\authservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\implementation\\authservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\domain\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\resetpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\resetpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\forgotpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\forgotpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\changepasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\changepasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\dto\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\dto\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\infrastructure\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\infrastructure\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\companypartnership.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,37 +270,712 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IUserRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IUserRepository.cs",
-              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IUserRepository.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAIwFoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "DriversController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\DriversController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controllers\\DriversController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\DriversController.cs",
+              "RelativeToolTip": "wedeli\\Controllers\\DriversController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T06:44:15.865Z",
+              "WhenOpened": "2025-11-25T03:06:23.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VehiclesController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\VehiclesController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controllers\\VehiclesController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\VehiclesController.cs",
+              "RelativeToolTip": "wedeli\\Controllers\\VehiclesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T03:05:35.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DriverService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\DriverService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Implementation\\DriverService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\DriverService.cs",
+              "RelativeToolTip": "wedeli\\service\\Implementation\\DriverService.cs",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAAAJwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T03:04:10.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IDriverService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IDriverService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Interface\\IDriverService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IDriverService.cs",
+              "RelativeToolTip": "wedeli\\service\\Interface\\IDriverService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA9wB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T03:03:47.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\DriverRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\DriverRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\DriverRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\DriverRepository.cs",
+              "ViewState": "AgIAAOAAAAAAAAAAAAAqwPMAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T02:53:01.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IDriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IDriverRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IDriverRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IDriverRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IDriverRepository.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAgwBoAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T02:52:46.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DriverDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\DriverDTOs.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\DriverDTOs.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\DriverDTOs.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\DriverDTOs.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAkwGEAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T02:46:55.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Vehicle.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Vehicle.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Vehicle.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Vehicle.cs",
+              "RelativeToolTip": "wedeli\\Models\\Domain\\Vehicle.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAIAywFUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T02:21:59.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "VehicleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\VehicleRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\VehicleRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\VehicleRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\VehicleRepository.cs",
+              "ViewState": "AgIAAH0BAAAAAAAAAAAqwIsBAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T02:18:19.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IVehicleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IVehicleRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IVehicleRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IVehicleRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IVehicleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T02:17:56.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\VehicleService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Implementation\\VehicleService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\VehicleService.cs",
+              "RelativeToolTip": "wedeli\\service\\Implementation\\VehicleService.cs",
+              "ViewState": "AgIAANQAAAAAAAAAAAAAAMQAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T14:18:22.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "VehicleDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\VehicleDTOs.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\VehicleDTOs.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\VehicleDTOs.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\VehicleDTOs.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAUwF8AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T13:43:13.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IVehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IVehicleService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Interface\\IVehicleService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IVehicleService.cs",
+              "RelativeToolTip": "wedeli\\service\\Interface\\IVehicleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T13:37:02.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PhotosController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\PhotosController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controllers\\PhotosController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\PhotosController.cs",
+              "RelativeToolTip": "wedeli\\Controllers\\PhotosController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAwwEYAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T07:30:49.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "OrderPhotoDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\OrderPhotoDTOs.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\OrderPhotoDTOs.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\OrderPhotoDTOs.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\OrderPhotoDTOs.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA0wBoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T07:30:13.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "TrackingHub.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Hubs\\TrackingHub.cs",
+              "RelativeDocumentMoniker": "wedeli\\Hubs\\TrackingHub.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Hubs\\TrackingHub.cs",
+              "RelativeToolTip": "wedeli\\Hubs\\TrackingHub.cs",
+              "ViewState": "AgIAALcAAAAAAAAAAAAwwBoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T07:29:33.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "OrderPhotoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderPhotoRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\OrderPhotoRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderPhotoRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\OrderPhotoRepository.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAADgv28AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T07:29:07.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "IOrderPhotoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IOrderPhotoRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IOrderPhotoRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IOrderPhotoRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IOrderPhotoRepository.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAkwD0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T07:28:49.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CloudinaryService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\CloudinaryService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Implementation\\CloudinaryService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\CloudinaryService.cs",
+              "RelativeToolTip": "wedeli\\service\\Implementation\\CloudinaryService.cs",
+              "ViewState": "AgIAAB0BAAAAAAAAAAAkwDcBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T07:28:33.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ICloudinaryService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\ICloudinaryService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Interface\\ICloudinaryService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\ICloudinaryService.cs",
+              "RelativeToolTip": "wedeli\\service\\Interface\\ICloudinaryService.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwEoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T07:27:39.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EnumExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Extensions\\EnumExtensions.cs",
+              "RelativeDocumentMoniker": "wedeli\\Extensions\\EnumExtensions.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Extensions\\EnumExtensions.cs",
+              "RelativeToolTip": "wedeli\\Extensions\\EnumExtensions.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T03:11:04.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Order.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Order.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Order.cs",
+              "RelativeToolTip": "wedeli\\Models\\Domain\\Order.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAwwKMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T14:37:32.632Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "OrderValidators.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\OrderValidators.cs",
+              "RelativeDocumentMoniker": "wedeli\\Validators\\OrderValidators.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\OrderValidators.cs",
+              "RelativeToolTip": "wedeli\\Validators\\OrderValidators.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAANcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T10:28:17.898Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\OrderService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Implementation\\OrderService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\OrderService.cs",
+              "RelativeToolTip": "wedeli\\service\\Implementation\\OrderService.cs",
+              "ViewState": "AgIAAPQAAAAAAAAAAAAAAAQBAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T10:27:58.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "IOrderService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IOrderService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Interface\\IOrderService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IOrderService.cs",
+              "RelativeToolTip": "wedeli\\service\\Interface\\IOrderService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA7wBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T10:27:51.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\OrderRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\OrderRepository.cs",
+              "ViewState": "AgIAAEkBAAAAAAAAAAASwFwBAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T10:27:23.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IOrderRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IOrderRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IOrderRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T10:27:16.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OrderDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\OrderDTOs.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\OrderDTOs.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\OrderDTOs.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\OrderDTOs.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAA8wKwAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T10:27:07.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "wedeli\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T10:26:57.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\ApiResponse.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ApiResponse.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\ApiResponse.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:59:45.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "wedeli\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAiwDcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:53:21.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "MiddlewareExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Extensions\\MiddlewareExtensions.cs",
+              "RelativeDocumentMoniker": "wedeli\\Extensions\\MiddlewareExtensions.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Extensions\\MiddlewareExtensions.cs",
+              "RelativeToolTip": "wedeli\\Extensions\\MiddlewareExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:46:22.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "AuthorizationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Extensions\\AuthorizationExtensions\\AuthorizationExtensions.cs",
+              "RelativeDocumentMoniker": "wedeli\\Extensions\\AuthorizationExtensions\\AuthorizationExtensions.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Extensions\\AuthorizationExtensions\\AuthorizationExtensions.cs",
+              "RelativeToolTip": "wedeli\\Extensions\\AuthorizationExtensions\\AuthorizationExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:43:38.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "StaffOnlyAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\StaffOnlyAttribute.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Requirements\\StaffOnlyAttribute.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\StaffOnlyAttribute.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Requirements\\StaffOnlyAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:40:59.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "CustomerOnlyAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\CustomerOnlyAttribute.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Requirements\\CustomerOnlyAttribute.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\CustomerOnlyAttribute.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Requirements\\CustomerOnlyAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:40:22.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "WarehouseOnlyAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\WarehouseOnlyAttribute.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Requirements\\WarehouseOnlyAttribute.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\WarehouseOnlyAttribute.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Requirements\\WarehouseOnlyAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:39:31.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "DriverOnlyAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\DriverOnlyAttribute.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Requirements\\DriverOnlyAttribute.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\DriverOnlyAttribute.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Requirements\\DriverOnlyAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:38:37.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "AdminOnlyAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Attributes\\AdminOnlyAttribute.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Attributes\\AdminOnlyAttribute.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Attributes\\AdminOnlyAttribute.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Attributes\\AdminOnlyAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:37:46.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "CompanyAccessHandler.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Policies\\CompanyAccessHandler.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Policies\\CompanyAccessHandler.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Policies\\CompanyAccessHandler.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Policies\\CompanyAccessHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:30:45.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "CompanyAccessRequirement.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Policies\\CompanyAccessRequirement.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Policies\\CompanyAccessRequirement.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Policies\\CompanyAccessRequirement.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Policies\\CompanyAccessRequirement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T06:27:09.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ActiveUserRequirement.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\ActiveUserRequirement.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Requirements\\ActiveUserRequirement.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Requirements\\ActiveUserRequirement.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Requirements\\ActiveUserRequirement.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBUAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T05:54:20.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "AuthorizationPolicies.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Policies\\AuthorizationPolicies.cs",
+              "RelativeDocumentMoniker": "wedeli\\Authorization\\Policies\\AuthorizationPolicies.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Authorization\\Policies\\AuthorizationPolicies.cs",
+              "RelativeToolTip": "wedeli\\Authorization\\Policies\\AuthorizationPolicies.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T05:53:02.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "RoleAuthorizationMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Middleware\\RoleAuthorizationMiddleware.cs",
+              "RelativeDocumentMoniker": "wedeli\\Middleware\\RoleAuthorizationMiddleware.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Middleware\\RoleAuthorizationMiddleware.cs",
+              "RelativeToolTip": "wedeli\\Middleware\\RoleAuthorizationMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T05:45:53.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "JwtMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Middleware\\JwtMiddleware.cs",
+              "RelativeDocumentMoniker": "wedeli\\Middleware\\JwtMiddleware.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Middleware\\JwtMiddleware.cs",
+              "RelativeToolTip": "wedeli\\Middleware\\JwtMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T05:44:48.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "AuthService .cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\AuthService .cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Implementation\\AuthService .cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Implementation\\AuthService .cs",
+              "RelativeToolTip": "wedeli\\service\\Implementation\\AuthService .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T12:27:53.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IAuthService.cs",
+              "RelativeDocumentMoniker": "wedeli\\service\\Interface\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\service\\Interface\\IAuthService.cs",
+              "RelativeToolTip": "wedeli\\service\\Interface\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T12:26:04.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "OrderStatusHistory.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\OrderStatusHistory.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\OrderStatusHistory.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\OrderStatusHistory.cs",
+              "RelativeToolTip": "wedeli\\Models\\Domain\\OrderStatusHistory.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwB0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T07:01:31.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "RefreshToken.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\RefreshToken.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\RefreshToken.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\RefreshToken.cs",
+              "RelativeToolTip": "wedeli\\Models\\Domain\\RefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:56:30.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "UserResponse.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\UserResponse.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\UserResponse.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\UserResponse.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\UserResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:26:24.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ResetPasswordRequest.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ResetPasswordRequest.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\ResetPasswordRequest.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ResetPasswordRequest.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\ResetPasswordRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:26:05.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "ForgotPasswordRequest.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ForgotPasswordRequest.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\ForgotPasswordRequest.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ForgotPasswordRequest.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\ForgotPasswordRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:25:49.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "ChangePasswordRequest.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ChangePasswordRequest.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\ChangePasswordRequest.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\ChangePasswordRequest.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\ChangePasswordRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:21:41.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\RegisterRequest.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\RegisterRequest.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:19:54.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\LoginResponse.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\LoginResponse.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\LoginResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:19:22.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\LoginRequest.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:18:51.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IUserRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T06:44:15.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\UserRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\UserRepository.cs",
               "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\UserRepository.cs",
               "RelativeToolTip": "wedeli\\Repositories\\Repo\\UserRepository.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAgwHkAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAD4BAAAAAAAAAAAAAJcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-18T06:44:13.337Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 60,
               "Title": "CompanyPartnership.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\CompanyPartnership.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\CompanyPartnership.cs",
@@ -92,31 +987,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 48,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\User.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\User.cs",
               "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\User.cs",
               "RelativeToolTip": "wedeli\\Models\\Domain\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAA1wFUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T08:52:48.881Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 59,
               "Title": "JwtService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Infrastructure\\JwtService.cs",
               "RelativeDocumentMoniker": "wedeli\\Infrastructure\\JwtService.cs",
               "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Infrastructure\\JwtService.cs",
               "RelativeToolTip": "wedeli\\Infrastructure\\JwtService.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAAF4AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAIBJwF4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T08:32:06.427Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 62,
               "Title": "IJwtService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Infrastructure\\IJwtService.cs",
               "RelativeDocumentMoniker": "wedeli\\Infrastructure\\IJwtService.cs",
@@ -128,19 +1023,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 18,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Program.cs",
               "RelativeDocumentMoniker": "wedeli\\Program.cs",
               "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Program.cs",
               "RelativeToolTip": "wedeli\\Program.cs",
-              "ViewState": "AgIAABYBAAAAAAAAAAAmwCIBAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAjwEkAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T04:48:42.802Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 61,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Customer.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Customer.cs",
@@ -152,7 +1047,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 64,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
@@ -164,7 +1059,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 63,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\appsettings.json",
               "RelativeDocumentMoniker": "wedeli\\appsettings.json",
