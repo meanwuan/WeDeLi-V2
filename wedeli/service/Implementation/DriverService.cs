@@ -3,7 +3,7 @@ using wedeli.Models.DTO;
 using wedeli.Repositories.Interface;
 using wedeli.service.Interface;
 
-namespace wedeli.Services.Implementation
+namespace wedeli.service.Implementation
 {
     public class DriverService : IDriverService
     {

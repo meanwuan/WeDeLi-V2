@@ -172,7 +172,7 @@ public class OrderRepository : IOrderRepository
     public async Task<List<OrderStatusHistory>> GetStatusHistoryAsync(int orderId)
     {
         return await _context.OrderStatusHistories
-            .Include(h => h.UpdatedBy)
+            .Include(h => h.UpdatedByNavigation)
             .Where(h => h.OrderId == orderId)
             .OrderByDescending(h => h.CreatedAt)
             .ToListAsync();

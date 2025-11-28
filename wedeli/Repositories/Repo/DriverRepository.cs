@@ -185,26 +185,26 @@ namespace wedeli.Repositories.Repo
                 if (driver == null)
                     throw new KeyNotFoundException($"Driver not found: {driverId}");
 
-                var orders = driver.Orders.AsEnumerable();
-                var trips = driver.Trips.AsEnumerable();
+                var ordersQuery = _context.Orders.Where(o => o.DriverId == driverId);
+                var tripsQuery = _context.Trips.Where(t => t.DriverId == driverId);
 
                 if (startDate.HasValue)
                 {
-                    orders = orders.Where(o => o.CreatedAt >= startDate.Value);
-                    trips = trips.Where(t => t.TripDate >= DateOnly.FromDateTime(startDate.Value));
+                    ordersQuery = ordersQuery.Where(o => o.CreatedAt >= startDate.Value);
+                    tripsQuery = tripsQuery.Where(t => t.TripDate >= DateOnly.FromDateTime(startDate.Value));
                 }
 
                 if (endDate.HasValue)
                 {
-                    orders = orders.Where(o => o.CreatedAt <= endDate.Value);
-                    trips = trips.Where(t => t.TripDate <= DateOnly.FromDateTime(endDate.Value));
+                    ordersQuery = ordersQuery.Where(o => o.CreatedAt <= endDate.Value);
+                    tripsQuery = tripsQuery.Where(t => t.TripDate <= DateOnly.FromDateTime(endDate.Value));
                 }
 
-                var ordersList = orders.ToList();
-                var tripsList = trips.ToList();
+                var ordersList = await ordersQuery.ToListAsync();
+                var tripsList = await tripsQuery.ToListAsync();
 
                 var codTransactions = await _context.CodTransactions
-                    .Where(c => c.CollectedByDriver == driverId)
+                    .Where(c => c.CollectedByDriver == driverId && c.CreatedAt.HasValue)
                     .ToListAsync();
 
                 if (startDate.HasValue)
@@ -227,7 +227,7 @@ namespace wedeli.Repositories.Repo
                     OrdersDelivered = ordersList.Count(o => o.OrderStatus == "delivered"),
                     OrdersReturned = ordersList.Count(o => o.OrderStatus == "returned"),
                     OrdersCancelled = ordersList.Count(o => o.OrderStatus == "cancelled"),
-                    SuccessRate = (decimal)(driver.SuccessRate ?? 0),
+                    SuccessRate = (decimal)driver.SuccessRate,
                     OnTimeDeliveryRate = CalculateOnTimeRate(ordersList),
                     AverageRating = ratings.Any() ? (decimal)ratings.Average(r => r.RatingScore ?? 0) : 5.00M,
                     TotalRatings = ratings.Count,

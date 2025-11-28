@@ -138,8 +138,8 @@ public class OrderResponse
 
     // Package
     public string ParcelType { get; set; } = string.Empty;
-    public decimal WeightKg { get; set; }
-    public decimal DeclaredValue { get; set; }
+    public decimal? WeightKg { get; set; }
+    public decimal? DeclaredValue { get; set; }
     public string? SpecialInstructions { get; set; }
 
     // Pricing
@@ -243,7 +243,7 @@ public class DriverSummary
     public int DriverId { get; set; }
     public string FullName { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
-    public decimal Rating { get; set; }
+    public decimal? Rating { get; set; }
 }
 
 public class RouteSummary

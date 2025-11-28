@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿﻿using Microsoft.EntityFrameworkCore;
 using wedeli.Models.Domain;
 using wedeli.Models.Domain.Data;
 using wedeli.Models.DTO;
@@ -388,8 +388,8 @@ namespace wedeli.Repositories.Repo
                 {
                     VehicleId = vehicle.VehicleId,
                     LicensePlate = vehicle.LicensePlate,
-                    TotalTrips = completedTrips.Count,
-                    TotalOrdersDelivered = completedTrips.Sum(t => t.TotalOrders ?? 0),
+                    TotalTrips = completedTrips.Count, // This is correct
+                    TotalOrdersDelivered = completedTrips.Sum(t => t.TotalOrders?.Count() ?? 0), // Count orders in each trip
                     TotalDistanceKm = 0,
                     AverageLoadPercentage = avgLoadPercentage,
                     DaysInService = (DateTime.Now - createdAt).Days,
