@@ -7,10 +7,12 @@ namespace wedeli.Infrastructure
     {
         string GenerateAccessToken(User user);
         string GenerateRefreshToken();
-        ClaimsPrincipal? ValidateToken(string token);
+        ClaimsPrincipal ValidateToken(string token);
+        Task<RefreshToken> SaveRefreshTokenAsync(int userId, string token);
+        Task<RefreshToken> GetRefreshTokenAsync(string token);
+        Task RevokeRefreshTokenAsync(string token);
+        Task<bool> IsRefreshTokenValidAsync(string token);
         int? GetUserIdFromToken(string token);
-        String? GetEmailFromToken(string token);
-        bool IsTokenExpired(string token);
-        string? GetRoleFromToken(string token);
     }
+    
 }

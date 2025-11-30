@@ -8,20 +8,18 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
-using WeDeli.API.Middleware;
-using WeDeli.Core.Interfaces;
-using WeDeli.Core.Services;
-using WeDeli.Infrastructure.Data;
-using WeDeli.Infrastructure.Repositories;
-using WeDeli.Infrastructure.Services;
+using wedeli.Repositories;
+using wedeli.Infrastructure;
+using wedeli.Repositories.Interface;
+using wedeli.Service.Interface;
 using wedeli.Models.Domain.Data;
+using wedeli.Models.Domain;
 
 // ============================================
 // BƯỚC 1: Khởi tạo WebApplicationBuilder
 // ============================================
-var builder = WebApplication.CreateBuilder(args);
 
-// Cấu hình Serilog từ appsettings.json
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
@@ -51,8 +49,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     );
 });
 
-// 2.2 Repository Pattern
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+// 2.2 Repository Pattern 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 // Đăng ký các Repositories cụ thể
@@ -78,23 +75,22 @@ builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPeriodicInvoiceRepository, PeriodicInvoiceRepository>();
 
 // 2.3 Business Services
-builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthService, IAuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IDriverService, DriverService>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IRouteService, RouteService>();
 builder.Services.AddScoped<ITripService, TripService>();
-builder.Services.AddScoped<IWarehouseService, WarehouseService>();
+builder.Services.AddScoped<IWarehouseStaffService, WarehouseService>();
 builder.Services.AddScoped<ICODService, CODService>();
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IPartnershipService, PartnershipService>();
-builder.Services.AddScoped<ITransferService, TransferService>();
 builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<IComplaintService, ComplaintService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
-builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<ITransportCompanyService, CompanyService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 // 2.4 Infrastructure Services
@@ -288,7 +284,7 @@ builder.Services.AddHttpContextAccessor();
 
 // 2.15 Health Checks
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<ApplicationDbContext>();
+    .AddDbContextCheck<AppDbContext>();
 
 // ============================================
 // BƯỚC 3: Build Application
@@ -353,7 +349,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var context = services.GetRequiredService<ApplicationDbContext>();
+        var context = services.GetRequiredService<AppDbContext>();
         var logger = services.GetRequiredService<ILogger<Program>>();
 
         logger.LogInformation("Starting database migration...");

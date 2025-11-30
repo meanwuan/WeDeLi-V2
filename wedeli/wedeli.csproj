@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\**" />
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Hubs\**" />
+    <Content Remove="Entities\**" />
+    <Content Remove="Extensions\**" />
+    <Content Remove="Hubs\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Hubs\**" />
+    <None Remove="Entities\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Hubs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
@@ -28,16 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Models\DTO\" />
     <Folder Include="log\" />
-    <Folder Include="Middleware\" />
-    <Folder Include="Mappings\" />
-    <Folder Include="Hubs\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="service\" />
+    <Folder Include="Controller\" />
     <Folder Include="Repositories\Interface\" />
-    <Folder Include="validators\" />
   </ItemGroup>
 
 </Project>
