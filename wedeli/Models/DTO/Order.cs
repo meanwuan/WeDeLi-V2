@@ -276,6 +276,8 @@ namespace wedeli.Models.DTO.Order
 
         [Required(ErrorMessage = "File name is required")]
         public string FileName { get; set; }
+        public int? UploadedBy { get; internal set; }
+        public string PhotoUrl { get; internal set; }
     }
 
     // ============================================

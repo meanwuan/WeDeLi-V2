@@ -2,7 +2,9 @@
 using wedeli.Models.Domain;
 using wedeli.Models.Domain.Data;
 using wedeli.Models.DTO;
+using wedeli.Models.DTO.Customer;
 using wedeli.Repositories.Interface;
+using Microsoft.Extensions.Logging;
 
 namespace wedeli.Repositories.Repo
 {
@@ -15,6 +17,316 @@ namespace wedeli.Repositories.Repo
         {
             _context = context;
             _logger = logger;
+        }
+
+        // ===== IBaseRepository Implementation =====
+
+        public async Task<Customer> GetByIdAsync(int id)
+        {
+            try
+            {
+                var result = await _context.Customers
+                    .Include(c => c.User)
+                    .FirstOrDefaultAsync(c => c.CustomerId == id);
+                if (result == null)
+                    throw new KeyNotFoundException($"Customer with ID {id} not found.");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting customer by ID: {CustomerId}", id);
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Customer>> GetAllAsync()
+        {
+            try
+            {
+                return await _context.Customers
+                    .Include(c => c.User)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting all customers");
+                throw;
+            }
+        }
+
+        public async Task<Customer> AddAsync(Customer entity)
+        {
+            try
+            {
+                entity.CreatedAt = DateTime.UtcNow;
+                entity.TotalOrders = entity.TotalOrders ?? 0;
+                entity.TotalRevenue = entity.TotalRevenue ?? 0;
+                entity.IsRegular = entity.IsRegular ?? false;
+                await _context.Customers.AddAsync(entity);
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error adding customer");
+                throw;
+            }
+        }
+
+        public void Update(Customer entity)
+        {
+            try
+            {
+                entity.UpdatedAt = DateTime.UtcNow;
+                _context.Customers.Update(entity);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating customer");
+                throw;
+            }
+        }
+
+        public void Delete(Customer entity)
+        {
+            try
+            {
+                _context.Customers.Remove(entity);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting customer");
+                throw;
+            }
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error saving changes");
+                throw;
+            }
+        }
+
+        public async Task<Customer> UpdateAsync(Customer entity)
+        {
+            try
+            {
+                Update(entity);
+                await SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating customer");
+                throw;
+            }
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            try
+            {
+                var customer = await GetByIdAsync(id);
+                if (customer == null)
+                    return false;
+
+                Delete(customer);
+                await SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting customer: {CustomerId}", id);
+                throw;
+            }
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            try
+            {
+                return await _context.Customers.AnyAsync(c => c.CustomerId == id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error checking customer existence: {CustomerId}", id);
+                throw;
+            }
+        }
+
+        public async Task<int> CountAsync()
+        {
+            try
+            {
+                return await _context.Customers.CountAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error counting customers");
+                throw;
+            }
+        }
+
+        // ===== ICustomerRepository Implementation =====
+
+        public async Task<Customer> GetByUserIdAsync(int userId)
+        {
+            try
+            {
+                var result = await _context.Customers
+                    .Include(c => c.User)
+                    .FirstOrDefaultAsync(c => c.UserId == userId);
+                if (result == null)
+                    throw new KeyNotFoundException($"Customer with user ID {userId} not found.");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting customer by user ID: {UserId}", userId);
+                throw;
+            }
+        }
+
+        public async Task<Customer> GetByPhoneAsync(string phone)
+        {
+            try
+            {
+                var result = await _context.Customers
+                    .Include(c => c.User)
+                    .FirstOrDefaultAsync(c => c.Phone == phone);
+                if (result == null)
+                    throw new KeyNotFoundException($"Customer with phone {phone} not found.");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting customer by phone: {Phone}", phone);
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Customer>> GetRegularCustomersAsync()
+        {
+            try
+            {
+                return await _context.Customers
+                    .Where(c => c.IsRegular == true)
+                    .Include(c => c.User)
+                    .OrderByDescending(c => c.TotalRevenue)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting regular customers");
+                throw;
+            }
+        }
+
+        public async Task<bool> UpdateRegularStatusAsync(int customerId, bool isRegular)
+        {
+            try
+            {
+                var customer = await _context.Customers.FindAsync(customerId);
+                if (customer == null)
+                    return false;
+
+                customer.IsRegular = isRegular;
+                customer.UpdatedAt = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating regular status: {CustomerId}", customerId);
+                throw;
+            }
+        }
+
+        public async Task<bool> UpdatePaymentPrivilegeAsync(int customerId, string privilege)
+        {
+            try
+            {
+                var customer = await _context.Customers.FindAsync(customerId);
+                if (customer == null)
+                    return false;
+
+                customer.PaymentPrivilege = privilege;
+                customer.UpdatedAt = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating payment privilege: {CustomerId}", customerId);
+                throw;
+            }
+        }
+
+        public async Task<bool> IncrementTotalOrdersAsync(int customerId)
+        {
+            try
+            {
+                var customer = await _context.Customers.FindAsync(customerId);
+                if (customer == null)
+                    return false;
+
+                customer.TotalOrders = (customer.TotalOrders ?? 0) + 1;
+                customer.UpdatedAt = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error incrementing total orders: {CustomerId}", customerId);
+                throw;
+            }
+        }
+
+        public async Task<bool> UpdateTotalRevenueAsync(int customerId, decimal amount)
+        {
+            try
+            {
+                var customer = await _context.Customers.FindAsync(customerId);
+                if (customer == null)
+                    return false;
+
+                customer.TotalRevenue = (customer.TotalRevenue ?? 0) + amount;
+                customer.UpdatedAt = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating total revenue: {CustomerId}", customerId);
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Customer>> SearchCustomersAsync(string searchTerm)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(searchTerm))
+                    return new List<Customer>();
+
+                var lower = searchTerm.ToLower();
+                return await _context.Customers
+                    .Include(c => c.User)
+                    .Where(c => c.FullName.ToLower().Contains(lower) ||
+                               c.Phone.Contains(searchTerm))
+                    .OrderByDescending(c => c.TotalRevenue)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error searching customers: {SearchTerm}", searchTerm);
+                throw;
+            }
         }
 
         // ===== Customer CRUD Operations =====
@@ -64,7 +376,7 @@ namespace wedeli.Repositories.Repo
             }
         }
 
-        public async Task<(List<Customer> Customers, int TotalCount)> GetCustomersAsync(CustomerFilterDto filter)
+        public async Task<(List<Customer> Customers, int TotalCount)> GetCustomersAsync(CustomerSearchDto filter)
         {
             try
             {
@@ -89,7 +401,7 @@ namespace wedeli.Repositories.Repo
                     var searchTerm = filter.SearchTerm.ToLower();
                     query = query.Where(c =>
                         c.FullName.ToLower().Contains(searchTerm) ||
-                        c.Phone.Contains(searchTerm));
+                        c.Phone.Contains(filter.SearchTerm));
                 }
 
                 var totalCount = await query.CountAsync();
@@ -414,21 +726,17 @@ namespace wedeli.Repositories.Repo
                 return new CustomerStatisticsDto
                 {
                     CustomerId = customerId,
-                    FullName = customer.FullName,
+                    CustomerName = customer.FullName,
                     IsRegular = customer.IsRegular == true,
                     TotalOrders = orders.Count,
                     CompletedOrders = completedOrders.Count,
                     CancelledOrders = orders.Count(o => o.OrderStatus == "cancelled"),
                     PendingOrders = orders.Count(o => o.OrderStatus != "delivered" && o.OrderStatus != "cancelled"),
                     TotalRevenue = customer.TotalRevenue ?? 0,
-                    TotalShippingFees = orders.Sum(o => o.ShippingFee),
-                    TotalCodAmount = orders.Sum(o => o.CodAmount ?? 0),
                     AverageOrderValue = orders.Any() ? orders.Average(o => o.ShippingFee) : 0,
-                    TotalAddresses = customer.CustomerAddresses.Count,
                     LastOrderDate = lastOrderDate,
                     DaysSinceLastOrder = daysSinceLastOrder,
-                    MemberSince = customer.CreatedAt ?? DateTime.Now,
-                    DaysAsMember = (DateTime.Now - (customer.CreatedAt ?? DateTime.Now)).Days
+                    SuccessRate = orders.Any() ? (double)completedOrders.Count / orders.Count : 0
                 };
             }
             catch (Exception ex)
@@ -487,22 +795,6 @@ namespace wedeli.Repositories.Repo
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error updating customer status: {customerId}");
-                throw;
-            }
-        }
-
-        public async Task<List<Customer>> GetRegularCustomersAsync()
-        {
-            try
-            {
-                return await _context.Customers
-                    .Where(c => c.IsRegular == true)
-                    .OrderByDescending(c => c.TotalRevenue)
-                    .ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error getting regular customers");
                 throw;
             }
         }

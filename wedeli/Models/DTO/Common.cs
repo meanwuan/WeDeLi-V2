@@ -258,4 +258,13 @@ namespace wedeli.Models.DTO.Common
         public TKey Key { get; set; }
         public string Value { get; set; }
     }
+
+    /// <summary>
+    /// Toggle user status DTO
+    /// </summary>
+    public class ToggleStatusRequestDto
+    {
+        [Required]
+        public bool IsActive { get; set; }
+    }
 }

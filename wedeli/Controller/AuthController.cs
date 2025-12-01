@@ -275,7 +275,7 @@ namespace wedeli.Controller
                 _logger.LogInformation($"Forgot password email sent for: {forgotPasswordRequest.Email}");
 
                 // Always return success for security (don't reveal if email exists)
-                return Ok(new ApiResponse<object>
+                return Ok(new ApiResponse<object?>
                 {
                     Success = true,
                     Message = "If an account with that email exists, a password reset link has been sent.",
@@ -347,7 +347,7 @@ namespace wedeli.Controller
 
                 _logger.LogInformation("Password reset successfully");
 
-                return Ok(new ApiResponse<object>
+                return Ok(new ApiResponse<object?>
                 {
                     Success = true,
                     Message = "Password reset successfully. Please login with your new password.",
@@ -443,7 +443,7 @@ namespace wedeli.Controller
 
                 _logger.LogInformation("Logout successful");
 
-                return Ok(new ApiResponse<object>
+                return Ok(new ApiResponse<object?>
                 {
                     Success = true,
                     Message = "Logout successful",
@@ -538,7 +538,7 @@ namespace wedeli.Controller
 
                 _logger.LogInformation($"Password changed successfully for user: {userId}");
 
-                return Ok(new ApiResponse<object>
+                return Ok(new ApiResponse<object?>
                 {
                     Success = true,
                     Message = "Password changed successfully",

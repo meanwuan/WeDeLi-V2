@@ -13,5 +13,6 @@ namespace wedeli.Repositories.Interface
         Task<IEnumerable<Complaint>> GetByTypeAsync(string complaintType, int? companyId = null);
         Task<bool> UpdateStatusAsync(int complaintId, string status, string resolutionNotes = null, int? resolvedBy = null);
         Task<IEnumerable<Complaint>> GetPendingComplaintsAsync(int? companyId = null);
+        Task SaveChangesAsync();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace wedeli.Infrastructure
 {
-    public class PasswordService
+    public class PasswordService : IPasswordService
     {/// <summary>
      /// Hash password using BCrypt
      /// </summary>

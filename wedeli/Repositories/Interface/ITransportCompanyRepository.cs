@@ -10,5 +10,6 @@ namespace wedeli.Repositories.Interface
         Task<IEnumerable<TransportCompany>> GetActiveCompaniesAsync();
         Task<bool> UpdateRatingAsync(int companyId, decimal rating);
         Task<TransportCompany> GetByNameAsync(string companyName);
+        Task SaveChangesAsync();
     }
 }

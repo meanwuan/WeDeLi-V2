@@ -1,21 +1,22 @@
-﻿using System.Security.Claims;
-using wedeli.Models.Domain;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
+using wedeli.Models.Domain;
+using wedeli.Repositories.Interface;
 
 namespace wedeli.Infrastructure
 {
     public class JwtService : IJwtService
     {
         private readonly IConfiguration _configuration;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
 
-        public JwtService(IConfiguration configuration, IUnitOfWork unitOfWork)
+        public JwtService(IConfiguration configuration, IRefreshTokenRepository refreshTokenRepository)
         {
             _configuration = configuration;
-            _unitOfWork = unitOfWork;
+            _refreshTokenRepository = refreshTokenRepository;
         }
 
         /// <summary>
@@ -133,10 +134,7 @@ namespace wedeli.Infrastructure
                 IsRevoked = false
             };
 
-            await _unitOfWork.RefreshTokens.AddAsync(refreshToken);
-            await _unitOfWork.SaveChangesAsync();
-
-            return refreshToken;
+            return await _refreshTokenRepository.AddAsync(refreshToken);
         }
 
         /// <summary>
@@ -144,7 +142,7 @@ namespace wedeli.Infrastructure
         /// </summary>
         public async Task<RefreshToken> GetRefreshTokenAsync(string token)
         {
-            return await _unitOfWork.RefreshTokens.GetByTokenAsync(token);
+            return await _refreshTokenRepository.GetByTokenAsync(token);
         }
 
         /// <summary>
@@ -152,12 +150,12 @@ namespace wedeli.Infrastructure
         /// </summary>
         public async Task RevokeRefreshTokenAsync(string token)
         {
-            var refreshToken = await _unitOfWork.RefreshTokens.GetByTokenAsync(token);
+            var refreshToken = await _refreshTokenRepository.GetByTokenAsync(token);
             if (refreshToken != null)
             {
                 refreshToken.IsRevoked = true;
                 refreshToken.RevokedAt = DateTime.UtcNow;
-                await _unitOfWork.SaveChangesAsync();
+                await _refreshTokenRepository.UpdateAsync(refreshToken);
             }
         }
 
@@ -166,7 +164,7 @@ namespace wedeli.Infrastructure
         /// </summary>
         public async Task<bool> IsRefreshTokenValidAsync(string token)
         {
-            var refreshToken = await _unitOfWork.RefreshTokens.GetByTokenAsync(token);
+            var refreshToken = await _refreshTokenRepository.GetByTokenAsync(token);
 
             if (refreshToken == null)
                 return false;
@@ -205,4 +203,4 @@ namespace wedeli.Infrastructure
             }
         }
     }
-    }
+}

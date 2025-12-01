@@ -9,11 +9,8 @@ namespace wedeli.Repositories.Interface
     {
         Task<CodTransaction> GetByOrderIdAsync(int orderId);
         Task<IEnumerable<CodTransaction>> GetByDriverIdAsync(int driverId, string status = null);
-        Task<bool> ConfirmCollectionAsync(int codTransactionId, int driverId, string collectionProofPhoto = null);
-        Task<bool> SubmitToCompanyAsync(int codTransactionId, decimal submittedAmount, int receivedBy);
-        Task<bool> TransferToSenderAsync(int codTransactionId, string transferMethod, string transferReference = null);
-        Task<bool> UpdateOverallStatusAsync(int codTransactionId, string status);
-        Task<IEnumerable<CodTransaction>> GetPendingCollectionsAsync(int? driverId = null);
+        Task<bool> UpdateStatusAsync(int codId, string newStatus);
+        Task<IEnumerable<CodTransaction>> GetPendingCollectionsAsync(int driverId);
         Task<IEnumerable<CodTransaction>> GetPendingSubmissionsAsync(int? driverId = null);
         Task<decimal> GetDriverPendingAmountAsync(int driverId);
     }

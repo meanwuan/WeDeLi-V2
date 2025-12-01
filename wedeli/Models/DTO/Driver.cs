@@ -143,7 +143,7 @@ namespace wedeli.Models.DTO.Driver
     {
         public int DriverId { get; set; }
         public string DriverName { get; set; }
-        public int? CurrentVehicleId { get; set; }
+        public int CurrentVehicleId { get; set; }
         public string VehicleLicensePlate { get; set; }
         public int CurrentOrderCount { get; set; }
         public decimal CurrentLoadWeight { get; set; }
@@ -235,5 +235,6 @@ namespace wedeli.Models.DTO.Driver
         // Ranking
         public int RankAmongDrivers { get; set; }
         public int TotalDriversInCompany { get; set; }
+        public decimal Rating { get; internal set; }
     }
 }

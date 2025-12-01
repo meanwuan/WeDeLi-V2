@@ -4,16 +4,22 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
-using wedeli.Repositories;
 using wedeli.Infrastructure;
-using wedeli.Repositories.Interface;
-using wedeli.Service.Interface;
-using wedeli.Models.Domain.Data;
+using wedeli.Middleware;
 using wedeli.Models.Domain;
+using wedeli.Models.Domain.Data;
+using wedeli.Repositories;
+using wedeli.Repositories.Implementation;
+using wedeli.Repositories.Interface;
+using wedeli.Repositories.Repo;
+using wedeli.Service.Implementation;
+using wedeli.Service.Interface;
+using wedeli.Service.Service;
 
 // ============================================
 // BƯỚC 1: Khởi tạo WebApplicationBuilder
@@ -50,7 +56,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 // 2.2 Repository Pattern 
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+//builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 // Đăng ký các Repositories cụ thể
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -63,19 +69,22 @@ builder.Services.AddScoped<IRouteRepository, RouteRepository>();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<IWarehouseStaffRepository, WarehouseStaffRepository>();
 builder.Services.AddScoped<ITransportCompanyRepository, TransportCompanyRepository>();
-builder.Services.AddScoped<ICODTransactionRepository, CODTransactionRepository>();
+builder.Services.AddScoped<ICODTransactionRepository, CodTransactionRepository>();
 builder.Services.AddScoped<IOrderPhotoRepository, OrderPhotoRepository>();
 builder.Services.AddScoped<IOrderStatusHistoryRepository, OrderStatusHistoryRepository>();
 builder.Services.AddScoped<ICompanyPartnershipRepository, CompanyPartnershipRepository>();
 builder.Services.AddScoped<IOrderTransferRepository, OrderTransferRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
 builder.Services.AddScoped<ICustomerAddressRepository, CustomerAddressRepository>();
+builder.Services.AddScoped<ITripOrderRepository, TripOrderRepository>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPeriodicInvoiceRepository, PeriodicInvoiceRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 // 2.3 Business Services
-builder.Services.AddScoped<IAuthService, IAuthService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IDriverService, DriverService>();
@@ -83,18 +92,21 @@ builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IRouteService, RouteService>();
 builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IWarehouseStaffService, WarehouseService>();
-builder.Services.AddScoped<ICODService, CODService>();
+builder.Services.AddScoped<ICODService, CodService>();
+builder.Services.AddScoped<IPasswordService, PasswordService>();
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IPartnershipService, PartnershipService>();
+builder.Services.AddScoped<IOrderTransferService, OrderTransferService>();
 builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<IComplaintService, ComplaintService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<ITransportCompanyService, CompanyService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 // 2.4 Infrastructure Services
-builder.Services.AddSingleton<IJwtService, JwtService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddSingleton<ICloudinaryService, CloudinaryService>();
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<ISmsService, SmsService>();
@@ -231,20 +243,20 @@ builder.Services.AddSignalR(options =>
 });
 
 // 2.11 Redis Cache (Optional)
-var redisConnection = builder.Configuration.GetConnectionString("RedisConnection");
-if (!string.IsNullOrEmpty(redisConnection))
-{
-    builder.Services.AddStackExchangeRedisCache(options =>
-    {
-        options.Configuration = redisConnection;
-        options.InstanceName = "WeDeli_";
-    });
-}
-else
-{
-    // Fallback to Memory Cache
-    builder.Services.AddMemoryCache();
-}
+//var redisConnection = builder.Configuration.GetConnectionString("RedisConnection");
+//if (!string.IsNullOrEmpty(redisConnection))
+//{
+//    builder.Services.AddStackExchangeRedisCache(options =>
+//    {
+//        options.Configuration = redisConnection;
+//        options.InstanceName = "WeDeli_";
+//    });
+//}
+//else
+//{
+//    // Fallback to Memory Cache
+//    builder.Services.AddMemoryCache();
+//}
 
 // 2.12 Response Caching
 builder.Services.AddResponseCaching();
@@ -282,9 +294,9 @@ builder.Services.AddControllers()
 // 2.14 HTTP Context Accessor
 builder.Services.AddHttpContextAccessor();
 
-// 2.15 Health Checks
-builder.Services.AddHealthChecks()
-    .AddDbContextCheck<AppDbContext>();
+//// 2.15 Health Checks
+//builder.Services.AddHealthChecks()
+//    .AddDbContextCheck<AppDbContext>();
 
 // ============================================
 // BƯỚC 3: Build Application
@@ -335,47 +347,47 @@ app.UseMiddleware<ErrorHandlingMiddleware>();
 app.MapControllers();
 
 // 11. SignalR Hubs
-app.MapHub<TrackingHub>("/hubs/tracking");
-app.MapHub<NotificationHub>("/hubs/notification");
+//app.MapHub<TrackingHub>("/hubs/tracking");
+//app.MapHub<NotificationHub>("/hubs/notification");
 
 // 12. Health Checks
-app.MapHealthChecks("/health");
+//app.MapHealthChecks("/health");
 
 // ============================================
 // BƯỚC 5: Database Migration & Seeding
 // ============================================
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var context = services.GetRequiredService<AppDbContext>();
-        var logger = services.GetRequiredService<ILogger<Program>>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    try
+//    {
+//        var context = services.GetRequiredService<AppDbContext>();
+//        var logger = services.GetRequiredService<ILogger<Program>>();
 
-        logger.LogInformation("Starting database migration...");
+//        logger.LogInformation("Starting database migration...");
 
-        // Apply pending migrations
-        if (context.Database.GetPendingMigrations().Any())
-        {
-            context.Database.Migrate();
-            logger.LogInformation("Database migration completed successfully.");
-        }
-        else
-        {
-            logger.LogInformation("Database is already up to date.");
-        }
+//        // Apply pending migrations
+//        if (context.Database.GetPendingMigrations().Any())
+//        {
+//            context.Database.Migrate();
+//            logger.LogInformation("Database migration completed successfully.");
+//        }
+//        else
+//        {
+//            logger.LogInformation("Database is already up to date.");
+//        }
 
-        // Seed initial data
-        await DbInitializer.SeedAsync(context, logger);
-        logger.LogInformation("Database seeding completed successfully.");
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred during database migration or seeding.");
-        throw;
-    }
-}
+//        // Seed initial data
+//        await DbInitializer.SeedAsync(context, logger);
+//        logger.LogInformation("Database seeding completed successfully.");
+//    }
+//    catch (Exception ex)
+//    {
+//        var logger = services.GetRequiredService<ILogger<Program>>();
+//        logger.LogError(ex, "An error occurred during database migration or seeding.");
+//        throw;
+//    }
+//}
 
 // ============================================
 // BƯỚC 6: Run Application

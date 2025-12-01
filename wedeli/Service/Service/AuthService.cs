@@ -52,6 +52,8 @@ namespace wedeli.Service.Service
         public async Task<RegisterResponseDto> RegisterAsync(RegisterRequestDto dto)
         {
             // Check if username exists
+            if (string.IsNullOrEmpty(dto.Username))
+                throw new ValidationException("Username", "Username is required");
             var existingUser = await _userRepository.GetByUsernameAsync(dto.Username);
             if (existingUser != null)
             {
@@ -69,6 +71,8 @@ namespace wedeli.Service.Service
             }
 
             // Check if phone exists
+            if (string.IsNullOrEmpty(dto.Phone))
+                throw new ValidationException("Phone", "Phone is required");
             var existingPhone = await _userRepository.GetByPhoneAsync(dto.Phone);
             if (existingPhone != null)
             {
@@ -76,6 +80,8 @@ namespace wedeli.Service.Service
             }
 
             // Check password strength
+            if (string.IsNullOrEmpty(dto.Password))
+                throw new ValidationException("Password", "Password is required");
             if (!_passwordService.IsPasswordStrong(dto.Password))
             {
                 throw new BadRequestException(
@@ -98,7 +104,7 @@ namespace wedeli.Service.Service
                 var customer = new Customer
                 {
                     UserId = createdUser.UserId,
-                    FullName = dto.FullName,
+                    FullName = dto.FullName ?? "User",
                     Phone = dto.Phone,
                     Email = dto.Email,
                     IsRegular = false,
@@ -125,6 +131,8 @@ namespace wedeli.Service.Service
         public async Task<LoginResponseDto> LoginAsync(LoginRequestDto dto)
         {
             // Find user by email or username
+            if (string.IsNullOrEmpty(dto.EmailOrUsername))
+                throw new ValidationException("EmailOrUsername", "Email or Username is required");
             var user = await _userRepository.GetByEmailAsync(dto.EmailOrUsername);
 
             if (user == null)
@@ -133,6 +141,8 @@ namespace wedeli.Service.Service
             }
 
             // Verify password
+            if (string.IsNullOrEmpty(dto.Password))
+                throw new ValidationException("Password", "Password is required");
             if (!_passwordService.VerifyPassword(dto.Password, user.PasswordHash))
             {
                 throw new UnauthorizedException("Invalid email/username or password.");
@@ -160,7 +170,7 @@ namespace wedeli.Service.Service
                 UserId = user.UserId,
                 Username = user.Username,
                 FullName = user.FullName,
-                Email = user.Email,
+                Email = user.Email ?? "",
                 Phone = user.Phone,
                 RoleId = user.RoleId,
                 RoleName = role?.RoleName ?? "Unknown",
@@ -181,6 +191,8 @@ namespace wedeli.Service.Service
         public async Task<RefreshTokenResponseDto> RefreshTokenAsync(RefreshTokenRequestDto dto)
         {
             // Validate refresh token
+            if (string.IsNullOrEmpty(dto.RefreshToken))
+                throw new ValidationException("RefreshToken", "Refresh token is required");
             var isValid = await _jwtService.IsRefreshTokenValidAsync(dto.RefreshToken);
             if (!isValid)
             {
@@ -188,6 +200,8 @@ namespace wedeli.Service.Service
             }
 
             // Get user from access token (even if expired)
+            if (string.IsNullOrEmpty(dto.AccessToken))
+                throw new ValidationException("AccessToken", "Access token is required");
             var userId = _jwtService.GetUserIdFromToken(dto.AccessToken);
             if (userId == null)
             {
@@ -229,7 +243,8 @@ namespace wedeli.Service.Service
             try
             {
                 // Revoke refresh token
-                await _jwtService.RevokeRefreshTokenAsync(dto.RefreshToken);
+                if (!string.IsNullOrEmpty(dto.RefreshToken))
+                    await _jwtService.RevokeRefreshTokenAsync(dto.RefreshToken);
                 return true;
             }
             catch (Exception)
@@ -243,6 +258,8 @@ namespace wedeli.Service.Service
         /// </summary>
         public async Task<bool> ForgotPasswordAsync(ForgotPasswordRequestDto dto)
         {
+            if (string.IsNullOrEmpty(dto.Email))
+                throw new ValidationException("Email", "Email is required");
             var user = await _userRepository.GetByEmailAsync(dto.Email);
 
             // Don't reveal that user doesn't exist (security best practice)
@@ -259,7 +276,10 @@ namespace wedeli.Service.Service
 
             // Send email with reset link
             var resetLink = $"{_configuration["AppSettings:FrontendUrl"]}/reset-password?token={resetToken}";
-            await _emailService.SendEmailAsync(user.Email, user.FullName, resetLink);
+            if (!string.IsNullOrEmpty(user.Email))
+            {
+                await _emailService.SendEmailAsync(user.Email, user.FullName ?? "User", resetLink);
+            }
 
             return true;
         }
@@ -270,6 +290,8 @@ namespace wedeli.Service.Service
         public async Task<bool> ResetPasswordAsync(ResetPasswordRequestDto dto)
         {
             // Verify reset token
+            if (string.IsNullOrEmpty(dto.ResetToken))
+                throw new ValidationException("ResetToken", "Reset token is required");
             var isValid = await _jwtService.IsRefreshTokenValidAsync(dto.ResetToken);
             if (!isValid)
             {
@@ -323,12 +345,16 @@ namespace wedeli.Service.Service
             }
 
             // Verify current password
+            if (string.IsNullOrEmpty(dto.CurrentPassword))
+                throw new ValidationException("CurrentPassword", "Current password is required");
             if (!_passwordService.VerifyPassword(dto.CurrentPassword, user.PasswordHash))
             {
                 throw new BadRequestException("Current password is incorrect.");
             }
 
             // Check if new password is same as current
+            if (string.IsNullOrEmpty(dto.NewPassword))
+                throw new ValidationException("NewPassword", "New password is required");
             if (_passwordService.VerifyPassword(dto.NewPassword, user.PasswordHash))
             {
                 throw new BadRequestException("New password must be different from current password.");

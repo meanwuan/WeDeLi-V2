@@ -18,7 +18,7 @@ public partial class AppDbContext : DbContext
     }
 
     public virtual DbSet<CodTransaction> CodTransactions { get; set; }
-
+    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
     public virtual DbSet<CompanyPartnership> CompanyPartnerships { get; set; }
 
     public virtual DbSet<Complaint> Complaints { get; set; }
