@@ -1,101 +1,90 @@
-﻿//using Microsoft.EntityFrameworkCore;
-//using wedeli.Models.Domain;
-//using wedeli.Models.Domain.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using wedeli.Models.Domain;
+using wedeli.Models.Domain.Data;
 
-//namespace wedeli.Data
-//{
-//    public static class DbInitializer
-//    {
-//        public static void Initialize(AppDbContext context)
-//        {
-//            // Đảm bảo database được tạo
-//            context.Database.EnsureCreated();
+namespace wedeli.Data
+{
+    public static class DbInitializer
+    {
+        /// <summary>
+        /// Seeds the database with initial data
+        /// </summary>
+        public static async Task SeedAsync(AppDbContext context, ILogger logger)
+        {
+            try
+            {
+                // Ensure database is created
+                await context.Database.EnsureCreatedAsync();
 
-//            // Kiểm tra nếu đã có data thì không seed nữa
-//            if (context.Users.Any())
-//            {
-//                return; // DB đã được seed
-//            }
+                // Seed Roles
+                if (!await context.Roles.AnyAsync())
+                {
+                    logger.LogInformation("Seeding Roles...");
 
-//            // Seed Users
-//            var users = new[]
-//            {
-//                new User
-//                {
-//                    Username = "admin",
-//                    PasswordHash = "hashed_password", // Nên hash password thật
-//                    Email = "admin@wedeli.com",
-//                    FullName = "Admin User",
-//                    PhoneNumber = "0123456789",
-//                    Role = "admin",
-//                    IsActive = true,
-//                    CreatedAt = DateTime.UtcNow
-//                },
-//                new User
-//                {
-//                    Username = "customer1",
-//                    PasswordHash = "hashed_password",
-//                    Email = "customer1@example.com",
-//                    FullName = "Customer One",
-//                    PhoneNumber = "0987654321",
-//                    Role = "customer",
-//                    IsActive = true,
-//                    CreatedAt = DateTime.UtcNow
-//                }
-//            };
-//            context.Users.AddRange(users);
-//            context.SaveChanges();
+                    var roles = new[]
+                    {
+                        new Role
+                        {
+                            RoleId = 1,
+                            RoleName = "SuperAdmin",
+                            Description = "Super Administrator with full system access",
+                            CreatedAt = DateTime.UtcNow
+                        },
+                        new Role
+                        {
+                            RoleId = 2,
+                            RoleName = "CompanyAdmin",
+                            Description = "Company Administrator managing transport company operations",
+                            CreatedAt = DateTime.UtcNow
+                        },
+                        new Role
+                        {
+                            RoleId = 3,
+                            RoleName = "WarehouseStaff",
+                            Description = "Warehouse staff managing inventory and packages",
+                            CreatedAt = DateTime.UtcNow
+                        },
+                        new Role
+                        {
+                            RoleId = 4,
+                            RoleName = "Driver",
+                            Description = "Driver delivering packages",
+                            CreatedAt = DateTime.UtcNow
+                        },
+                        new Role
+                        {
+                            RoleId = 5,
+                            RoleName = "Customer",
+                            Description = "Customer placing orders",
+                            CreatedAt = DateTime.UtcNow
+                        }
+                    };
 
-//            // Seed Transport Companies
-//            var companies = new[]
-//            {
-//                new TransportCompany
-//                {
-//                    CompanyName = "Express Delivery Co.",
-//                    Phone = "0901234567",
-//                    Email = "contact@express.com",
-//                    Address = "123 Main St, HCMC",
-//                    IsActive = true,
-//                    CreatedAt = DateTime.UtcNow
-//                }
-//            };
-//            context.TransportCompanies.AddRange(companies);
-//            context.SaveChanges();
+                    await context.Roles.AddRangeAsync(roles);
+                    await context.SaveChangesAsync();
 
-//            // Seed Customers
-//            var customers = new[]
-//            {
-//                new Customer
-//                {
-//                    UserId = users[1].UserId,
-//                    FullName = "Customer One",
-//                    Phone = "0987654321",
-//                    Email = "customer1@example.com",
-//                    IsRegular = false,
-//                    PaymentPrivilege = "prepay",
-//                    TotalOrders = 0,
-//                    TotalRevenue = 0,
-//                    CreatedAt = DateTime.UtcNow
-//                }
-//            };
-//            context.Customers.AddRange(customers);
-//            context.SaveChanges();
+                    logger.LogInformation($"Seeded {roles.Length} roles successfully.");
+                }
+                else
+                {
+                    logger.LogInformation("Roles table already contains data. Skipping role seeding.");
+                }
 
-//            // Có thể thêm seed data cho các bảng khác
-//        }
+                logger.LogInformation("Database seeding completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occurred while seeding the database.");
+                throw;
+            }
+        }
 
-//        // Phương thức async nếu cần
-//        public static async Task InitializeAsync(AppDbContext context)
-//        {
-//            await context.Database.EnsureCreatedAsync();
-
-//            if (await context.Users.AnyAsync())
-//            {
-//                return;
-//            }
-
-//            // Thêm seed data tương tự như trên
-//            await context.SaveChangesAsync();
-//        }
-//    }
-//}
+        /// <summary>
+        /// Initialize database synchronously
+        /// </summary>
+        public static void Initialize(AppDbContext context, ILogger logger)
+        {
+            SeedAsync(context, logger).GetAwaiter().GetResult();
+        }
+    }
+}

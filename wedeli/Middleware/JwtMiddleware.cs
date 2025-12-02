@@ -42,7 +42,7 @@ namespace wedeli.Middleware
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"]);
+                var key = Encoding.UTF8.GetBytes(_configuration["JwtSettings:Secret"]);
 
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {

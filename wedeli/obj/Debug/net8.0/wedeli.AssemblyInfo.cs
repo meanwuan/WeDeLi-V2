@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wedeli")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a1023f672b844e88c13ce80d8a7e9c3104a89a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1dda185c7722f0fd860a64df82d9ebcbf16a7229")]
 [assembly: System.Reflection.AssemblyProductAttribute("wedeli")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wedeli")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

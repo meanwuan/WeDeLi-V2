@@ -137,6 +137,11 @@ namespace wedeli.Service.Service
 
             if (user == null)
             {
+                user = await _userRepository.GetByUsernameAsync(dto.EmailOrUsername);
+            }
+
+            if (user == null)
+            {
                 throw new UnauthorizedException("Invalid email/username or password.");
             }
 

@@ -25,10 +25,16 @@ namespace wedeli.Infrastructure
         public string GenerateAccessToken(User user)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
-            var secretKey = jwtSettings["SecretKey"];
+            var secretKey = jwtSettings["Secret"];
+            if (string.IsNullOrEmpty(secretKey))
+                throw new InvalidOperationException("JWT Secret is not configured. Check appsettings.json");
+            
             var issuer = jwtSettings["Issuer"];
             var audience = jwtSettings["Audience"];
             var expiryMinutes = int.Parse(jwtSettings["ExpiryMinutes"]);
+            
+            if (user.Role == null)
+                throw new InvalidOperationException($"User {user.UserId} Role is null. Ensure .Include(u => u.Role) is used.");
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -88,7 +94,7 @@ namespace wedeli.Infrastructure
         public ClaimsPrincipal ValidateToken(string token)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
-            var secretKey = jwtSettings["SecretKey"];
+            var secretKey = jwtSettings["Secret"];
             var issuer = jwtSettings["Issuer"];
             var audience = jwtSettings["Audience"];
 

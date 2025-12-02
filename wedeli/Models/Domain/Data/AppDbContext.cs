@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+using wedeli.Models.Domain;
 using Route = wedeli.Models.Domain.Route;
 
 namespace wedeli.Models.Domain.Data;

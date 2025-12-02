@@ -158,6 +158,7 @@ namespace wedeli.Controller
             catch (Exception ex)
             {
                 _logger.LogError($"Login error: {ex.Message}");
+                _logger.LogError($"Stack trace: {ex.StackTrace}");
                 return BadRequest(new ApiResponse<object>
                 {
                     Success = false,
@@ -512,7 +513,7 @@ namespace wedeli.Controller
                 }
 
                 // Get user ID from JWT token
-                var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+                var userIdClaim = User.FindFirst("user_id");
                 if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
                 {
                     _logger.LogWarning("User ID not found in JWT token");

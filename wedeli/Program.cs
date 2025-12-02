@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
+using wedeli.Data;
 using wedeli.Infrastructure;
 using wedeli.Middleware;
 using wedeli.Models.Domain;
@@ -121,7 +122,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 // 2.7 JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var secretKey = jwtSettings["SecretKey"];
+var secretKey = jwtSettings["Secret"];
 
 builder.Services.AddAuthentication(options =>
 {
@@ -255,9 +256,9 @@ builder.Services.AddSignalR(options =>
 //else
 //{
 //    // Fallback to Memory Cache
-//    builder.Services.AddMemoryCache();
+//   
 //}
-
+builder.Services.AddMemoryCache();
 // 2.12 Response Caching
 builder.Services.AddResponseCaching();
 
@@ -354,40 +355,40 @@ app.MapControllers();
 //app.MapHealthChecks("/health");
 
 // ============================================
-// BƯỚC 5: Database Migration & Seeding
+//BƯỚC 5: Database Migration & Seeding
 // ============================================
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    try
-//    {
-//        var context = services.GetRequiredService<AppDbContext>();
-//        var logger = services.GetRequiredService<ILogger<Program>>();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        var logger = services.GetRequiredService<ILogger<Program>>();
 
-//        logger.LogInformation("Starting database migration...");
+        logger.LogInformation("Starting database migration...");
 
-//        // Apply pending migrations
-//        if (context.Database.GetPendingMigrations().Any())
-//        {
-//            context.Database.Migrate();
-//            logger.LogInformation("Database migration completed successfully.");
-//        }
-//        else
-//        {
-//            logger.LogInformation("Database is already up to date.");
-//        }
+        // Apply pending migrations
+        if (context.Database.GetPendingMigrations().Any())
+        {
+            context.Database.Migrate();
+            logger.LogInformation("Database migration completed successfully.");
+        }
+        else
+        {
+            logger.LogInformation("Database is already up to date.");
+        }
 
-//        // Seed initial data
-//        await DbInitializer.SeedAsync(context, logger);
-//        logger.LogInformation("Database seeding completed successfully.");
-//    }
-//    catch (Exception ex)
-//    {
-//        var logger = services.GetRequiredService<ILogger<Program>>();
-//        logger.LogError(ex, "An error occurred during database migration or seeding.");
-//        throw;
-//    }
-//}
+        // Seed initial data
+        await DbInitializer.SeedAsync(context, logger);
+        logger.LogInformation("Database seeding completed successfully.");
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred during database migration or seeding.");
+        throw;
+    }
+}
 
 // ============================================
 // BƯỚC 6: Run Application

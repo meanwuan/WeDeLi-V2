@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using wedeli.Models.Domain;
 using wedeli.Models.Domain.Data;
 using wedeli.Models.DTO.Auth;
@@ -53,6 +53,10 @@ namespace wedeli.Mappings
                 .ForMember(dest => dest.CompanyName, opt => opt.MapFrom(src =>
                     src.Drivers.Any() ? src.Drivers.First().Company.CompanyName :
                     src.WarehouseStaffs.Any() ? src.WarehouseStaffs.First().Company.CompanyName : null));
+
+            CreateMap<User, RegisterResponseDto>()
+                .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.Role.RoleName))
+                .ForMember(dest => dest.Message, opt => opt.Ignore());
 
             CreateMap<Role, RoleDto>();
 

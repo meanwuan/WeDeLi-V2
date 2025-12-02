@@ -192,6 +192,8 @@ namespace wedeli.Repositories.Repo
 
                 return await _context.Users
                     .Include(u => u.Role)
+                    .Include(u => u.Drivers).ThenInclude(d => d.Company)
+                    .Include(u => u.WarehouseStaffs).ThenInclude(w => w.Company)
                     .FirstOrDefaultAsync(u => u.Email != null && u.Email == email);
             }
             catch (Exception ex)
@@ -267,7 +269,11 @@ namespace wedeli.Repositories.Repo
                     _logger.LogWarning("GetByUsernameAsync called with null or empty username");
                     return null;
                 }
-                var user = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Username == username);
+                var user = await _context.Users
+                    .Include(u => u.Role)
+                    .Include(u => u.Drivers).ThenInclude(d => d.Company)
+                    .Include(u => u.WarehouseStaffs).ThenInclude(w => w.Company)
+                    .FirstOrDefaultAsync(u => u.Username == username);
                 if (user != null)
                 {
                     _logger.LogDebug("Found user by user name {Username}", username);
