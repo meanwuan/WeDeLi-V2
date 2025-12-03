@@ -47,7 +47,7 @@ namespace wedeli.Controller
         /// <param name="status">Filter by status</param>
         /// <returns>Paginated list of vehicles</returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<IEnumerable<VehicleResponseDto>>>> GetVehicles(
             [FromQuery] int page = 1,
             [FromQuery] int pageSize = 10,
@@ -91,7 +91,7 @@ namespace wedeli.Controller
         /// <param name="id">Vehicle ID</param>
         /// <returns>Vehicle details</returns>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<VehicleResponseDto>>> GetVehicle(int id)
         {
             try
@@ -130,7 +130,7 @@ namespace wedeli.Controller
         /// <param name="id">Vehicle ID</param>
         /// <returns>Vehicle capacity details</returns>
         [HttpGet("{id}/capacity")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<VehicleCapacityDto>>> GetCapacity(int id)
         {
             try
@@ -169,7 +169,7 @@ namespace wedeli.Controller
         /// <param name="id">Vehicle ID</param>
         /// <returns>List of orders</returns>
         [HttpGet("{id}/current-orders")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<IEnumerable<object>>>> GetCurrentOrders(int id)
         {
             try
@@ -210,7 +210,7 @@ namespace wedeli.Controller
         /// <param name="status">Filter by trip status</param>
         /// <returns>List of trips</returns>
         [HttpGet("{id}/trips")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<IEnumerable<object>>>> GetTrips(
             int id,
             [FromQuery] DateTime? startDate = null,
@@ -252,7 +252,7 @@ namespace wedeli.Controller
         /// <param name="dto">Create vehicle request</param>
         /// <returns>Created vehicle</returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<VehicleResponseDto>>> CreateVehicle([FromBody] CreateVehicleDto dto)
         {
             try
@@ -309,7 +309,7 @@ namespace wedeli.Controller
         /// <param name="dto">Update request</param>
         /// <returns>Updated vehicle</returns>
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<VehicleResponseDto>>> UpdateVehicle(
             int id,
             [FromBody] UpdateVehicleDto dto)
@@ -358,7 +358,7 @@ namespace wedeli.Controller
         /// <param name="dto">Status update request</param>
         /// <returns>Success status</returns>
         [HttpPatch("{id}/status")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> UpdateStatus(
             int id,
             [FromBody] UpdateVehicleStatusDto dto)
@@ -407,7 +407,7 @@ namespace wedeli.Controller
         /// <param name="dto">Load update request</param>
         /// <returns>Updated capacity info</returns>
         [HttpPut("{id}/load")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<VehicleCapacityDto>>> UpdateLoad(
             int id,
             [FromBody] UpdateVehicleLoadDto dto)
@@ -461,7 +461,7 @@ namespace wedeli.Controller
         /// <param name="dto">Overload approval request</param>
         /// <returns>Success status</returns>
         [HttpPost("{id}/allow-overload")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> AllowOverload(
             int id,
             [FromBody] ApproveOverloadDto dto)
@@ -551,7 +551,7 @@ namespace wedeli.Controller
         /// <param name="companyId">Company ID</param>
         /// <returns>List of overloaded vehicles</returns>
         [HttpGet("overloaded")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<VehicleResponseDto>>>> GetOverloaded(
             [FromQuery] int companyId)
         {
@@ -589,7 +589,7 @@ namespace wedeli.Controller
         /// <param name="id">Vehicle ID</param>
         /// <returns>Success status</returns>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> DeleteVehicle(int id)
         {
             try

@@ -112,7 +112,7 @@ namespace wedeli.Controller
         /// Get all orders with pagination
         /// </summary>
         [HttpGet]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<OrderResponseDto>>>> GetAll(
             [FromQuery] int pageNumber = 1,
             [FromQuery] int pageSize = 20)
@@ -220,7 +220,7 @@ namespace wedeli.Controller
         /// Get orders by status
         /// </summary>
         [HttpGet("status/{status}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<OrderResponseDto>>>> GetByStatus(
             string status,
             [FromQuery] int? companyId = null)
@@ -250,7 +250,7 @@ namespace wedeli.Controller
         /// Get pending orders
         /// </summary>
         [HttpGet("pending/list")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<OrderResponseDto>>>> GetPendingOrders(
             [FromQuery] int? companyId = null)
         {
@@ -279,7 +279,7 @@ namespace wedeli.Controller
         /// Search orders
         /// </summary>
         [HttpGet("search")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Customer")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Customer")]
         public async Task<ActionResult<ApiResponse<IEnumerable<OrderResponseDto>>>> Search(
             [FromQuery] string searchTerm,
             [FromQuery] int? companyId = null)
@@ -318,7 +318,7 @@ namespace wedeli.Controller
         /// Create new order
         /// </summary>
         [HttpPost]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Customer")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Customer")]
         public async Task<ActionResult<ApiResponse<OrderResponseDto>>> CreateOrder(CreateOrderDto dto)
         {
             try
@@ -367,7 +367,7 @@ namespace wedeli.Controller
         /// Update order
         /// </summary>
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<OrderResponseDto>>> UpdateOrder(int id, UpdateOrderDto dto)
         {
             try
@@ -415,7 +415,7 @@ namespace wedeli.Controller
         /// Cancel order
         /// </summary>
         [HttpPost("{id}/cancel")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Customer")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Customer")]
         public async Task<ActionResult<ApiResponse<bool>>> CancelOrder(int id, [FromBody] CancelOrderDto dto)
         {
             try
@@ -463,7 +463,7 @@ namespace wedeli.Controller
         /// Assign driver and vehicle to order
         /// </summary>
         [HttpPost("{id}/assign-driver-vehicle")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> AssignDriverAndVehicle(int id, DriverAssignmentDto dto)
         {
             try
@@ -511,7 +511,7 @@ namespace wedeli.Controller
         /// Update order status
         /// </summary>
         [HttpPatch("{id}/status")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<bool>>> UpdateStatus(int id, UpdateOrderStatusDto dto)
         {
             try

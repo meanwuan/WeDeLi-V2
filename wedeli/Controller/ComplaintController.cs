@@ -208,7 +208,7 @@ namespace wedeli.Controller
         /// Resolve complaint
         /// </summary>
         [HttpPost("{id}/resolve")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         [ProducesResponseType(typeof(ApiResponse<bool>), 200)]
         public async Task<IActionResult> ResolveComplaint(
             [FromRoute] int id,
@@ -246,7 +246,7 @@ namespace wedeli.Controller
         /// Reject complaint
         /// </summary>
         [HttpPost("{id}/reject")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         [ProducesResponseType(typeof(ApiResponse<bool>), 200)]
         public async Task<IActionResult> RejectComplaint(
             [FromRoute] int id,

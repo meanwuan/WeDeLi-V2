@@ -107,7 +107,7 @@ namespace wedeli.Controller
         /// Get drivers by company
         /// </summary>
         [HttpGet("company/{companyId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<DriverResponseDto>>>> GetDriversByCompany(int companyId)
         {
             try
@@ -135,7 +135,7 @@ namespace wedeli.Controller
         /// Get active drivers by company
         /// </summary>
         [HttpGet("company/{companyId}/active")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<DriverResponseDto>>>> GetActiveDrivers(int companyId)
         {
             try
@@ -163,7 +163,7 @@ namespace wedeli.Controller
         /// Get top performing drivers
         /// </summary>
         [HttpGet("company/{companyId}/top-performers")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<DriverResponseDto>>>> GetTopPerformingDrivers(
             int companyId,
             [FromQuery] int topN = 10)
@@ -193,7 +193,7 @@ namespace wedeli.Controller
         /// Create driver
         /// </summary>
         [HttpPost]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<DriverResponseDto>>> CreateDriver(CreateDriverDto dto)
         {
             try
@@ -251,7 +251,7 @@ namespace wedeli.Controller
         /// Update driver
         /// </summary>
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<DriverResponseDto>>> UpdateDriver(int id, UpdateDriverDto dto)
         {
             try
@@ -308,7 +308,7 @@ namespace wedeli.Controller
         /// Toggle driver status
         /// </summary>
         [HttpPatch("{id}/status")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> ToggleDriverStatus(int id, [FromBody] ToggleStatusRequestDto dto)
         {
             try
@@ -356,7 +356,7 @@ namespace wedeli.Controller
         /// Delete driver
         /// </summary>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> DeleteDriver(int id)
         {
             try
@@ -443,7 +443,7 @@ namespace wedeli.Controller
         /// Update driver statistics
         /// </summary>
         [HttpPost("{id}/update-statistics")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> UpdateDriverStatistics(int id)
         {
             try
@@ -482,7 +482,7 @@ namespace wedeli.Controller
         /// Update driver rating
         /// </summary>
         [HttpPost("{id}/update-rating")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> UpdateDriverRating(int id)
         {
             try

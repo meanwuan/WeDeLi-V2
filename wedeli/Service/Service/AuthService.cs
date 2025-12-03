@@ -304,16 +304,15 @@ namespace wedeli.Service.Service
             }
 
             // Get user ID from token
-            var userId = _jwtService.GetUserIdFromToken(dto.ResetToken);
-            if (userId == null)
+            var resetTokenRecord = await _jwtService.GetRefreshTokenAsync(dto.ResetToken);
+            if (resetTokenRecord == null)
             {
                 throw new UnauthorizedException("Invalid reset token.");
             }
-
-            var user = await _userRepository.GetByIdAsync(userId.Value);
+            var user = await _userRepository.GetByIdAsync(resetTokenRecord.UserId);
             if (user == null)
             {
-                throw new NotFoundException("User", userId.Value);
+                throw new NotFoundException("User", resetTokenRecord.UserId);
             }
 
             // Check password strength

@@ -19,7 +19,7 @@ namespace wedeli.Controller
     /// </summary>
     [ApiController]
     [Route("api/v1/partnerships")]
-    [Authorize(Roles = "Admin,SuperAdmin,Company")]
+    [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
     public class PartnershipsController : ControllerBase
     {
         private readonly IPartnershipService _partnershipService;

@@ -34,7 +34,7 @@ namespace wedeli.Controller
         /// <param name="routeId">Route ID</param>
         /// <returns>Route details</returns>
         [HttpGet("{routeId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<RouteResponseDto>>> GetRoute(int routeId)
         {
             try
@@ -73,7 +73,7 @@ namespace wedeli.Controller
         /// <param name="companyId">Company ID</param>
         /// <returns>List of routes</returns>
         [HttpGet("company/{companyId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<RouteResponseDto>>>> GetRoutesByCompany(int companyId)
         {
             try
@@ -103,7 +103,7 @@ namespace wedeli.Controller
         /// <param name="companyId">Company ID</param>
         /// <returns>List of active routes</returns>
         [HttpGet("company/{companyId}/active")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<IEnumerable<RouteResponseDto>>>> GetActiveRoutes(int companyId)
         {
             try
@@ -224,7 +224,7 @@ namespace wedeli.Controller
         /// <param name="dto">Create route request</param>
         /// <returns>Created route</returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<RouteResponseDto>>> CreateRoute([FromBody] CreateRouteDto dto)
         {
             try
@@ -281,7 +281,7 @@ namespace wedeli.Controller
         /// <param name="dto">Update request</param>
         /// <returns>Updated route</returns>
         [HttpPut("{routeId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<RouteResponseDto>>> UpdateRoute(int routeId, [FromBody] UpdateRouteDto dto)
         {
             try
@@ -328,7 +328,7 @@ namespace wedeli.Controller
         /// <param name="isActive">Active status</param>
         /// <returns>Success status</returns>
         [HttpPatch("{routeId}/status")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> ToggleStatus(int routeId, [FromQuery] bool isActive)
         {
             try
@@ -367,7 +367,7 @@ namespace wedeli.Controller
         /// <param name="routeId">Route ID</param>
         /// <returns>Success status</returns>
         [HttpDelete("{routeId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> DeleteRoute(int routeId)
         {
             try

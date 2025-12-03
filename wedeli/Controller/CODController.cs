@@ -34,7 +34,7 @@ namespace wedeli.Controller
         /// <param name="transactionId">Transaction ID</param>
         /// <returns>COD transaction details</returns>
         [HttpGet("{transactionId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<CodTransactionResponseDto>>> GetCODTransaction(int transactionId)
         {
             try
@@ -73,7 +73,7 @@ namespace wedeli.Controller
         /// <param name="orderId">Order ID</param>
         /// <returns>COD transaction details</returns>
         [HttpGet("order/{orderId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<CodTransactionResponseDto>>> GetCODByOrder(int orderId)
         {
             try
@@ -113,7 +113,7 @@ namespace wedeli.Controller
         /// <param name="status">Optional status filter</param>
         /// <returns>List of COD transactions</returns>
         [HttpGet("driver/{driverId}")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company,Driver")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin,Driver")]
         public async Task<ActionResult<ApiResponse<IEnumerable<CodTransactionResponseDto>>>> GetDriverCODTransactions(int driverId, [FromQuery] string? status = null)
         {
             try
@@ -307,7 +307,7 @@ namespace wedeli.Controller
         /// <param name="receivedBy">User ID of receiver</param>
         /// <returns>Success status</returns>
         [HttpPatch("{transactionId}/confirm-receipt")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> ConfirmCODReceipt(int transactionId, [FromQuery] int receivedBy)
         {
             try
@@ -346,7 +346,7 @@ namespace wedeli.Controller
         /// <param name="dto">Transfer request data</param>
         /// <returns>Success status</returns>
         [HttpPost("transfer")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> TransferToSender([FromBody] TransferToSenderDto dto)
         {
             try
@@ -402,7 +402,7 @@ namespace wedeli.Controller
         /// <param name="date">Date to get summary for</param>
         /// <returns>COD summary</returns>
         [HttpGet("driver/{driverId}/summary")]
-        [Authorize(Roles = "Driver,Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Driver,Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<CodDashboardDto>>> GetDriverCODSummary(int driverId, [FromQuery] DateTime? date = null)
         {
             try
@@ -433,7 +433,7 @@ namespace wedeli.Controller
         /// <param name="companyId">Optional company filter</param>
         /// <returns>List of pending reconciliations</returns>
         [HttpGet("pending-reconciliations")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<IEnumerable<CodDashboardDto>>>> GetPendingReconciliations([FromQuery] int? companyId = null)
         {
             try
@@ -464,7 +464,7 @@ namespace wedeli.Controller
         /// <param name="reconciledBy">User ID of reconciler</param>
         /// <returns>Success status</returns>
         [HttpPost("{summaryId}/reconcile")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> ReconcileDriverCOD(int summaryId, [FromQuery] int reconciledBy)
         {
             try
@@ -496,7 +496,7 @@ namespace wedeli.Controller
         /// <param name="reconciledBy">User ID of reconciler</param>
         /// <returns>Success status</returns>
         [HttpPost("reconcile-all")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<bool>>> ReconcileAllDrivers([FromQuery] DateTime date, [FromQuery] int companyId, [FromQuery] int reconciledBy)
         {
             try
@@ -526,7 +526,7 @@ namespace wedeli.Controller
         /// <param name="companyId">Optional company filter</param>
         /// <returns>COD dashboard data</returns>
         [HttpGet("dashboard")]
-        [Authorize(Roles = "Admin,SuperAdmin,Company")]
+        [Authorize(Roles = "Admin,SuperAdmin,CompanyAdmin")]
         public async Task<ActionResult<ApiResponse<CodDashboardDto>>> GetCODDashboard([FromQuery] int? companyId = null)
         {
             try
