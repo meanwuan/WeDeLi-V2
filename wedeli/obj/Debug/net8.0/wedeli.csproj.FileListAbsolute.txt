@@ -140,4 +140,3 @@ C:\Users\wuan\source\wedeli\wedeli\bin\Debug\net8.0\StackExchange.Redis.dll
 C:\Users\wuan\source\wedeli\wedeli\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\wuan\source\wedeli\wedeli\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Users\wuan\source\wedeli\wedeli\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
-C:\Users\wuan\source\wedeli\wedeli\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

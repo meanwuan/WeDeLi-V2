@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wedeli")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a2cbff174adcba14bcf54fdd9345fae71a9c194")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ae3b83f1064a4649773fa281537c6c0ce5a47ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("wedeli")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wedeli")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

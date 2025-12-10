@@ -3,6 +3,46 @@
   "WorkspaceRootPath": "C:\\Users\\wuan\\source\\wedeli\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\complaintcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\complaintcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\domain\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\codcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\codcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +51,12 @@
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\tripscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\transferscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\routescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\routescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\partnershipscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\partnershipscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,10 +71,6 @@
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -55,32 +79,12 @@
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\complaintcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\complaintcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\validators\\auth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\validators\\auth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\infrastructure\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\infrastructure\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\codcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\codcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\models\\domain\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -153,10 +157,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\service\\service\\smsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\service\\service\\smsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|solutionrelative:wedeli\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35036625-F319-4D0E-86FC-3B707CF82234}|wedeli\\wedeli.csproj|c:\\users\\wuan\\source\\wedeli\\wedeli\\models\\domain\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -462,85 +462,104 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "RatingController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RatingController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\RatingController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RatingController.cs",
-              "RelativeToolTip": "wedeli\\Controller\\RatingController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T14:17:09.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PartnershipsController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PartnershipsController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\PartnershipsController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PartnershipsController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\PartnershipsController.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:24:39.978Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "ReportController.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\ReportController.cs",
               "RelativeDocumentMoniker": "wedeli\\Controller\\ReportController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\ReportController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\ReportController.cs*",
-              "ViewState": "AgIAAB8BAAAAAAAAAAD4vz4BAABuAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\ReportController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\ReportController.cs",
+              "ViewState": "AgIAAB8BAAAAAAAAAAAuwDEBAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T09:01:40.624Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T09:01:40.624Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "RoutesController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RoutesController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\RoutesController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RoutesController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\RoutesController.cs*",
-              "ViewState": "AgIAAHIBAAAAAAAAAAAYwHEBAAA5AAAAAAAAAA==",
+              "Title": "CODController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\CODController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\CODController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\CODController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\CODController.cs",
+              "ViewState": "AgIAAPUBAAAAAAAAAAAawBACAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:26:53.544Z",
+              "WhenOpened": "2025-11-30T14:38:42.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DriversController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\DriversController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\DriversController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\DriversController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\DriversController.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAwwBEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T13:15:09.727Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\appsettings.json",
+              "RelativeDocumentMoniker": "wedeli\\appsettings.json",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\appsettings.json",
+              "RelativeToolTip": "wedeli\\appsettings.json",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-01T10:13:07.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ComplaintController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\ComplaintController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\ComplaintController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\ComplaintController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\ComplaintController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAswDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T14:11:19.418Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "TransfersController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TransfersController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\TransfersController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TransfersController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\TransfersController.cs*",
-              "ViewState": "AgIAAJsBAAAAAAAAAAAkwGwAAAAdAAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\AuthController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\AuthController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\AuthController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\AuthController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:35:09.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T05:54:16.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RoutesController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RoutesController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\RoutesController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RoutesController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\RoutesController.cs",
+              "ViewState": "AgIAAHIBAAAAAAAAAAAYwHEBAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T13:26:53.544Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TripsController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TripsController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\TripsController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TripsController.cs",
-              "RelativeToolTip": "wedeli\\Controller\\TripsController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCcAAAA0AAAAAAAAAA==",
+              "Title": "DbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
+              "RelativeToolTip": "wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
+              "ViewState": "AgIAAHUBAAAAAAAAAAAuwH4BAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:43:15.23Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T09:22:50.007Z"
             },
             {
               "$type": "Document",
@@ -550,40 +569,97 @@
               "RelativeDocumentMoniker": "wedeli\\Controller\\UsersController.cs",
               "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\UsersController.cs",
               "RelativeToolTip": "wedeli\\Controller\\UsersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAmwCkAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:38:49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "VehiclesController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\VehiclesController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\VehiclesController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\VehiclesController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\VehiclesController.cs*",
-              "ViewState": "AgIAAFICAAAAAAAAAAAqwE8CAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:36:25.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:38:49Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "PaymentController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PaymentController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\PaymentController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PaymentController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\PaymentController.cs*",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAgwJ8AAAAkAAAAAAAAAA==",
+              "Title": "TransfersController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TransfersController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\TransfersController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TransfersController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\TransfersController.cs",
+              "ViewState": "AgIAAJsBAAAAAAAAAAAkwGwAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T08:56:36.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:35:09.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TripsController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TripsController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\TripsController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\TripsController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\TripsController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T13:43:15.23Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Program.cs",
+              "RelativeDocumentMoniker": "wedeli\\Program.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Program.cs",
+              "RelativeToolTip": "wedeli\\Program.cs",
+              "ViewState": "AgIAAGABAAAAAAAAAAAuwHIBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T13:28:43.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VehiclesController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\VehiclesController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\VehiclesController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\VehiclesController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\VehiclesController.cs",
+              "ViewState": "AgIAAFUCAAAAAAAAAAAqwE8CAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T13:36:25.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PartnershipsController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PartnershipsController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\PartnershipsController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PartnershipsController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\PartnershipsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T14:24:39.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RatingController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RatingController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\RatingController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\RatingController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\RatingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T14:17:09.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PaymentController.cs",
+              "RelativeDocumentMoniker": "wedeli\\Controller\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\PaymentController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\PaymentController.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAgwJ8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T08:56:36.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\DashboardController.cs",
               "RelativeDocumentMoniker": "wedeli\\Controller\\DashboardController.cs",
@@ -591,38 +667,23 @@
               "RelativeToolTip": "wedeli\\Controller\\DashboardController.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAAAEwG8AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T08:54:46.485Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T08:54:46.485Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DriversController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\DriversController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\DriversController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\DriversController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\DriversController.cs*",
-              "ViewState": "AgIAAM8BAAAAAAAAAAAawOQBAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:15:09.727Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "OrdersController.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\OrdersController.cs",
               "RelativeDocumentMoniker": "wedeli\\Controller\\OrdersController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\OrdersController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\OrdersController.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\OrdersController.cs",
+              "RelativeToolTip": "wedeli\\Controller\\OrdersController.cs",
               "ViewState": "AgIAAOwBAAAAAAAAAAAawAECAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T12:15:48.687Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T12:15:48.687Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 18,
               "Title": "CustomerController.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\CustomerController.cs",
               "RelativeDocumentMoniker": "wedeli\\Controller\\CustomerController.cs",
@@ -630,38 +691,11 @@
               "RelativeToolTip": "wedeli\\Controller\\CustomerController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T08:31:52.981Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T08:31:52.981Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Program.cs",
-              "RelativeDocumentMoniker": "wedeli\\Program.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Program.cs",
-              "RelativeToolTip": "wedeli\\Program.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAawGkAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:28:43.542Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ComplaintController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\ComplaintController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\ComplaintController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\ComplaintController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\ComplaintController.cs*",
-              "ViewState": "AgIAAOMAAAAAAAAAAAAawPgAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T14:11:19.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "Auth.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Auth.cs",
               "RelativeDocumentMoniker": "wedeli\\Validators\\Auth.cs",
@@ -669,12 +703,11 @@
               "RelativeToolTip": "wedeli\\Validators\\Auth.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAuwEIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:06:24.175Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:06:24.175Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "JwtService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Infrastructure\\JwtService.cs",
               "RelativeDocumentMoniker": "wedeli\\Infrastructure\\JwtService.cs",
@@ -682,21 +715,7 @@
               "RelativeToolTip": "wedeli\\Infrastructure\\JwtService.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAuwEAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T03:24:23.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\AuthController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\AuthController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\AuthController.cs",
-              "RelativeToolTip": "wedeli\\Controller\\AuthController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T05:54:16.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T03:24:23.819Z"
             },
             {
               "$type": "Document",
@@ -712,7 +731,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IUserRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IUserRepository.cs",
@@ -724,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\AuthService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\AuthService.cs",
@@ -732,51 +751,23 @@
               "RelativeToolTip": "wedeli\\Service\\Service\\AuthService.cs",
               "ViewState": "AgIAACABAAAAAAAAAAAawDkBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T03:19:16.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "CODController.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\CODController.cs",
-              "RelativeDocumentMoniker": "wedeli\\Controller\\CODController.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Controller\\CODController.cs*",
-              "RelativeToolTip": "wedeli\\Controller\\CODController.cs*",
-              "ViewState": "AgIAAPgBAAAAAAAAAAAawBACAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:38:42.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "DbInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
-              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
-              "RelativeToolTip": "wedeli\\Models\\Domain\\Data\\DbInitializer.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAuwCQAAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T09:22:50.007Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\AppDbContext.cs*",
-              "RelativeToolTip": "wedeli\\Models\\Domain\\Data\\AppDbContext.cs*",
-              "ViewState": "AgIAABUCAAAAAAAAAMBdwBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T09:20:46.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T03:19:16.18Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 22,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "wedeli\\Models\\Domain\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAABUCAAAAAAAAAMBdwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T09:20:46.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "JwtMiddleware.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Middleware\\JwtMiddleware.cs",
               "RelativeDocumentMoniker": "wedeli\\Middleware\\JwtMiddleware.cs",
@@ -792,16 +783,15 @@
               "Title": "20251202112438_AddRefreshTokenTable.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Migrations\\20251202112438_AddRefreshTokenTable.cs",
               "RelativeDocumentMoniker": "wedeli\\Migrations\\20251202112438_AddRefreshTokenTable.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Migrations\\20251202112438_AddRefreshTokenTable.cs*",
-              "RelativeToolTip": "wedeli\\Migrations\\20251202112438_AddRefreshTokenTable.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Migrations\\20251202112438_AddRefreshTokenTable.cs",
+              "RelativeToolTip": "wedeli\\Migrations\\20251202112438_AddRefreshTokenTable.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T11:24:38.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T11:24:38.458Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IAuthService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Interface\\IAuthService.cs",
@@ -813,20 +803,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Common.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Common.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Common.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Common.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Common.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Common.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Common.cs",
               "ViewState": "AgIAAN8AAAAAAAAAAAA6wN8AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:05:45.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:05:45.47Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "IRoleService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IRoleService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Interface\\IRoleService.cs",
@@ -838,7 +827,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "RoleService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\RoleService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\RoleService.cs",
@@ -850,7 +839,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "JwtExtensions.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Infrastructure\\JwtExtensions.cs",
               "RelativeDocumentMoniker": "wedeli\\Infrastructure\\JwtExtensions.cs",
@@ -862,7 +851,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "RoleRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\RoleRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\RoleRepository.cs",
@@ -874,67 +863,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "Auth.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Auth.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Auth.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Auth.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Auth.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Auth.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Auth.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAEBkwB0AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:02:56.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\appsettings.json",
-              "RelativeDocumentMoniker": "wedeli\\appsettings.json",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\appsettings.json",
-              "RelativeToolTip": "wedeli\\appsettings.json",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAswHoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-01T10:13:07.765Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "IReportService.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IReportService.cs",
-              "RelativeDocumentMoniker": "wedeli\\Service\\Interface\\IReportService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IReportService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Interface\\IReportService.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAtwBMAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T08:30:51.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:02:56.205Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 34,
-              "Title": "Report.cs",
-              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Report.cs",
-              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Report.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Report.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Report.cs*",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBAAAAArAAAAAAAAAA==",
+              "Title": "IReportService.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IReportService.cs",
+              "RelativeDocumentMoniker": "wedeli\\Service\\Interface\\IReportService.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IReportService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Interface\\IReportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAtwBMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T02:05:52.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T08:30:51.114Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
+              "Title": "Report.cs",
+              "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Report.cs",
+              "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Report.cs",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Report.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Report.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T02:05:52.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
               "Title": "ReportService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\ReportService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\ReportService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\ReportService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\ReportService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\ReportService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\ReportService.cs",
               "ViewState": "AgIAAI0AAAAAAAAAAAAkwKUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T02:07:00.978Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T02:07:00.978Z"
             },
             {
               "$type": "Document",
@@ -950,7 +923,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "CloudinaryService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\CloudinaryService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\CloudinaryService.cs",
@@ -962,16 +935,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "Rating.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Rating.cs",
               "RelativeDocumentMoniker": "wedeli\\Validators\\Rating.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Rating.cs*",
-              "RelativeToolTip": "wedeli\\Validators\\Rating.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Rating.cs",
+              "RelativeToolTip": "wedeli\\Validators\\Rating.cs",
               "ViewState": "AgIAAMUAAAAAAAAAAAAgwP0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:08:14.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:08:14.352Z"
             },
             {
               "$type": "Document",
@@ -999,7 +971,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\EmailService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\EmailService.cs",
@@ -1011,7 +983,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "SmsService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\SmsService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\SmsService.cs",
@@ -1123,12 +1095,11 @@
               "Title": "IComplaintRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IComplaintRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IComplaintRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IComplaintRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IComplaintRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IComplaintRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IComplaintRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T02:37:39.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T02:37:39.455Z"
             },
             {
               "$type": "Document",
@@ -1136,12 +1107,11 @@
               "Title": "ComplaintService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\ComplaintService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\ComplaintService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\ComplaintService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\ComplaintService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\ComplaintService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\ComplaintService.cs",
               "ViewState": "AgIAAKYAAAAAAAAAAAAkwMoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T02:35:00.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T02:35:00.252Z"
             },
             {
               "$type": "Document",
@@ -1149,12 +1119,11 @@
               "Title": "ComplaintRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\ComplaintRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\ComplaintRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\ComplaintRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\ComplaintRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\ComplaintRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\ComplaintRepository.cs",
               "ViewState": "AgIAAFAAAAAAAAAAAAAIwFwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:52:13.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:52:13.713Z"
             },
             {
               "$type": "Document",
@@ -1174,12 +1143,11 @@
               "Title": "ITransportCompanyRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\ITransportCompanyRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\ITransportCompanyRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\ITransportCompanyRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Interface\\ITransportCompanyRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\ITransportCompanyRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\ITransportCompanyRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T02:27:54.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T02:27:54.591Z"
             },
             {
               "$type": "Document",
@@ -1199,12 +1167,11 @@
               "Title": "CompanyPartnershipRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\CompanyPartnershipRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\CompanyPartnershipRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\CompanyPartnershipRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\CompanyPartnershipRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\CompanyPartnershipRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\CompanyPartnershipRepository.cs",
               "ViewState": "AgIAACUAAAAAAAAAAEBlwD0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:22:55.453Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:22:55.453Z"
             },
             {
               "$type": "Document",
@@ -1212,12 +1179,11 @@
               "Title": "TransportCompanyRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\TransportCompanyRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\TransportCompanyRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\TransportCompanyRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\TransportCompanyRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\TransportCompanyRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\TransportCompanyRepository.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAAAwwGkAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:53:38.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:53:38.586Z"
             },
             {
               "$type": "Document",
@@ -1225,12 +1191,11 @@
               "Title": "CompanyService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\CompanyService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\CompanyService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\CompanyService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\CompanyService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\CompanyService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\CompanyService.cs",
               "ViewState": "AgIAAFIAAAAAAAAAAAA9wAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T02:26:26.99Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T02:26:26.99Z"
             },
             {
               "$type": "Document",
@@ -1238,12 +1203,11 @@
               "Title": "WarehouseStaffRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\WarehouseStaffRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\WarehouseStaffRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\WarehouseStaffRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\WarehouseStaffRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\WarehouseStaffRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\WarehouseStaffRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:53:51.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:53:51.857Z"
             },
             {
               "$type": "Document",
@@ -1251,12 +1215,11 @@
               "Title": "IWarehouseStaffRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IWarehouseStaffRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IWarehouseStaffRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IWarehouseStaffRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IWarehouseStaffRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IWarehouseStaffRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IWarehouseStaffRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T01:32:06.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T01:32:06.813Z"
             },
             {
               "$type": "Document",
@@ -1276,12 +1239,11 @@
               "Title": "PaymentRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\PaymentRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\PaymentRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\PaymentRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\PaymentRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\PaymentRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\PaymentRepository.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAIwE4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:52:55.55Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:52:55.55Z"
             },
             {
               "$type": "Document",
@@ -1337,12 +1299,11 @@
               "Title": "OrderTransferService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\OrderTransferService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\OrderTransferService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\OrderTransferService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\OrderTransferService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\OrderTransferService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\OrderTransferService.cs",
               "ViewState": "AgIAAKIAAAAAAAAAAKBrwMoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:23:11.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:23:11.882Z"
             },
             {
               "$type": "Document",
@@ -1362,12 +1323,11 @@
               "Title": "OrderTransferRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderTransferRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\OrderTransferRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderTransferRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\OrderTransferRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderTransferRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\OrderTransferRepository.cs",
               "ViewState": "AgIAAA4BAAAAAAAAAKBrwDMBAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T14:22:28.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T14:22:28.129Z"
             },
             {
               "$type": "Document",
@@ -1375,12 +1335,11 @@
               "Title": "TripRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\TripRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\TripRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\TripRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\TripRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\TripRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\TripRepository.cs",
               "ViewState": "AgIAAPoBAAAAAAAAAKBrwBICAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:40:15.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T13:40:15.333Z"
             },
             {
               "$type": "Document",
@@ -1388,12 +1347,11 @@
               "Title": "TripService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\TripService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\TripService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\TripService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\TripService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\TripService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\TripService.cs",
               "ViewState": "AgIAAJgBAAAAAAAAAKBrwLgBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:40:12.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T13:40:12.886Z"
             },
             {
               "$type": "Document",
@@ -1401,12 +1359,11 @@
               "Title": "VehicleRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\VehicleRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\VehicleRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\VehicleRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\VehicleRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\VehicleRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\VehicleRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwBYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:35:51.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T13:35:51.154Z"
             },
             {
               "$type": "Document",
@@ -1414,12 +1371,11 @@
               "Title": "RouteService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\RouteService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\RouteService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\RouteService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\RouteService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\RouteService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\RouteService.cs",
               "ViewState": "AgIAAHYAAAAAAAAAAEBtwJ4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:25:00.942Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T13:25:00.942Z"
             },
             {
               "$type": "Document",
@@ -1427,12 +1383,11 @@
               "Title": "RouteRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\RouteRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\RouteRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\RouteRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\RouteRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\RouteRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\RouteRepository.cs",
               "ViewState": "AgIAAEIBAAAAAAAAAAAYwF0BAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T13:23:28.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T13:23:28.628Z"
             },
             {
               "$type": "Document",
@@ -1440,12 +1395,11 @@
               "Title": "DriverService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\DriverService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\DriverService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\DriverService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\DriverService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\DriverService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\DriverService.cs",
               "ViewState": "AgIAAPkAAAAAAAAAAAAEwA4BAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T12:56:40.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T12:56:40.776Z"
             },
             {
               "$type": "Document",
@@ -1453,12 +1407,11 @@
               "Title": "CodService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\CodService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\CodService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\CodService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\CodService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\CodService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\CodService.cs",
               "ViewState": "AgIAANcAAAAAAAAAAAAvwOcAAABzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T12:56:40.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T12:56:40.024Z"
             },
             {
               "$type": "Document",
@@ -1466,12 +1419,11 @@
               "Title": "DriverRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\DriverRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\DriverRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\DriverRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\DriverRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\DriverRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\DriverRepository.cs",
               "ViewState": "AgIAAEkBAAAAAAAAAADwv0wBAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T12:53:15.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T12:53:15.777Z"
             },
             {
               "$type": "Document",
@@ -1479,12 +1431,11 @@
               "Title": "OrderService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\OrderService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Service\\OrderService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\OrderService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Service\\OrderService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Service\\OrderService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Service\\OrderService.cs",
               "ViewState": "AgIAADQBAAAAAAAAAAAcwEMBAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T12:36:48.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T12:36:48.114Z"
             },
             {
               "$type": "Document",
@@ -1492,12 +1443,11 @@
               "Title": "OrderRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Repo\\OrderRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Repo\\OrderRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Repo\\OrderRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Repo\\OrderRepository.cs",
               "ViewState": "AgIAABMCAAAAAAAAAAAmwCACAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T12:27:55.601Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T12:27:55.601Z"
             },
             {
               "$type": "Document",
@@ -1505,12 +1455,11 @@
               "Title": "Driver.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Driver.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Driver.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Driver.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Driver.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Driver.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Driver.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAANMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:04:17.537Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:04:17.537Z"
             },
             {
               "$type": "Document",
@@ -1542,12 +1491,11 @@
               "Title": "IOrderService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IOrderService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Interface\\IOrderService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IOrderService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Interface\\IOrderService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\IOrderService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Interface\\IOrderService.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAhwA0AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T05:49:58.343Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T05:49:58.343Z"
             },
             {
               "$type": "Document",
@@ -1555,12 +1503,11 @@
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Order.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Order.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Order.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Order.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Order.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Order.cs",
               "ViewState": "AgIAACkBAAAAAAAAAAAEwEkBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:03:40.994Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:03:40.994Z"
             },
             {
               "$type": "Document",
@@ -1604,12 +1551,11 @@
               "Title": "ITransportCompanyService.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\ITransportCompanyService.cs",
               "RelativeDocumentMoniker": "wedeli\\Service\\Interface\\ITransportCompanyService.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\ITransportCompanyService.cs*",
-              "RelativeToolTip": "wedeli\\Service\\Interface\\ITransportCompanyService.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Service\\Interface\\ITransportCompanyService.cs",
+              "RelativeToolTip": "wedeli\\Service\\Interface\\ITransportCompanyService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T06:27:57.507Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T06:27:57.507Z"
             },
             {
               "$type": "Document",
@@ -1629,12 +1575,11 @@
               "Title": "Route.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Route.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\Domain\\Route.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Route.cs*",
-              "RelativeToolTip": "wedeli\\Models\\Domain\\Route.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\Domain\\Route.cs",
+              "RelativeToolTip": "wedeli\\Models\\Domain\\Route.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T05:40:44.082Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T05:40:44.082Z"
             },
             {
               "$type": "Document",
@@ -1678,12 +1623,11 @@
               "Title": "IRouteRepository.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IRouteRepository.cs",
               "RelativeDocumentMoniker": "wedeli\\Repositories\\Interface\\IRouteRepository.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IRouteRepository.cs*",
-              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IRouteRepository.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Repositories\\Interface\\IRouteRepository.cs",
+              "RelativeToolTip": "wedeli\\Repositories\\Interface\\IRouteRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T05:01:59.01Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T05:01:59.01Z"
             },
             {
               "$type": "Document",
@@ -1715,12 +1659,11 @@
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Mappings\\MappingProfile.cs",
               "RelativeDocumentMoniker": "wedeli\\Mappings\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Mappings\\MappingProfile.cs*",
-              "RelativeToolTip": "wedeli\\Mappings\\MappingProfile.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "wedeli\\Mappings\\MappingProfile.cs",
               "ViewState": "AgIAAEABAAAAAAAAAAAmwGYBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T13:07:57.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T13:07:57.433Z"
             },
             {
               "$type": "Document",
@@ -1728,12 +1671,11 @@
               "Title": "COD.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\COD.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\COD.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\COD.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\COD.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\COD.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\COD.cs",
               "ViewState": "AgIAAGMAAAAAAAAAAAAwwJQAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:05:09.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:05:09.071Z"
             },
             {
               "$type": "Document",
@@ -1741,12 +1683,11 @@
               "Title": "Company.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Company.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Company.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Company.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Company.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Company.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Company.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHkAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:05:21.319Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:05:21.319Z"
             },
             {
               "$type": "Document",
@@ -1802,12 +1743,11 @@
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Payment.cs",
               "RelativeDocumentMoniker": "wedeli\\Validators\\Payment.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Payment.cs*",
-              "RelativeToolTip": "wedeli\\Validators\\Payment.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Payment.cs",
+              "RelativeToolTip": "wedeli\\Validators\\Payment.cs",
               "ViewState": "AgIAAG4AAAAAAAAAAAAmwJQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:07:57.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:07:57.455Z"
             },
             {
               "$type": "Document",
@@ -1815,12 +1755,11 @@
               "Title": "Route.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Route.cs",
               "RelativeDocumentMoniker": "wedeli\\Validators\\Route.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Route.cs*",
-              "RelativeToolTip": "wedeli\\Validators\\Route.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Route.cs",
+              "RelativeToolTip": "wedeli\\Validators\\Route.cs",
               "ViewState": "AgIAAFkAAAAAAAAAAAAmwH8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:07:45.003Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:07:45.003Z"
             },
             {
               "$type": "Document",
@@ -1828,12 +1767,11 @@
               "Title": "Driver.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Driver.cs",
               "RelativeDocumentMoniker": "wedeli\\Validators\\Driver.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Driver.cs*",
-              "RelativeToolTip": "wedeli\\Validators\\Driver.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Validators\\Driver.cs",
+              "RelativeToolTip": "wedeli\\Validators\\Driver.cs",
               "ViewState": "AgIAAKoAAAAAAAAAAAAmwLwAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:07:29.292Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:07:29.292Z"
             },
             {
               "$type": "Document",
@@ -1865,12 +1803,11 @@
               "Title": "Route.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Route.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Route.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Route.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Route.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Route.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Route.cs",
               "ViewState": "AgIAAHUAAAAAAAAAAAAcwJoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:04:53.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:04:53.253Z"
             },
             {
               "$type": "Document",
@@ -1878,12 +1815,11 @@
               "Title": "Vehicle.cs",
               "DocumentMoniker": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Vehicle.cs",
               "RelativeDocumentMoniker": "wedeli\\Models\\DTO\\Vehicle.cs",
-              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Vehicle.cs*",
-              "RelativeToolTip": "wedeli\\Models\\DTO\\Vehicle.cs*",
+              "ToolTip": "C:\\Users\\wuan\\source\\wedeli\\wedeli\\Models\\DTO\\Vehicle.cs",
+              "RelativeToolTip": "wedeli\\Models\\DTO\\Vehicle.cs",
               "ViewState": "AgIAAPYAAAAAAAAAAAA0wBgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:04:30.972Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T09:04:30.972Z"
             }
           ]
         }

@@ -10429,6 +10429,11 @@
             "type": "integer",
             "format": "int32"
           },
+          "userId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "companyName": {
             "type": "string",
             "nullable": true
@@ -10455,6 +10460,16 @@
           "rating": {
             "type": "number",
             "format": "double"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "createdAt": {
             "type": "string",

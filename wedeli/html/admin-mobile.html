@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WeDeli Admin Mobile</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #4A90E2;
+            --primary-dark: #357ACB;
+            --success: #5cb85c;
+            --warning: #f0ad4e;
+            --danger: #d9534f;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --border: #dfe6e9;
+            --bg: #f5f7fa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            overflow-x: hidden;
+            padding-bottom: 70px;
+        }
+
+        /* Mobile Phone Frame */
+        .phone-frame {
+            max-width: 414px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            min-height: calc(100vh - 40px);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary);
+            padding: 15px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar h1 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .notification-badge {
+            position: relative;
+        }
+
+        .notification-badge .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 10px;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Stats Cards */
+        .stats-scroll {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .stats-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .stat-card {
+            min-width: 140px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .stat-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            padding: 0 20px 20px;
+        }
+
+        .quick-actions h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .action-btn {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn .icon {
+            font-size: 28px;
+        }
+
+        .action-btn .label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Content Section */
+        .content {
+            padding: 0 20px 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .view-all {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Order Card */
+        .order-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .order-id {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .badge-danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .order-info {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+        }
+
+        .order-route {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .order-route .arrow {
+            color: var(--primary);
+        }
+
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .order-time {
+            font-size: 12px;
+            color: #95a5a6;
+        }
+
+        .btn-small {
+            padding: 6px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Alert Card */
+        .alert-card {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+        }
+
+        .alert-content {
+            flex: 1;
+            font-size: 13px;
+        }
+
+        .alert-content strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--warning);
+            transition: width 0.3s;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 414px;
+            width: 100%;
+            background: white;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 5px;
+            cursor: pointer;
+            color: #95a5a6;
+            transition: color 0.3s;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-item .icon {
+            font-size: 24px;
+        }
+
+        .nav-item .label {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+            padding-bottom: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .close-btn {
+            font-size: 28px;
+            color: #7f8c8d;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Vehicle Card */
+        .vehicle-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .vehicle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .vehicle-plate {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .capacity-bar {
+            margin-top: 8px;
+        }
+
+        .capacity-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .empty-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state h3 {
+            font-size: 16px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Page Content */
+        .page {
+            display: none;
+            min-height: calc(100vh - 140px);
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone-frame">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div>
+                <h1>🚚 WeDeli Admin</h1>
+                <div style="font-size:12px;opacity:0.9">Nhà xe Phương Trang</div>
+            </div>
+            <div class="notification-badge">
+                <span style="font-size:24px">🔔</span>
+                <span class="badge">3</span>
+            </div>
+        </div>
+
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <!-- Stats -->
+            <div class="stats-scroll">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-value" id="stat-orders">0</div>
+                    <div class="stat-label">Đơn hôm nay</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value" id="stat-delivered">0</div>
+                    <div class="stat-label">Đã giao</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚛</div>
+                    <div class="stat-value" id="stat-vehicles">0</div>
+                    <div class="stat-label">Xe hoạt động</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value" id="stat-revenue">0₫</div>
+                    <div class="stat-label">Doanh thu</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Thao tác nhanh</h2>
+                <div class="action-grid">
+                    <button class="action-btn" onclick="showCreateOrderModal()">
+                        <span class="icon">➕</span>
+                        <span class="label">Tạo đơn</span>
+                    </button>
+                    <button class="action-btn" onclick="showPage('orders')">
+                        <span class="icon">📦</span>
+                        <span class="label">Đơn hàng</span>
+                    </button>
+                    <button class="action-btn" onclick="showPage('vehicles')">
+                        <span class="icon">🚛</span>
+                        <span class="label">Xe</span>
+                    </button>
+                    <button class="action-btn" onclick="scanQR()">
+                        <span class="icon">📸</span>
+                        <span class="label">Quét QR</span>
+                    </button>
+                    <button class="action-btn" onclick="showPage('reports')">
+                        <span class="icon">📊</span>
+                        <span class="label">Báo cáo</span>
+                    </button>
+                    <button class="action-btn" onclick="showNotifications()">
+                        <span class="icon">🔔</span>
+                        <span class="label">Thông báo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="content">
+                <div class="section-header">
+                    <h2>⚠️ Cảnh báo</h2>
+                </div>
+                <div id="alerts-container"></div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="content">
+                <div class="section-header">
+                    <h2>Đơn hàng gần đây</h2>
+                    <a href="#" class="view-all" onclick="showPage('orders')">Xem tất cả</a>
+                </div>
+                <div id="recent-orders"></div>
+            </div>
+        </div>
+
+        <!-- Orders Page -->
+        <div id="orders-page" class="page">
+            <div class="content">
+                <div class="section-header">
+                    <h2>📦 Đơn hàng</h2>
+                </div>
+                <div id="orders-list"></div>
+            </div>
+        </div>
+
+        <!-- Vehicles Page -->
+        <div id="vehicles-page" class="page">
+            <div class="content">
+                <div class="section-header">
+                    <h2>🚛 Danh sách xe</h2>
+                </div>
+                <div id="vehicles-list"></div>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div id="reports-page" class="page">
+            <div class="content">
+                <div class="section-header">
+                    <h2>📊 Báo cáo</h2>
+                </div>
+                <div class="stats-scroll">
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-value" id="report-daily">0</div>
+                        <div class="stat-label">Đơn hôm nay</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📆</div>
+                        <div class="stat-value" id="report-monthly">0</div>
+                        <div class="stat-label">Đơn tháng này</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💵</div>
+                        <div class="stat-value" id="report-revenue">0₫</div>
+                        <div class="stat-label">Doanh thu tháng</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <div class="content">
+                <div style="text-align:center;padding:30px 0">
+                    <div
+                        style="width:80px;height:80px;border-radius:50%;background:var(--primary);color:white;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 15px">
+                        👤
+                    </div>
+                    <h2 style="margin-bottom:5px">Admin Nhà xe</h2>
+                    <p style="color:#7f8c8d;font-size:14px">admin@phuongtrang.com</p>
+                </div>
+
+                <div class="order-card">
+                    <div class="detail-row">
+                        <span class="detail-label">Công ty</span>
+                        <span class="detail-value">Nhà xe Phương Trang</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Vai trò</span>
+                        <span class="detail-value">Quản lý vận hành</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Số điện thoại</span>
+                        <span class="detail-value">0901234567</span>
+                    </div>
+                    <div class="detail-row" style="border:none">
+                        <span class="detail-label">Trạng thái</span>
+                        <span class="badge badge-success">Hoạt động</span>
+                    </div>
+                </div>
+
+                <button
+                    style="width:100%;padding:15px;background:var(--danger);color:white;border:none;border-radius:12px;font-size:16px;font-weight:600;margin-top:20px">
+                    Đăng xuất
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="showPage('home')">
+                <span class="icon">🏠</span>
+                <span class="label">Trang chủ</span>
+            </div>
+            <div class="nav-item" onclick="showPage('orders')">
+                <span class="icon">📦</span>
+                <span class="label">Đơn hàng</span>
+            </div>
+            <div class="nav-item" onclick="showPage('vehicles')">
+                <span class="icon">🚛</span>
+                <span class="label">Xe</span>
+            </div>
+            <div class="nav-item" onclick="showPage('reports')">
+                <span class="icon">📊</span>
+                <span class="label">Báo cáo</span>
+            </div>
+            <div class="nav-item" onclick="showPage('profile')">
+                <span class="icon">👤</span>
+                <span class="label">Tài khoản</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Chi tiết đơn hàng</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_BASE = '/api';
+        let authToken = localStorage.getItem('authToken') || '';
+
+        // Mock data for demo
+        let mockData = {
+            stats: {
+                total_orders: 45,
+                delivered_orders: 38,
+                active_vehicles: 12,
+                today_revenue: 15200000
+            },
+            alerts: [
+                { vehicle: '29A-12345', capacity: 95, current: 950, max: 1000 }
+            ],
+            recentOrders: [
+                { id: 1, tracking_code: 'WD001', from: 'TP.HCM', to: 'Đà Lạt', status: 'in_transit', time: '10 phút trước' },
+                { id: 2, tracking_code: 'WD002', from: 'Hà Nội', to: 'Hải Phòng', status: 'delivered', time: '1 giờ trước' },
+                { id: 3, tracking_code: 'WD003', from: 'Đà Nẵng', to: 'Huế', status: 'pending_pickup', time: '2 giờ trước' }
+            ],
+            vehicles: [
+                { id: 1, plate: '29A-12345', type: 'truck', capacity: 95, current: 950, max: 1000, status: 'in_transit' },
+                { id: 2, plate: '30B-67890', type: 'van', capacity: 50, current: 250, max: 500, status: 'available' },
+                { id: 3, plate: '51C-11111', type: 'motorbike', capacity: 0, current: 0, max: 50, status: 'available' }
+            ]
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            loadDashboard();
+            loadRecentOrders();
+        });
+
+        // Load Dashboard
+        function loadDashboard() {
+            const stats = mockData.stats;
+            document.getElementById('stat-orders').textContent = stats.total_orders;
+            document.getElementById('stat-delivered').textContent = stats.delivered_orders;
+            document.getElementById('stat-vehicles').textContent = stats.active_vehicles;
+            document.getElementById('stat-revenue').textContent = formatMoney(stats.today_revenue);
+
+            // Reports
+            document.getElementById('report-daily').textContent = stats.total_orders;
+            document.getElementById('report-monthly').textContent = stats.total_orders * 20;
+            document.getElementById('report-revenue').textContent = formatMoney(stats.today_revenue * 20);
+
+            // Alerts
+            const alertsDiv = document.getElementById('alerts-container');
+            if (mockData.alerts.length > 0) {
+                alertsDiv.innerHTML = mockData.alerts.map(a => `
+          <div class="alert-card">
+            <span class="alert-icon">⚠️</span>
+            <div class="alert-content">
+              <strong>Xe ${a.vehicle} đã tải ${a.capacity}%</strong>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:${a.capacity}%;background:${a.capacity >= 100 ? 'var(--danger)' : 'var(--warning)'}"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+            } else {
+                alertsDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">✅</div><h3>Mọi thứ tốt</h3><p>Tất cả xe hoạt động bình thường</p></div>';
+            }
+        }
+
+        // Load Recent Orders
+        function loadRecentOrders() {
+            const ordersDiv = document.getElementById('recent-orders');
+            if (mockData.recentOrders.length > 0) {
+                ordersDiv.innerHTML = mockData.recentOrders.map(o => `
+          <div class="order-card" onclick="viewOrder(${o.id})">
+            <div class="order-header">
+              <span class="order-id">${o.tracking_code}</span>
+              <span class="badge ${getStatusBadge(o.status)}">${getStatusText(o.status)}</span>
+            </div>
+            <div class="order-route">
+              <span>${o.from}</span>
+              <span class="arrow">→</span>
+              <span>${o.to}</span>
+            </div>
+            <div class="order-footer">
+              <span class="order-time">${o.time}</span>
+              <button class="btn-small btn-primary" onclick="event.stopPropagation();viewOrder(${o.id})">Xem</button>
+            </div>
+          </div>
+        `).join('');
+            } else {
+                ordersDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><h3>Chưa có đơn hàng</h3><p>Chưa có đơn hàng nào gần đây</p></div>';
+            }
+        }
+
+        // Load All Orders
+        function loadOrders() {
+            const ordersDiv = document.getElementById('orders-list');
+            ordersDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải...</div>';
+
+            setTimeout(() => {
+                ordersDiv.innerHTML = mockData.recentOrders.map(o => `
+          <div class="order-card" onclick="viewOrder(${o.id})">
+            <div class="order-header">
+              <span class="order-id">${o.tracking_code}</span>
+              <span class="badge ${getStatusBadge(o.status)}">${getStatusText(o.status)}</span>
+            </div>
+            <div class="order-info">📍 ${o.from} → ${o.to}</div>
+            <div class="order-footer">
+              <span class="order-time">${o.time}</span>
+              <button class="btn-small btn-primary" onclick="event.stopPropagation();viewOrder(${o.id})">Chi tiết</button>
+            </div>
+          </div>
+        `).join('');
+            }, 500);
+        }
+
+        // Load Vehicles
+        function loadVehicles() {
+            const vehiclesDiv = document.getElementById('vehicles-list');
+            vehiclesDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải...</div>';
+
+            setTimeout(() => {
+                vehiclesDiv.innerHTML = mockData.vehicles.map(v => `
+          <div class="vehicle-card">
+            <div class="vehicle-header">
+              <span class="vehicle-plate">${v.plate}</span>
+              <span class="badge ${getVehicleStatusBadge(v.status)}">${getVehicleStatusText(v.status)}</span>
+            </div>
+            <div style="font-size:14px;color:#7f8c8d;margin-bottom:10px">
+              ${getVehicleType(v.type)} - Tải trọng: ${v.max}kg
+            </div>
+            <div class="capacity-bar">
+              <div class="capacity-text">
+                <span style="color:${v.capacity >= 95 ? 'var(--danger)' : v.capacity >= 70 ? 'var(--warning)' : 'var(--success)'}">
+                  <strong>${v.capacity}%</strong>
+                </span>
+                <span>${v.current}kg / ${v.max}kg</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:${v.capacity}%;background:${v.capacity >= 95 ? 'var(--danger)' : 'var(--success)'}"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+            }, 500);
+        }
+
+        // Show Page
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+            document.getElementById(page + '-page').classList.add('active');
+            document.querySelector(`.nav-item[onclick="showPage('${page}')"]`)?.classList.add('active');
+
+            if (page === 'orders') loadOrders();
+            if (page === 'vehicles') loadVehicles();
+
+            window.scrollTo(0, 0);
+        }
+
+        // View Order Detail
+        function viewOrder(id) {
+            const order = mockData.recentOrders.find(o => o.id === id);
+            if (!order) return;
+
+            document.getElementById('modal-title').textContent = `Đơn hàng ${order.tracking_code}`;
+            document.getElementById('modal-body').innerHTML = `
+        <div class="detail-row">
+          <span class="detail-label">Mã vận đơn</span>
+          <span class="detail-value">${order.tracking_code}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Trạng thái</span>
+          <span class="badge ${getStatusBadge(order.status)}">${getStatusText(order.status)}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Điểm đi</span>
+          <span class="detail-value">${order.from}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Điểm đến</span>
+          <span class="detail-value">${order.to}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Thời gian</span>
+          <span class="detail-value">${order.time}</span>
+        </div>
+        <div class="detail-row" style="border:none">
+          <span class="detail-label">Phí ship</span>
+          <span class="detail-value">${formatMoney(150000)}</span>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:10px">
+          <button class="btn-small btn-primary" style="flex:1;padding:12px">Cập nhật trạng thái</button>
+          <button class="btn-small" style="flex:1;padding:12px;background:var(--success);color:white">Gọi tài xế</button>
+        </div>
+      `;
+
+            document.getElementById('order-modal').classList.add('active');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('order-modal').classList.remove('active');
+        }
+
+        // Show Create Order Modal
+        function showCreateOrderModal() {
+            alert('📦 Chức năng tạo đơn hàng mới\n\nTrong phiên bản thực tế, đây sẽ là form nhập thông tin đơn hàng mới.');
+        }
+
+        // Scan QR
+        function scanQR() {
+            alert('📸 Chức năng quét QR code\n\nTrong phiên bản thực tế, camera sẽ được kích hoạt để quét mã QR của đơn hàng.');
+        }
+
+        // Show Notifications
+        function showNotifications() {
+            alert('🔔 Thông báo\n\n• Xe 29A-12345 đã tải 95%\n• Đơn hàng WD001 đang giao\n• Tài xế Nguyễn Văn A chưa nộp COD');
+        }
+
+        // Helper Functions
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+
+        function getStatusText(status) {
+            const map = {
+                pending_pickup: 'Chờ lấy',
+                in_transit: 'Đang giao',
+                delivered: 'Đã giao',
+                cancelled: 'Đã hủy'
+            };
+            return map[status] || status;
+        }
+
+        function getStatusBadge(status) {
+            const map = {
+                pending_pickup: 'badge-warning',
+                in_transit: 'badge-info',
+                delivered: 'badge-success',
+                cancelled: 'badge-danger'
+            };
+            return map[status] || 'badge-info';
+        }
+
+        function getVehicleType(type) {
+            const map = { truck: '🚛 Tải', van: '🚐 Van', motorbike: '🛵 Xe máy' };
+            return map[type] || type;
+        }
+
+        function getVehicleStatusText(status) {
+            const map = {
+                available: 'Sẵn sàng',
+                in_transit: 'Đang chạy',
+                maintenance: 'Bảo dưỡng'
+            };
+            return map[status] || status;
+        }
+
+        function getVehicleStatusBadge(status) {
+            const map = {
+                available: 'badge-success',
+                in_transit: 'badge-info',
+                maintenance: 'badge-warning'
+            };
+            return map[status] || 'badge-info';
+        }
+
+        // Close modal on background click
+        document.getElementById('order-modal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+
+</html>

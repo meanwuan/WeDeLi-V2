@@ -42,6 +42,21 @@ public partial class TransportCompany
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
 
+    [Column("latitude")]
+    [Precision(10, 8)]
+    public decimal? Latitude { get; set; }
+
+    [Column("longitude")]
+    [Precision(11, 8)]
+    public decimal? Longitude { get; set; }
+
+    [Column("user_id")]
+    public int? UserId { get; set; }
+
+    [ForeignKey("UserId")]
+    [InverseProperty("TransportCompany")]
+    public virtual User? User { get; set; }
+
     [InverseProperty("Company")]
     public virtual ICollection<CompanyPartnership> CompanyPartnershipCompanies { get; set; } = new List<CompanyPartnership>();
 

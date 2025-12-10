@@ -15,15 +15,18 @@ namespace wedeli.Service.Service
     public class CompanyService : ITransportCompanyService
     {
         private readonly ITransportCompanyRepository _companyRepository;
+        private readonly IGeocodingService _geocodingService;
         private readonly IMapper _mapper;
         private readonly ILogger<CompanyService> _logger;
 
         public CompanyService(
             ITransportCompanyRepository companyRepository,
+            IGeocodingService geocodingService,
             IMapper mapper,
             ILogger<CompanyService> logger)
         {
             _companyRepository = companyRepository;
+            _geocodingService = geocodingService;
             _mapper = mapper;
             _logger = logger;
         }
@@ -36,6 +39,19 @@ namespace wedeli.Service.Service
                 company.CreatedAt = DateTime.UtcNow;
                 company.IsActive = true;
                 company.Rating = 0;
+
+                // Auto-geocode address to get coordinates
+                if (!string.IsNullOrWhiteSpace(dto.Address))
+                {
+                    var coordinates = await _geocodingService.GeocodeAddressAsync(dto.Address);
+                    if (coordinates.HasValue)
+                    {
+                        company.Latitude = coordinates.Value.Latitude;
+                        company.Longitude = coordinates.Value.Longitude;
+                        _logger.LogInformation("Geocoded address for company: ({Lat}, {Lng})", 
+                            company.Latitude, company.Longitude);
+                    }
+                }
 
                 var createdCompany = await _companyRepository.AddAsync(company);
 
@@ -116,7 +132,23 @@ namespace wedeli.Service.Service
                 if (company == null)
                     throw new KeyNotFoundException($"Company with ID {companyId} not found.");
 
+                // Check if address is being updated
+                bool addressChanged = !string.IsNullOrWhiteSpace(dto.Address) && dto.Address != company.Address;
+
                 _mapper.Map(dto, company);
+
+                // Re-geocode if address changed
+                if (addressChanged)
+                {
+                    var coordinates = await _geocodingService.GeocodeAddressAsync(dto.Address);
+                    if (coordinates.HasValue)
+                    {
+                        company.Latitude = coordinates.Value.Latitude;
+                        company.Longitude = coordinates.Value.Longitude;
+                        _logger.LogInformation("Re-geocoded address for company {CompanyId}: ({Lat}, {Lng})", 
+                            companyId, company.Latitude, company.Longitude);
+                    }
+                }
 
                 var updated = await _companyRepository.UpdateAsync(company);
                 _logger.LogInformation("Transport company updated: {CompanyId}", companyId);

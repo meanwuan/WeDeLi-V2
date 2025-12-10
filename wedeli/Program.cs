@@ -52,6 +52,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                 maxRetryDelay: TimeSpan.FromSeconds(30),
                 errorNumbersToAdd: null
             );
+            // Fix MultipleCollectionIncludeWarning - split queries for better performance
+            mysqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
         }
     );
 });
@@ -87,6 +89,7 @@ builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 // 2.3 Business Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderPhotoService, OrderPhotoService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IDriverService, DriverService>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
@@ -111,6 +114,9 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddSingleton<ICloudinaryService, CloudinaryService>();
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<ISmsService, SmsService>();
+
+// 2.4.1 Google Maps Geocoding Service
+builder.Services.AddHttpClient<IGeocodingService, GeocodingService>();
 
 // 2.5 AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

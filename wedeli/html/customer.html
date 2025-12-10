@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeDeli - Giao hàng nhanh chóng</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #4A90E2;
+      --primary-dark: #357ACB;
+      --success: #5cb85c;
+      --warning: #f0ad4e;
+      --danger: #d9534f;
+      --dark: #2c3e50;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: white;
+      padding: 15px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .hero {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .stat-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      color: #7f8c8d;
+      font-size: 14px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      background: white;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab {
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      color: var(--dark);
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .orders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .order-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+
+    .order-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .order-id {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .badge-warning {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .badge-info {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+
+    .badge-danger {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .order-route {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .location {
+      flex: 1;
+    }
+
+    .location-label {
+      font-size: 12px;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+
+    .location-text {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .arrow {
+      font-size: 24px;
+      color: var(--primary);
+    }
+
+    .order-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-label {
+      font-size: 12px;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+
+    .detail-value {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .order-actions {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-small {
+      padding: 8px 15px;
+      font-size: 14px;
+      flex: 1;
+    }
+
+    .map-container {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    #map {
+      height: 400px;
+      border-radius: 10px;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .timeline-dot.completed {
+      background: var(--success);
+    }
+
+    .timeline-dot.pending {
+      background: #e9ecef;
+      color: #adb5bd;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      width: 2px;
+      height: calc(100% - 40px);
+      background: #e9ecef;
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding-top: 5px;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .timeline-time {
+      font-size: 13px;
+      color: #7f8c8d;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.3s;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      padding: 25px;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      font-size: 24px;
+      color: var(--dark);
+    }
+
+    .close-btn {
+      font-size: 32px;
+      cursor: pointer;
+      color: #7f8c8d;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .modal-footer {
+      padding: 25px;
+      border-top: 1px solid #e9ecef;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .empty-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+      font-size: 24px;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .empty-state p {
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .orders-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">🚚 <span>WeDeli</span></div>
+    <div class="nav-menu">
+      <a class="active" onclick="showTab('home')">Trang chủ</a>
+      <a onclick="showTab('orders')">Đơn hàng</a>
+      <a onclick="showTab('track')">Theo dõi</a>
+      <a onclick="showTab('history')">Lịch sử</a>
+    </div>
+    <div class="user-info">
+      <div>
+        <div style="font-weight:600;font-size:14px" id="user-name">Khách hàng</div>
+        <div style="font-size:12px;color:#7f8c8d">Đăng nhập để sử dụng</div>
+      </div>
+      <div class="avatar" id="user-avatar">?</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="home-section" class="section active">
+      <div class="hero">
+        <h1>🚀 Giao hàng nhanh - Uy tín - Giá tốt</h1>
+        <p>Hệ thống giao hàng toàn quốc với công nghệ theo dõi thời gian thực</p>
+        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="openCreateOrderModal()">➕ Tạo đơn giao hàng</button>
+          <button class="btn btn-outline" onclick="showTab('track')">📍 Theo dõi đơn hàng</button>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-value" id="stat-total-orders">0</div>
+          <div class="stat-label">Tổng đơn hàng</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-value" id="stat-delivered">0</div>
+          <div class="stat-label">Đã giao thành công</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🚛</div>
+          <div class="stat-value" id="stat-in-transit">0</div>
+          <div class="stat-label">Đang vận chuyển</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div class="stat-value" id="stat-total-spent">0₫</div>
+          <div class="stat-label">Tổng chi tiêu</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="orders-section" class="section">
+      <div class="tabs">
+        <div class="tab active" onclick="filterOrders('all')">Tất cả</div>
+        <div class="tab" onclick="filterOrders('pending')">Chờ lấy hàng</div>
+        <div class="tab" onclick="filterOrders('in_transit')">Đang giao</div>
+        <div class="tab" onclick="filterOrders('delivered')">Đã giao</div>
+      </div>
+      <div id="orders-container" class="orders-grid"></div>
+    </div>
+
+    <div id="track-section" class="section">
+      <div class="map-container">
+        <h2 style="margin-bottom:15px">📍 Theo dõi đơn hàng</h2>
+        <div style="margin-bottom:15px">
+          <input type="text" id="tracking-input" placeholder="Nhập mã vận đơn"
+            style="width:100%;padding:12px;border:2px solid #e9ecef;border-radius:10px;font-size:15px">
+          <button class="btn btn-primary" style="margin-top:10px;width:100%" onclick="trackOrder()">🔍 Tra cứu</button>
+        </div>
+        <div id="map"></div>
+      </div>
+      <div id="tracking-result"></div>
+    </div>
+
+    <div id="history-section" class="section">
+      <div style="background:white;padding:25px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1)">
+        <h2 style="margin-bottom:20px">📜 Lịch sử giao hàng</h2>
+        <div id="history-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="create-order-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📦 Tạo đơn giao hàng mới</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>📤 Thông tin người gửi</label>
+          <input type="text" id="sender-name" placeholder="Tên người gửi">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>📱 Số điện thoại</label>
+            <input type="tel" id="sender-phone" placeholder="0901234567">
+          </div>
+          <div class="form-group">
+            <label>📧 Email (tuỳ chọn)</label>
+            <input type="email" id="sender-email" placeholder="example@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>📍 Địa chỉ lấy hàng</label>
+          <textarea id="sender-address"
+            placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố"></textarea>
+        </div>
+
+        <hr style="margin:25px 0;border:none;border-top:2px solid #e9ecef">
+
+        <div class="form-group">
+          <label>📥 Thông tin người nhận</label>
+          <input type="text" id="receiver-name" placeholder="Tên người nhận">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>📱 Số điện thoại</label>
+            <input type="tel" id="receiver-phone" placeholder="0907654321">
+          </div>
+          <div class="form-group">
+            <label>📧 Email (tuỳ chọn)</label>
+            <input type="email" id="receiver-email" placeholder="example@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>📍 Địa chỉ giao hàng</label>
+          <textarea id="receiver-address"
+            placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố"></textarea>
+        </div>
+
+        <hr style="margin:25px 0;border:none;border-top:2px solid #e9ecef">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>📦 Loại hàng</label>
+            <select id="parcel-type">
+              <option value="other">Hàng thông thường</option>
+              <option value="fragile">Hàng dễ vỡ</option>
+              <option value="electronics">Điện tử</option>
+              <option value="food">Thực phẩm</option>
+              <option value="cold">Hàng lạnh</option>
+              <option value="document">Tài liệu</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>⚖️ Trọng lượng (kg)</label>
+            <input type="number" id="weight" placeholder="1.5" step="0.1" min="0">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>💵 Giá trị hàng (VNĐ)</label>
+            <input type="number" id="declared-value" placeholder="500000" min="0">
+          </div>
+          <div class="form-group">
+            <label>💰 Thu hộ COD (VNĐ)</label>
+            <input type="number" id="cod-amount" placeholder="0" min="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>💳 Phương thức thanh toán</label>
+          <select id="payment-method">
+            <option value="cash">Tiền mặt khi giao hàng</option>
+            <option value="cash_pickup">Tiền mặt khi lấy hàng</option>
+            <option value="bank_transfer">Chuyển khoản ngân hàng</option>
+            <option value="e_wallet">Ví điện tử</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>📝 Ghi chú (tuỳ chọn)</label>
+          <textarea id="note" placeholder="Ghi chú đặc biệt về hàng hoá hoặc địa chỉ giao hàng..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="closeModal()" style="background:#6c757d;color:white">Hủy</button>
+        <button class="btn btn-primary" onclick="createOrder()">Tạo đơn hàng</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="order-detail-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="detail-order-id">Chi tiết đơn hàng</h2>
+        <button class="close-btn" onclick="closeOrderDetailModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="order-detail-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // API Configuration
+    const API_BASE = '/api';
+    let authToken = localStorage.getItem('authToken') || '';
+    let currentCustomerId = localStorage.getItem('customerId') || null;
+    let orders = [];
+    let currentFilter = 'all';
+    let map;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initMap();
+      loadCustomerData();
+      updateStats();
+      renderOrders();
+    });
+
+    // API Helper
+    async function apiCall(endpoint, options = {}) {
+      try {
+        const response = await fetch(`${API_BASE}${endpoint}`, {
+          ...options,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': authToken ? `Bearer ${authToken}` : '',
+            ...options.headers
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        return await response.json();
+      } catch (error) {
+        console.error('API call failed:', error);
+        throw error;
+      }
+    }
+
+    async function loadCustomerData() {
+      if (!currentCustomerId || !authToken) return;
+
+      try {
+        // Load customer dashboard
+        const dashboard = await apiCall(`/dashboard/customer/${currentCustomerId}`);
+
+        // Update user info
+        if (dashboard.customer_name) {
+          document.getElementById('user-name').textContent = dashboard.customer_name;
+          document.getElementById('user-avatar').textContent = dashboard.customer_name.charAt(0).toUpperCase();
+        }
+
+        // Load orders
+        const response = await apiCall(`/orders/customer/${currentCustomerId}?page=1&pageSize=100`);
+        orders = response.data || [];
+        renderOrders();
+        updateStats();
+      } catch (error) {
+        console.error('Failed to load customer data:', error);
+      }
+    }
+
+    function showTab(tabName) {
+      document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(tabName + '-section').classList.add('active');
+      if (tabName === 'orders') renderOrders();
+      if (tabName === 'track') setTimeout(() => map.invalidateSize(), 100);
+      if (tabName === 'history') renderHistory();
+    }
+
+    function updateStats() {
+      const delivered = orders.filter(o => o.order_status === 'delivered').length;
+      const inTransit = orders.filter(o => ['in_transit', 'out_for_delivery'].includes(o.order_status)).length;
+      const totalSpent = orders.reduce((sum, o) => sum + (o.shipping_fee || 0), 0);
+
+      document.getElementById('stat-total-orders').textContent = orders.length;
+      document.getElementById('stat-delivered').textContent = delivered;
+      document.getElementById('stat-in-transit').textContent = inTransit;
+      document.getElementById('stat-total-spent').textContent = formatMoney(totalSpent);
+    }
+
+    function renderOrders() {
+      const filtered = currentFilter === 'all' ? orders : orders.filter(o => {
+        if (currentFilter === 'pending') return o.order_status === 'pending_pickup';
+        if (currentFilter === 'in_transit') return ['in_transit', 'out_for_delivery'].includes(o.order_status);
+        if (currentFilter === 'delivered') return o.order_status === 'delivered';
+        return true;
+      });
+
+      const container = document.getElementById('orders-container');
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">📭</div><h3>Chưa có đơn hàng</h3><p>Bạn chưa có đơn hàng nào trong danh mục này</p><button class="btn btn-primary" onclick="openCreateOrderModal()">Tạo đơn hàng mới</button></div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(o => `
+        <div class="order-card">
+          <div class="order-header">
+            <div class="order-id">${o.tracking_code}</div>
+            <span class="badge ${getStatusBadgeClass(o.order_status)}">${getStatusText(o.order_status)}</span>
+          </div>
+          <div class="order-route">
+            <div class="location"><div class="location-label">Từ</div><div class="location-text">${truncate(o.sender_address, 30)}</div></div>
+            <div class="arrow">→</div>
+            <div class="location"><div class="location-label">Đến</div><div class="location-text">${truncate(o.receiver_address, 30)}</div></div>
+          </div>
+          <div class="order-details">
+            <div class="detail-item"><div class="detail-label">Người nhận</div><div class="detail-value">${o.receiver_name}</div></div>
+            <div class="detail-item"><div class="detail-label">SĐT</div><div class="detail-value">${o.receiver_phone}</div></div>
+            <div class="detail-item"><div class="detail-label">Phí ship</div><div class="detail-value">${formatMoney(o.shipping_fee)}</div></div>
+            <div class="detail-item"><div class="detail-label">COD</div><div class="detail-value" style="color:${o.cod_amount > 0 ? 'var(--danger)' : 'var(--success)'}">${formatMoney(o.cod_amount)}</div></div>
+            ${o.driver_name ? `<div class="detail-item"><div class="detail-label">Tài xế</div><div class="detail-value">${o.driver_name}</div></div><div class="detail-item"><div class="detail-label">Xe</div><div class="detail-value">${o.vehicle_license_plate}</div></div>` : ''}
+          </div>
+          <div class="order-actions">
+            <button class="btn btn-primary btn-small" onclick="viewOrderDetail(${o.id})">📋 Chi tiết</button>
+            ${o.order_status !== 'delivered' && o.order_status !== 'cancelled' ? `<button class="btn btn-outline btn-small" onclick="cancelOrder(${o.id})" style="border:2px solid var(--danger);color:var(--danger)">❌ Hủy</button>` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterOrders(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      renderOrders();
+    }
+
+    async function viewOrderDetail(orderId) {
+      try {
+        const order = await apiCall(`/orders/${orderId}`);
+        const history = await apiCall(`/orders/${orderId}/history`);
+
+        document.getElementById('detail-order-id').textContent = `Đơn hàng ${order.tracking_code}`;
+        document.getElementById('order-detail-content').innerHTML = `
+          <div style="margin-bottom:20px">
+            <span class="badge ${getStatusBadgeClass(order.order_status)}" style="font-size:14px;padding:8px 16px">${getStatusText(order.order_status)}</span>
+            ${order.payment_status === 'paid' ? '<span class="badge badge-success" style="font-size:14px;padding:8px 16px;margin-left:10px">Đã thanh toán</span>' : ''}
+          </div>
+          <h3 style="margin-bottom:15px">📍 Thông tin giao hàng</h3>
+          <div style="background:#f8f9fa;padding:15px;border-radius:10px;margin-bottom:20px">
+            <div style="margin-bottom:15px"><strong>Từ:</strong><br>${order.sender_name} - ${order.sender_address}</div>
+            <div><strong>Đến:</strong><br>${order.receiver_name} - ${order.receiver_phone}<br>${order.receiver_address}</div>
+          </div>
+          <h3 style="margin-bottom:15px">📦 Thông tin hàng hóa</h3>
+          <div style="background:#f8f9fa;padding:15px;border-radius:10px;margin-bottom:20px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+              <div><strong>Loại hàng:</strong> ${getParcelTypeText(order.parcel_type)}</div>
+              <div><strong>Trọng lượng:</strong> ${order.weight_kg}kg</div>
+              <div><strong>Giá trị:</strong> ${formatMoney(order.declared_value)}</div>
+              <div><strong>Phí ship:</strong> ${formatMoney(order.shipping_fee)}</div>
+              <div><strong>Thu hộ COD:</strong> ${formatMoney(order.cod_amount)}</div>
+              <div><strong>Thanh toán:</strong> ${getPaymentMethodText(order.payment_method)}</div>
+            </div>
+          </div>
+          ${order.driver_name ? `<h3 style="margin-bottom:15px">🚛 Thông tin vận chuyển</h3><div style="background:#f8f9fa;padding:15px;border-radius:10px;margin-bottom:20px"><div><strong>Tài xế:</strong> ${order.driver_name}</div><div><strong>Biển số xe:</strong> ${order.vehicle_license_plate}</div></div>` : ''}
+          <h3 style="margin:25px 0 15px 0">⏱️ Tiến trình giao hàng</h3>
+          <div class="timeline">
+            ${(history || []).map((item, index) => `
+              <div class="timeline-item">
+                ${index < history.length - 1 ? '<div class="timeline-line"></div>' : ''}
+                <div class="timeline-dot completed">✓</div>
+                <div class="timeline-content">
+                  <div class="timeline-title">${getStatusText(item.status)}</div>
+                  <div class="timeline-time">${item.status_date}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        document.getElementById('order-detail-modal').classList.add('active');
+      } catch (error) {
+        alert('❌ Không thể tải chi tiết đơn hàng');
+      }
+    }
+
+    function initMap() {
+      map = L.map('map').setView([10.776530, 106.700981], 6);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+    }
+
+    async function trackOrder() {
+      const trackingCode = document.getElementById('tracking-input').value.trim().toUpperCase();
+      if (!trackingCode) {
+        alert('Vui lòng nhập mã vận đơn!');
+        return;
+      }
+
+      try {
+        const order = await apiCall(`/orders/tracking/${trackingCode}`);
+        const history = await apiCall(`/orders/${order.id}/history`);
+
+        // Clear existing markers
+        map.eachLayer(layer => { if (layer instanceof L.Marker) map.removeLayer(layer); });
+
+        const fromCoords = [10.776530, 106.700981];
+        const toCoords = [11.940419, 108.458313];
+
+        L.marker(fromCoords).addTo(map).bindPopup('<strong>📤 Điểm lấy hàng</strong><br>' + order.sender_address);
+        if (order.order_status !== 'pending_pickup') {
+          L.marker([11.358, 107.579]).addTo(map).bindPopup('<strong>🚛 ' + (order.vehicle_license_plate || 'Xe') + '</strong><br>Đang vận chuyển');
+        }
+        L.marker(toCoords).addTo(map).bindPopup('<strong>📥 Điểm giao hàng</strong><br>' + order.receiver_address);
+        L.polyline([fromCoords, toCoords], { color: 'blue', weight: 3 }).addTo(map);
+        map.fitBounds([fromCoords, toCoords]);
+
+        document.getElementById('tracking-result').innerHTML = `
+          <div class="order-card">
+            <div class="order-header">
+              <div class="order-id">${order.tracking_code}</div>
+              <span class="badge ${getStatusBadgeClass(order.order_status)}">${getStatusText(order.order_status)}</span>
+            </div>
+            <div class="timeline">
+              ${(history || []).map((item, index) => `
+                <div class="timeline-item">
+                  ${index < history.length - 1 ? '<div class="timeline-line"></div>' : ''}
+                  <div class="timeline-dot completed">✓</div>
+                  <div class="timeline-content"><div class="timeline-title">${getStatusText(item.status)}</div><div class="timeline-time">${item.status_date}</div></div>
+                </div>
+              `).join('')}
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-top:15px" onclick="viewOrderDetail(${order.id})">Xem chi tiết đầy đủ</button>
+          </div>
+        `;
+      } catch (error) {
+        document.getElementById('tracking-result').innerHTML = '<div class="empty-state"><div class="empty-icon">❌</div><h3>Không tìm thấy đơn hàng</h3><p>Mã vận đơn <strong>' + trackingCode + '</strong> không tồn tại</p></div>';
+      }
+    }
+
+    function renderHistory() {
+      const delivered = orders.filter(o => o.order_status === 'delivered');
+      const container = document.getElementById('history-container');
+      if (delivered.length === 0) {
+        container.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><h3>Chưa có lịch sử</h3><p>Bạn chưa có đơn hàng nào đã giao thành công</p></div>';
+        return;
+      }
+      container.innerHTML = '<table style="width:100%"><thead><tr style="background:#f8f9fa"><th style="padding:12px;text-align:left">Mã đơn</th><th style="padding:12px;text-align:left">Người nhận</th><th style="padding:12px;text-align:left">Địa chỉ</th><th style="padding:12px;text-align:right">Phí ship</th><th style="padding:12px;text-align:center">Hành động</th></tr></thead><tbody>' + delivered.map(o => '<tr style="border-bottom:1px solid #e9ecef"><td style="padding:12px"><strong>' + o.tracking_code + '</strong></td><td style="padding:12px">' + o.receiver_name + '</td><td style="padding:12px">' + truncate(o.receiver_address, 40) + '</td><td style="padding:12px;text-align:right">' + formatMoney(o.shipping_fee) + '</td><td style="padding:12px;text-align:center"><button class="btn btn-primary btn-small" onclick="viewOrderDetail(' + o.id + ')">Chi tiết</button></td></tr>').join('') + '</tbody></table>';
+    }
+
+    function openCreateOrderModal() {
+      document.getElementById('create-order-modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('create-order-modal').classList.remove('active');
+    }
+
+    function closeOrderDetailModal() {
+      document.getElementById('order-detail-modal').classList.remove('active');
+    }
+
+    async function createOrder() {
+      const data = {
+        customer_id: currentCustomerId ? parseInt(currentCustomerId) : null,
+        sender_name: document.getElementById('sender-name').value,
+        sender_phone: document.getElementById('sender-phone').value,
+        sender_address: document.getElementById('sender-address').value,
+        receiver_name: document.getElementById('receiver-name').value,
+        receiver_phone: document.getElementById('receiver-phone').value,
+        receiver_address: document.getElementById('receiver-address').value,
+        parcel_type: document.getElementById('parcel-type').value,
+        weight_kg: parseFloat(document.getElementById('weight').value) || 0,
+        declared_value: parseInt(document.getElementById('declared-value').value) || 0,
+        cod_amount: parseInt(document.getElementById('cod-amount').value) || 0,
+        payment_method: document.getElementById('payment-method').value,
+        notes: document.getElementById('note').value
+      };
+
+      if (!data.receiver_name || !data.receiver_phone || !data.receiver_address) {
+        alert('❌ Vui lòng điền đầy đủ thông tin người nhận!');
+        return;
+      }
+      if (!data.weight_kg || data.weight_kg <= 0) {
+        alert('❌ Vui lòng nhập trọng lượng hợp lệ!');
+        return;
+      }
+
+      try {
+        const result = await apiCall('/orders', {
+          method: 'POST',
+          body: JSON.stringify(data)
+        });
+
+        closeModal();
+        alert('✅ Tạo đơn hàng thành công!\\n\\nMã vận đơn: ' + result.tracking_code + '\\nPhí ship: ' + formatMoney(result.shipping_fee) + '\\n\\nNhà xe sẽ liên hệ lấy hàng trong 1-2 giờ tới.');
+
+        await loadCustomerData();
+        showTab('orders');
+      } catch (error) {
+        alert('❌ Lỗi khi tạo đơn hàng: ' + error.message);
+      }
+    }
+
+    async function cancelOrder(orderId) {
+      if (!confirm('Bạn có chắc muốn hủy đơn hàng này?')) return;
+
+      try {
+        await apiCall(`/orders/${orderId}/cancel`, { method: 'PUT' });
+        alert('✅ Đã hủy đơn hàng');
+        await loadCustomerData();
+      } catch (error) {
+        alert('❌ Không thể hủy đơn hàng: ' + error.message);
+      }
+    }
+
+    function formatMoney(amount) {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+    }
+
+    function truncate(str, length) {
+      if (!str) return '';
+      return str.length > length ? str.substring(0, length) + '...' : str;
+    }
+
+    function getStatusText(status) {
+      const map = { pending_pickup: 'Chờ lấy hàng', pickup_confirmed: 'Đã lấy hàng', in_transit: 'Đang vận chuyển', out_for_delivery: 'Đang giao hàng', delivered: 'Đã giao', returned: 'Hoàn hàng', cancelled: 'Đã hủy' };
+      return map[status] || status;
+    }
+
+    function getStatusBadgeClass(status) {
+      const map = { pending_pickup: 'badge-warning', pickup_confirmed: 'badge-info', in_transit: 'badge-info', out_for_delivery: 'badge-info', delivered: 'badge-success', returned: 'badge-danger', cancelled: 'badge-danger' };
+      return map[status] || 'badge-info';
+    }
+
+    function getParcelTypeText(type) {
+      const map = { other: 'Hàng thông thường', fragile: 'Dễ vỡ', electronics: 'Điện tử', food: 'Thực phẩm', cold: 'Hàng lạnh', document: 'Tài liệu' };
+      return map[type] || type;
+    }
+
+    function getPaymentMethodText(method) {
+      const map = { cash: 'Tiền mặt khi giao', cash_pickup: 'Tiền mặt khi lấy', bank_transfer: 'Chuyển khoản', e_wallet: 'Ví điện tử' };
+      return map[method] || method;
+    }
+
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) modal.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+
+</html>

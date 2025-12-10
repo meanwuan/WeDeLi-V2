@@ -16,16 +16,13 @@ namespace wedeli.Controller
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly IRoleService _roleService;
         private readonly ILogger<UsersController> _logger;
 
         public UsersController(
             IUserService userService,
-            IRoleService roleService,
             ILogger<UsersController> logger)
         {
             _userService = userService;
-            _roleService = roleService;
             _logger = logger;
         }
 
@@ -52,7 +49,7 @@ namespace wedeli.Controller
                 _logger.LogInformation("Get current user profile");
 
                 // Get user ID from JWT token
-                var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+                var userIdClaim = User.FindFirst("user_id");
                 if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
                 {
                     _logger.LogWarning("User ID not found in JWT token");
@@ -329,7 +326,7 @@ namespace wedeli.Controller
                 }
 
                 // Get user ID from JWT token
-                var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+                var userIdClaim = User.FindFirst("user_id");
                 if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
                 {
                     _logger.LogWarning("User ID not found in JWT token");

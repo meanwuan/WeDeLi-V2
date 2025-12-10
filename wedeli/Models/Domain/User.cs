@@ -86,4 +86,7 @@ public partial class User
 
     [InverseProperty("User")]
     public virtual ICollection<WarehouseStaff> WarehouseStaffs { get; set; } = new List<WarehouseStaff>();
+
+    [InverseProperty("User")]
+    public virtual TransportCompany? TransportCompany { get; set; }
 }

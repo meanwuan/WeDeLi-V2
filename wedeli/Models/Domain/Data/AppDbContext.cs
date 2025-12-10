@@ -461,6 +461,11 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.IsActive).HasDefaultValueSql("'1'");
             entity.Property(e => e.Rating).HasDefaultValueSql("'5.00'");
+
+            entity.HasOne(d => d.User)
+                .WithOne(p => p.TransportCompany)
+                .HasForeignKey<TransportCompany>(d => d.UserId)
+                .HasConstraintName("transport_companies_ibfk_user");
         });
 
         modelBuilder.Entity<Trip>(entity =>

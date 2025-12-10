@@ -9,7 +9,7 @@ public static class JwtExtensions
     /// </summary>
     public static int? GetUserId(this ClaimsPrincipal principal)
     {
-        var userIdClaim = principal.FindFirst(ClaimTypes.NameIdentifier)?.Value
+        var userIdClaim = principal.FindFirst("user_id")?.Value
                           ?? principal.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
 
         if (int.TryParse(userIdClaim, out var userId))

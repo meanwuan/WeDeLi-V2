@@ -500,6 +500,8 @@ namespace wedeli.Controller
                     Email = c.Email ?? "",
                     IsActive = c.IsActive ?? true,
                     Rating = c.Rating ?? 0,
+                    Latitude = c.Latitude,
+                    Longitude = c.Longitude,
                     CreatedAt = c.CreatedAt ?? DateTime.UtcNow
                 }).ToList();
                 return Ok(new ApiResponse<IEnumerable<CompanyResponseDto>>
@@ -542,6 +544,8 @@ namespace wedeli.Controller
                     Email = company.Email,
                     IsActive = company.IsActive ?? true,
                     Rating = company.Rating ?? 0,
+                    Latitude = company.Latitude,
+                    Longitude = company.Longitude,
                     CreatedAt = company.CreatedAt ?? DateTime.UtcNow
                 };
 

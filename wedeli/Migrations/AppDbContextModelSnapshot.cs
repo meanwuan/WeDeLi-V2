@@ -1629,6 +1629,16 @@ namespace wedeli.Migrations
                         .HasColumnName("is_active")
                         .HasDefaultValueSql("'1'");
 
+                    b.Property<decimal?>("Latitude")
+                        .HasPrecision(10, 8)
+                        .HasColumnType("decimal(10,8)")
+                        .HasColumnName("latitude");
+
+                    b.Property<decimal?>("Longitude")
+                        .HasPrecision(11, 8)
+                        .HasColumnType("decimal(11,8)")
+                        .HasColumnName("longitude");
+
                     b.Property<string>("Phone")
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)")
@@ -1641,8 +1651,15 @@ namespace wedeli.Migrations
                         .HasColumnName("rating")
                         .HasDefaultValueSql("'5.00'");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
                     b.HasKey("CompanyId")
                         .HasName("PRIMARY");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("transport_companies");
                 });
@@ -2341,6 +2358,16 @@ namespace wedeli.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("wedeli.Models.Domain.TransportCompany", b =>
+                {
+                    b.HasOne("wedeli.Models.Domain.User", "User")
+                        .WithOne("TransportCompany")
+                        .HasForeignKey("wedeli.Models.Domain.TransportCompany", "UserId")
+                        .HasConstraintName("transport_companies_ibfk_user");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("wedeli.Models.Domain.Trip", b =>
                 {
                     b.HasOne("wedeli.Models.Domain.Driver", "Driver")
@@ -2538,6 +2565,8 @@ namespace wedeli.Migrations
                     b.Navigation("OrderStatusHistories");
 
                     b.Navigation("OrderTransfers");
+
+                    b.Navigation("TransportCompany");
 
                     b.Navigation("WarehouseStaffs");
                 });

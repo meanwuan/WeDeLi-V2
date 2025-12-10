@@ -11,6 +11,7 @@ namespace wedeli.Models.DTO.Company
     public class CompanyResponseDto
     {
         public int CompanyId { get; set; }
+        public int? UserId { get; set; }
         public string CompanyName { get; set; }
         public string BusinessLicense { get; set; }
         public string Address { get; set; }
@@ -18,11 +19,14 @@ namespace wedeli.Models.DTO.Company
         public string Email { get; set; }
         public bool IsActive { get; set; }
         public decimal Rating { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 
     public class CreateCompanyDto
     {
+        public int? UserId { get; set; }
         [Required][MaxLength(200)] public string CompanyName { get; set; }
         [Required][MaxLength(50)] public string BusinessLicense { get; set; }
         [Required] public string Address { get; set; }

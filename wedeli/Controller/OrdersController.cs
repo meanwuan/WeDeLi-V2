@@ -525,7 +525,7 @@ namespace wedeli.Controller
                     });
                 }
 
-                var userId = int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var uid) ? uid : 0;
+                var userId = int.TryParse(User.FindFirst("user_id")?.Value, out var uid) ? uid : 0;
                 var result = await _orderService.UpdateOrderStatusAsync(id, dto.NewStatus, userId, dto.Notes);
                 
                 _logger.LogInformation("Order status updated: {OrderId}, NewStatus: {Status}", id, dto.NewStatus);
@@ -565,7 +565,7 @@ namespace wedeli.Controller
         {
             try
             {
-                var userId = int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var uid) ? uid : 0;
+                var userId = int.TryParse(User.FindFirst("user_id")?.Value, out var uid) ? uid : 0;
                 var result = await _orderService.ConfirmPickupAsync(id, userId);
                 
                 _logger.LogInformation("Pickup confirmed for order: {OrderId}", id);
@@ -683,7 +683,7 @@ namespace wedeli.Controller
         {
             try
             {
-                var userId = int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var uid) ? uid : 0;
+                var userId = int.TryParse(User.FindFirst("user_id")?.Value, out var uid) ? uid : 0;
                 var result = await _orderService.CompleteDeliveryAsync(id, userId);
                 
                 _logger.LogInformation("Delivery completed for order: {OrderId}", id);
@@ -924,7 +924,7 @@ namespace wedeli.Controller
                 }
 
                 dto.OrderId = orderId;
-                dto.UploadedBy = int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var uid) ? uid : 0;
+                dto.UploadedBy = int.TryParse(User.FindFirst("user_id")?.Value, out var uid) ? uid : 0;
 
                 var photo = await _photoService.UploadPhotoAsync(dto);
                 
