@@ -84,4 +84,7 @@ public partial class Vehicle
 
     [InverseProperty("Vehicle")]
     public virtual ICollection<Trip> Trips { get; set; } = new List<Trip>();
+
+    [InverseProperty("Vehicle")]
+    public virtual ICollection<VehicleLocation> VehicleLocations { get; set; } = new List<VehicleLocation>();
 }

@@ -135,30 +135,47 @@ namespace wedeli.Service.Service
             try
             {
                 var company = await _transportCompanyRepository.GetByIdAsync(companyId);
-                if (company == null)
+                if (company == null || company.CompanyId == 0)
                     throw new KeyNotFoundException($"Company with ID {companyId} not found.");
 
-                var drivers = await _driverRepository.GetAllAsync();
-                var companyDrivers = drivers.ToList();
+                // Get drivers for this company
+                var allDrivers = await _driverRepository.GetAllAsync();
+                var companyDrivers = allDrivers.Where(d => d.CompanyId == companyId).ToList();
+                var companyDriverIds = companyDrivers.Select(d => d.DriverId).ToHashSet();
 
-                var vehicles = await _vehicleRepository.GetAllAsync();
-                var companyVehicles = vehicles.ToList();
+                // Get vehicles for this company
+                var allVehicles = await _vehicleRepository.GetAllAsync();
+                var companyVehicles = allVehicles.Where(v => v.CompanyId == companyId).ToList();
 
-                var orders = await _orderRepository.GetAllAsync();
-                var companyOrders = orders.ToList();
+                // Get orders assigned to company's drivers
+                var allOrders = await _orderRepository.GetAllAsync();
+                var companyOrders = allOrders.Where(o => o.DriverId.HasValue && companyDriverIds.Contains(o.DriverId.Value)).ToList();
+
+                // Calculate revenue
+                var deliveredOrders = companyOrders.Where(o => o.OrderStatus == "delivered").ToList();
+                var totalRevenue = deliveredOrders.Sum(o => o.ShippingFee);
+                var today = DateTime.UtcNow.Date;
+                var todayRevenue = deliveredOrders
+                    .Where(o => o.DeliveredAt.HasValue && o.DeliveredAt.Value.Date == today)
+                    .Sum(o => o.ShippingFee);
+
+                // Calculate pending COD (orders with COD that are not yet delivered)
+                var pendingCodAmount = companyOrders
+                    .Where(o => o.OrderStatus != "delivered" && o.OrderStatus != "cancelled" && o.CodAmount.GetValueOrDefault() > 0)
+                    .Sum(o => o.CodAmount.GetValueOrDefault());
 
                 return new DashboardStatsDto
                 {
                     TotalOrders = companyOrders.Count,
-                    PendingOrders = companyOrders.Count(o => o.OrderStatus != "delivered" && o.OrderStatus != "cancelled"),
-                    InTransitOrders = companyOrders.Count(o => o.OrderStatus == "in_transit"),
-                    DeliveredOrders = companyOrders.Count(o => o.OrderStatus == "delivered"),
-                    TotalRevenue = 0,
-                    TodayRevenue = 0,
-                    ActiveVehicles = companyVehicles.Count(v => v.VehicleId > 0),
+                    PendingOrders = companyOrders.Count(o => o.OrderStatus == "pending" || o.OrderStatus == "pending_pickup"),
+                    InTransitOrders = companyOrders.Count(o => o.OrderStatus == "in_transit" || o.OrderStatus == "picked_up"),
+                    DeliveredOrders = deliveredOrders.Count,
+                    TotalRevenue = totalRevenue,
+                    TodayRevenue = todayRevenue,
+                    ActiveVehicles = companyVehicles.Count(v => v.CurrentStatus == "available" || v.CurrentStatus == "in_transit"),
                     ActiveDrivers = companyDrivers.Count(d => d.IsActive == true),
                     PendingComplaints = 0,
-                    PendingCodAmount = 0
+                    PendingCodAmount = pendingCodAmount
                 };
             }
             catch (Exception ex)

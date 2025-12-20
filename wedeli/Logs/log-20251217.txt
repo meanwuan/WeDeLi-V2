@@ -1,0 +1,122 @@
+2025-12-17 14:55:19.950 +07:00 [ERR] An error occurred during database migration or seeding.
+MySqlConnector.MySqlException (0x80004005): Access denied for user 'root'@'localhost' (using password: YES)
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ServerSession.SendEncryptedPasswordAsync(Byte[] switchRequestData, String rsaPublicKey, String password, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 793
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, String password, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 708
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, MySqlConnection connection, Int64 startingTimestamp, ILoadBalancer loadBalancer, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 537
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 428
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 433
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 111
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 144
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int64 startingTimestamp, Activity activity, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 919
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 419
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 381
+   at Microsoft.EntityFrameworkCore.ServerVersion.AutoDetect(String connectionString)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__0(DbContextOptionsBuilder options) in C:\Users\wuan\source\wedeli\wedeli\Program.cs:line 46
+   at Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.<>c__DisplayClass1_0`2.<AddDbContext>b__0(IServiceProvider _, DbContextOptionsBuilder b)
+   at Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.CreateDbContextOptions[TContext](IServiceProvider applicationServiceProvider, Action`2 optionsAction)
+   at Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.<>c__DisplayClass17_0`1.<AddCoreServices>b__0(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Program.<Main>$(String[] args) in C:\Users\wuan\source\wedeli\wedeli\Program.cs:line 374
+2025-12-17 14:55:50.120 +07:00 [ERR] An error occurred during database migration or seeding.
+MySqlConnector.MySqlException (0x80004005): Access denied for user 'root'@'localhost' (using password: YES)
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ServerSession.SendEncryptedPasswordAsync(Byte[] switchRequestData, String rsaPublicKey, String password, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 793
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, String password, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 708
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, MySqlConnection connection, Int64 startingTimestamp, ILoadBalancer loadBalancer, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 537
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 428
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, Action`4 logMessage, Int64 startingTimestamp, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 433
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 111
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int64 startingTimestamp, Int32 timeoutMilliseconds, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 144
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int64 startingTimestamp, Activity activity, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 919
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 419
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 381
+   at Microsoft.EntityFrameworkCore.ServerVersion.AutoDetect(String connectionString)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__0(DbContextOptionsBuilder options) in C:\Users\wuan\source\wedeli\wedeli\Program.cs:line 46
+   at Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.<>c__DisplayClass1_0`2.<AddDbContext>b__0(IServiceProvider _, DbContextOptionsBuilder b)
+   at Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.CreateDbContextOptions[TContext](IServiceProvider applicationServiceProvider, Action`2 optionsAction)
+   at Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.<>c__DisplayClass17_0`1.<AddCoreServices>b__0(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Program.<Main>$(String[] args) in C:\Users\wuan\source\wedeli\wedeli\Program.cs:line 374
+2025-12-17 14:57:58.492 +07:00 [INF] Starting database migration...
+2025-12-17 14:57:59.623 +07:00 [INF] Database is already up to date.
+2025-12-17 14:58:00.071 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-17 14:58:00.089 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-17 14:58:00.276 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 14:58:00.277 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 14:58:00.280 +07:00 [INF] Starting WeDeli API...
+2025-12-17 14:58:00.427 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-17 14:58:01.517 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 68.8569 ms
+2025-12-17 14:58:01.906 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 137.9054 ms
+2025-12-17 14:59:30.122 +07:00 [INF] Starting database migration...
+2025-12-17 14:59:30.808 +07:00 [INF] Database is already up to date.
+2025-12-17 14:59:31.026 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-17 14:59:31.031 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-17 14:59:31.073 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 14:59:31.074 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 14:59:31.076 +07:00 [INF] Starting WeDeli API...
+2025-12-17 14:59:31.131 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-17 15:00:42.425 +07:00 [INF] Starting database migration...
+2025-12-17 15:00:43.074 +07:00 [INF] Database is already up to date.
+2025-12-17 15:00:43.229 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-17 15:00:43.234 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-17 15:00:43.268 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:00:43.268 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:00:43.270 +07:00 [INF] Starting WeDeli API...
+2025-12-17 15:00:43.307 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-17 15:03:01.235 +07:00 [INF] Starting database migration...
+2025-12-17 15:03:02.393 +07:00 [INF] Database is already up to date.
+2025-12-17 15:03:02.730 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-17 15:03:02.759 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-17 15:03:02.908 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:03:02.910 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:03:02.927 +07:00 [INF] Starting WeDeli API...
+2025-12-17 15:03:03.058 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-17 15:03:04.076 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 60.1422 ms
+2025-12-17 15:03:04.478 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 186.7925 ms
+2025-12-17 15:03:07.435 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 3.9057 ms
+2025-12-17 15:03:07.755 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 109.1546 ms
+2025-12-17 15:03:36.672 +07:00 [INF] Starting database migration...
+2025-12-17 15:03:37.269 +07:00 [INF] Database is already up to date.
+2025-12-17 15:03:37.418 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-17 15:03:37.424 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-17 15:03:37.457 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:03:37.458 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:03:37.460 +07:00 [INF] Starting WeDeli API...
+2025-12-17 15:03:37.495 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-17 15:05:15.883 +07:00 [INF] Starting database migration...
+2025-12-17 15:05:16.512 +07:00 [INF] Database is already up to date.
+2025-12-17 15:05:16.659 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-17 15:05:16.663 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-17 15:05:16.692 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:05:16.694 +07:00 [INF] Database seeding completed successfully.
+2025-12-17 15:05:16.696 +07:00 [INF] Starting WeDeli API...
+2025-12-17 15:05:16.733 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.

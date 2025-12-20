@@ -147,6 +147,20 @@ namespace wedeli.Repositories.Repo
             }
         }
 
+        public async Task<TransportCompany?> GetByUserIdAsync(int userId)
+        {
+            try
+            {
+                return await _context.TransportCompanies
+                    .FirstOrDefaultAsync(c => c.UserId == userId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting company by userId: {UserId}", userId);
+                throw;
+            }
+        }
+
         public async Task<TransportCompany> UpdateAsync(TransportCompany entity)
         {
             try

@@ -1,6 +1,0 @@
-C:\Users\wuan\source\wedeli\obj\Debug\net8.0\CreateRefreshTokensTable.csproj.AssemblyReference.cache
-C:\Users\wuan\source\wedeli\obj\Debug\net8.0\CreateRefreshTokensTable.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\wuan\source\wedeli\obj\Debug\net8.0\CreateRefreshTokensTable.AssemblyInfoInputs.cache
-C:\Users\wuan\source\wedeli\obj\Debug\net8.0\CreateRefreshTokensTable.AssemblyInfo.cs
-C:\Users\wuan\source\wedeli\obj\Debug\net8.0\CreateRefreshTokensTable.csproj.CoreCompileInputs.cache
-C:\Users\wuan\source\wedeli\obj\Debug\net8.0\CreateRefreshTokensTable.sourcelink.json

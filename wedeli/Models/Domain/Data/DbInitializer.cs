@@ -70,6 +70,9 @@ namespace wedeli.Data
                 // 15. Seed Order Status Histories (depends on Orders, Users)
                 await SeedOrderStatusHistoriesAsync(context, logger);
 
+                // 16. Seed Vehicle Locations (depends on Vehicles)
+                await SeedVehicleLocationsAsync(context, logger);
+
                 logger.LogInformation("Database seeding completed successfully.");
             }
             catch (Exception ex)
@@ -356,6 +359,20 @@ namespace wedeli.Data
                     TotalTrips = 100,
                     SuccessRate = 98.0m,
                     Rating = 4.7m,
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow
+                },
+                // Driver for Company 3 (Hoàng Long) - using user 21 (driver_hl1_seed)
+                new Driver
+                {
+                    DriverId = 4,
+                    UserId = 21, // driver_hl1_seed
+                    CompanyId = 3,
+                    DriverLicense = "B2-456789",
+                    LicenseExpiry = DateOnly.FromDateTime(DateTime.UtcNow.AddYears(5)),
+                    TotalTrips = 80,
+                    SuccessRate = 95.5m,
+                    Rating = 4.6m,
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow
                 }
@@ -852,6 +869,7 @@ namespace wedeli.Data
                     PickupScheduledAt = DateTime.UtcNow.AddHours(-8),
                     PickupConfirmedAt = DateTime.UtcNow.AddHours(-5)
                 },
+                // Orders for Company 3 (Hoàng Long) - DriverId = 4
                 new Order
                 {
                     OrderId = 5,
@@ -870,12 +888,103 @@ namespace wedeli.Data
                     DeclaredValue = 2000000m,
                     RouteId = 5,
                     VehicleId = 5,
+                    DriverId = 4, // Driver of Company 3
                     ShippingFee = 500000m,
                     CodAmount = 1500000m,
                     PaymentMethod = "cash",
                     PaymentStatus = "unpaid",
-                    OrderStatus = "cancelled",
-                    CreatedAt = DateTime.UtcNow.AddDays(-10)
+                    OrderStatus = "in_transit",
+                    CreatedAt = DateTime.UtcNow.AddDays(-1),
+                    PickupScheduledAt = DateTime.UtcNow.AddDays(-1),
+                    PickupConfirmedAt = DateTime.UtcNow.AddHours(-12)
+                },
+                new Order
+                {
+                    OrderId = 6,
+                    TrackingCode = "WDL-2024-000006",
+                    CustomerId = 2,
+                    SenderName = "Trần Văn Mua Hàng",
+                    SenderPhone = "0904100002",
+                    SenderAddress = "789 Điện Biên Phủ, Quận Bình Thạnh, TP.HCM",
+                    ReceiverName = "Lý Văn Nhận",
+                    ReceiverPhone = "0945678901",
+                    ReceiverAddress = "123 Lê Duẩn, Quận Hải Châu, Đà Nẵng",
+                    ReceiverProvince = "Đà Nẵng",
+                    ReceiverDistrict = "Quận Hải Châu",
+                    ParcelType = "electronics",
+                    WeightKg = 3.5m,
+                    DeclaredValue = 8000000m,
+                    SpecialInstructions = "Laptop, giao cẩn thận",
+                    RouteId = 5,
+                    VehicleId = 5,
+                    DriverId = 4, // Driver of Company 3
+                    ShippingFee = 350000m,
+                    CodAmount = 0m,
+                    PaymentMethod = "bank_transfer",
+                    PaymentStatus = "paid",
+                    PaidAt = DateTime.UtcNow.AddDays(-4),
+                    OrderStatus = "delivered",
+                    CreatedAt = DateTime.UtcNow.AddDays(-5),
+                    PickupScheduledAt = DateTime.UtcNow.AddDays(-5),
+                    PickupConfirmedAt = DateTime.UtcNow.AddDays(-4),
+                    DeliveredAt = DateTime.UtcNow.AddDays(-3)
+                },
+                new Order
+                {
+                    OrderId = 7,
+                    TrackingCode = "WDL-2024-000007",
+                    CustomerId = 1,
+                    SenderName = "Nguyễn Thị Khách Hàng",
+                    SenderPhone = "0904100001",
+                    SenderAddress = "456 Lê Lợi, Quận 1, TP.HCM",
+                    ReceiverName = "Võ Thị Hương",
+                    ReceiverPhone = "0956789012",
+                    ReceiverAddress = "456 Trần Phú, TP Huế",
+                    ReceiverProvince = "Thừa Thiên Huế",
+                    ReceiverDistrict = "TP Huế",
+                    ParcelType = "fragile",
+                    WeightKg = 1.5m,
+                    DeclaredValue = 500000m,
+                    SpecialInstructions = "Đồ gốm sứ, xin nhẹ tay",
+                    RouteId = 5,
+                    VehicleId = 5,
+                    DriverId = 4, // Driver of Company 3
+                    ShippingFee = 180000m,
+                    CodAmount = 500000m,
+                    PaymentMethod = "cash",
+                    PaymentStatus = "unpaid",
+                    OrderStatus = "pending_pickup",
+                    CreatedAt = DateTime.UtcNow
+                },
+                new Order
+                {
+                    OrderId = 8,
+                    TrackingCode = "WDL-2024-000008",
+                    CustomerId = 2,
+                    SenderName = "Trần Văn Mua Hàng",
+                    SenderPhone = "0904100002",
+                    SenderAddress = "789 Điện Biên Phủ, Quận Bình Thạnh, TP.HCM",
+                    ReceiverName = "Đặng Văn Minh",
+                    ReceiverPhone = "0967890123",
+                    ReceiverAddress = "789 Nguyễn Huệ, TP Quy Nhơn",
+                    ReceiverProvince = "Bình Định",
+                    ReceiverDistrict = "TP Quy Nhơn",
+                    ParcelType = "document",
+                    WeightKg = 0.3m,
+                    DeclaredValue = 50000m,
+                    RouteId = 5,
+                    VehicleId = 5,
+                    DriverId = 4, // Driver of Company 3
+                    ShippingFee = 120000m,
+                    CodAmount = 0m,
+                    PaymentMethod = "periodic",
+                    PaymentStatus = "paid",
+                    PaidAt = DateTime.UtcNow.AddDays(-1),
+                    OrderStatus = "delivered",
+                    CreatedAt = DateTime.UtcNow.AddDays(-3),
+                    PickupScheduledAt = DateTime.UtcNow.AddDays(-3),
+                    PickupConfirmedAt = DateTime.UtcNow.AddDays(-2),
+                    DeliveredAt = DateTime.UtcNow.AddDays(-1)
                 }
             };
 
@@ -1123,6 +1232,91 @@ namespace wedeli.Data
             await context.OrderStatusHistories.AddRangeAsync(histories);
             await context.SaveChangesAsync();
             logger.LogInformation($"Seeded {histories.Length} order status histories.");
+        }
+
+        private static async Task SeedVehicleLocationsAsync(AppDbContext context, ILogger logger)
+        {
+            if (await context.VehicleLocations.AnyAsync()) return;
+
+            logger.LogInformation("Seeding Vehicle Locations...");
+
+            var locations = new[]
+            {
+                // Vehicle 1 - Thành Bưởi truck - đang ở TP.HCM
+                new VehicleLocation
+                {
+                    LocationId = 1,
+                    VehicleId = 1,
+                    Latitude = 10.7567890m,
+                    Longitude = 106.6789012m,
+                    Speed = 0m,
+                    Heading = 90m,
+                    Accuracy = 5m,
+                    Status = "Stopped",
+                    RecordedAt = DateTime.UtcNow.AddMinutes(-5),
+                    CreatedAt = DateTime.UtcNow.AddMinutes(-5)
+                },
+                // Vehicle 2 - Thành Bưởi van - đang trên đường đi Đà Lạt
+                new VehicleLocation
+                {
+                    LocationId = 2,
+                    VehicleId = 2,
+                    Latitude = 11.0500000m,
+                    Longitude = 107.8500000m,
+                    Speed = 65.5m,
+                    Heading = 45m,
+                    Accuracy = 10m,
+                    Status = "Moving",
+                    RecordedAt = DateTime.UtcNow.AddMinutes(-2),
+                    CreatedAt = DateTime.UtcNow.AddMinutes(-2)
+                },
+                // Vehicle 3 - Phương Trang truck - đang ở bến xe
+                new VehicleLocation
+                {
+                    LocationId = 3,
+                    VehicleId = 3,
+                    Latitude = 10.7623456m,
+                    Longitude = 106.6901234m,
+                    Speed = 0m,
+                    Heading = 180m,
+                    Accuracy = 5m,
+                    Status = "Idle",
+                    RecordedAt = DateTime.UtcNow.AddMinutes(-10),
+                    CreatedAt = DateTime.UtcNow.AddMinutes(-10)
+                },
+                // Vehicle 4 - Phương Trang motorbike - đang giao hàng
+                new VehicleLocation
+                {
+                    LocationId = 4,
+                    VehicleId = 4,
+                    Latitude = 10.7750000m,
+                    Longitude = 106.7000000m,
+                    Speed = 35.0m,
+                    Heading = 270m,
+                    Accuracy = 8m,
+                    Status = "Moving",
+                    RecordedAt = DateTime.UtcNow.AddMinutes(-1),
+                    CreatedAt = DateTime.UtcNow.AddMinutes(-1)
+                },
+                // Vehicle 5 - Hoàng Long truck - maintenance at garage
+                new VehicleLocation
+                {
+                    LocationId = 5,
+                    VehicleId = 5,
+                    Latitude = 10.8012345m,
+                    Longitude = 106.7123456m,
+                    Speed = 0m,
+                    Heading = 0m,
+                    Accuracy = 3m,
+                    Status = "Stopped",
+                    RecordedAt = DateTime.UtcNow.AddHours(-2),
+                    CreatedAt = DateTime.UtcNow.AddHours(-2)
+                }
+            };
+
+            await context.VehicleLocations.AddRangeAsync(locations);
+            await context.SaveChangesAsync();
+            logger.LogInformation($"Seeded {locations.Length} vehicle locations.");
         }
 
         #endregion

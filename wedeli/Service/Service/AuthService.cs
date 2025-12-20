@@ -21,6 +21,7 @@ namespace wedeli.Service.Service
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
         private readonly ICustomerRepository _customerRepository;
+        private readonly ITransportCompanyRepository _companyRepository;
         private readonly IConfiguration _configuration;
         private readonly ILogger<AuthService> _logger;
 
@@ -32,6 +33,7 @@ namespace wedeli.Service.Service
             IUserRepository userRepository,
             IRoleRepository roleRepository,
             ICustomerRepository customerRepository,
+            ITransportCompanyRepository companyRepository,
             IConfiguration configuration,
             ILogger<AuthService> logger)
         {
@@ -42,6 +44,7 @@ namespace wedeli.Service.Service
             _userRepository = userRepository;
             _roleRepository = roleRepository;
             _customerRepository = customerRepository;
+            _companyRepository = companyRepository;
             _configuration = configuration;
             _logger = logger;
         }
@@ -169,6 +172,19 @@ namespace wedeli.Service.Service
             // Get role name
             var role = await _roleRepository.GetByIdAsync(user.RoleId);
 
+            // Get company info if user is CompanyAdmin (RoleId = 2)
+            int? companyId = null;
+            string? companyName = null;
+            if (user.RoleId == 2) // CompanyAdmin
+            {
+                var company = await _companyRepository.GetByUserIdAsync(user.UserId);
+                if (company != null)
+                {
+                    companyId = company.CompanyId;
+                    companyName = company.CompanyName;
+                }
+            }
+
             // Build response
             var response = new LoginResponseDto
             {
@@ -179,6 +195,8 @@ namespace wedeli.Service.Service
                 Phone = user.Phone,
                 RoleId = user.RoleId,
                 RoleName = role?.RoleName ?? "Unknown",
+                CompanyId = companyId,
+                CompanyName = companyName,
                 AccessToken = accessToken,
                 RefreshToken = refreshToken,
                 TokenExpiration = DateTime.UtcNow.AddMinutes(

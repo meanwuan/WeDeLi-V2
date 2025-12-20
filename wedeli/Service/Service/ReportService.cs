@@ -35,16 +35,18 @@ namespace wedeli.Service.Service
             try
             {
                 var orders = await _orderRepository.GetAllAsync();
-                var dailyOrders = orders.Where(o => o.CreatedAt == date.Date).ToList();
+                // Fix: Handle nullable DateTime
+                var dailyOrders = orders.Where(o => o.CreatedAt.HasValue && o.CreatedAt.Value.Date == date.Date).ToList();
+                var deliveredOrders = dailyOrders.Where(o => o.OrderStatus == "delivered").ToList();
 
                 return new DailyReportSummaryDto
                 {
                     Date = date.Date,
                     TotalOrders = dailyOrders.Count,
-                    CompletedOrders = dailyOrders.Count(o => o.OrderStatus == "delivered"),
+                    CompletedOrders = deliveredOrders.Count,
                     CancelledOrders = dailyOrders.Count(o => o.OrderStatus == "cancelled"),
                     PendingOrders = dailyOrders.Count(o => o.OrderStatus != "delivered" && o.OrderStatus != "cancelled"),
-                    TotalRevenue = 0,
+                    TotalRevenue = deliveredOrders.Sum(o => o.ShippingFee),
                     GeneratedAt = DateTime.UtcNow
                 };
             }
@@ -60,20 +62,26 @@ namespace wedeli.Service.Service
             try
             {
                 var orders = await _orderRepository.GetAllAsync();
-                var rangeOrders = orders.Where(o => o.CreatedAt >= startDate.Date && o.CreatedAt <= endDate.Date).ToList();
+                // Fix: Handle nullable DateTime
+                var rangeOrders = orders.Where(o => 
+                    o.CreatedAt.HasValue && 
+                    o.CreatedAt.Value.Date >= startDate.Date && 
+                    o.CreatedAt.Value.Date <= endDate.Date).ToList();
 
                 var dailySummaries = new List<DailyReportSummaryDto>();
                 for (var date = startDate.Date; date <= endDate.Date; date = date.AddDays(1))
                 {
-                    var dayOrders = rangeOrders.Where(o => o.CreatedAt == date).ToList();
+                    var dayOrders = rangeOrders.Where(o => o.CreatedAt!.Value.Date == date).ToList();
+                    var deliveredOrders = dayOrders.Where(o => o.OrderStatus == "delivered").ToList();
+                    
                     dailySummaries.Add(new DailyReportSummaryDto
                     {
                         Date = date,
                         TotalOrders = dayOrders.Count,
-                        CompletedOrders = dayOrders.Count(o => o.OrderStatus == "delivered"),
+                        CompletedOrders = deliveredOrders.Count,
                         CancelledOrders = dayOrders.Count(o => o.OrderStatus == "cancelled"),
                         PendingOrders = dayOrders.Count(o => o.OrderStatus != "delivered" && o.OrderStatus != "cancelled"),
-                        TotalRevenue = 0,
+                        TotalRevenue = deliveredOrders.Sum(o => o.ShippingFee),
                         GeneratedAt = DateTime.UtcNow
                     });
                 }

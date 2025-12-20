@@ -140,3 +140,4 @@ C:\Users\wuan\source\wedeli\wedeli\obj\Release\net8.0\refint\wedeli.dll
 C:\Users\wuan\source\wedeli\wedeli\obj\Release\net8.0\wedeli.pdb
 C:\Users\wuan\source\wedeli\wedeli\obj\Release\net8.0\wedeli.genruntimeconfig.cache
 C:\Users\wuan\source\wedeli\wedeli\obj\Release\net8.0\ref\wedeli.dll
+C:\Users\wuan\source\wedeli\wedeli\obj\Release\net8.0\staticwebassets.upToDateCheck.txt

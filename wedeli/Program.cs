@@ -21,6 +21,7 @@ using wedeli.Repositories.Repo;
 using wedeli.Service.Implementation;
 using wedeli.Service.Interface;
 using wedeli.Service.Service;
+using wedeli.Hubs;
 
 // ============================================
 // BƯỚC 1: Khởi tạo WebApplicationBuilder
@@ -85,6 +86,7 @@ builder.Services.AddScoped<ITripOrderRepository, TripOrderRepository>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPeriodicInvoiceRepository, PeriodicInvoiceRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<IVehicleLocationRepository, VehicleLocationRepository>();
 
 // 2.3 Business Services
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -108,6 +110,7 @@ builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<ITransportCompanyService, CompanyService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IVehicleLocationService, VehicleLocationService>();
 
 // 2.4 Infrastructure Services
 builder.Services.AddScoped<IJwtService, JwtService>();
@@ -354,7 +357,7 @@ app.UseMiddleware<ErrorHandlingMiddleware>();
 app.MapControllers();
 
 // 11. SignalR Hubs
-//app.MapHub<TrackingHub>("/hubs/tracking");
+app.MapHub<VehicleTrackingHub>("/hubs/vehicle-tracking");
 //app.MapHub<NotificationHub>("/hubs/notification");
 
 // 12. Health Checks

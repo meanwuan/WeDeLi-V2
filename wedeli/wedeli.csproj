@@ -9,16 +9,12 @@
   <ItemGroup>
     <Compile Remove="Entities\**" />
     <Compile Remove="Extensions\**" />
-    <Compile Remove="Hubs\**" />
     <Content Remove="Entities\**" />
     <Content Remove="Extensions\**" />
-    <Content Remove="Hubs\**" />
     <EmbeddedResource Remove="Entities\**" />
     <EmbeddedResource Remove="Extensions\**" />
-    <EmbeddedResource Remove="Hubs\**" />
     <None Remove="Entities\**" />
     <None Remove="Extensions\**" />
-    <None Remove="Hubs\**" />
   </ItemGroup>
 
   <ItemGroup>

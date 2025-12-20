@@ -15,7 +15,7 @@ namespace wedeli.Models.DTO.Report
         public int PendingOrders { get; set; }
         [JsonConverter(typeof(DateOnlyJsonConverter))]
         public DateTime GeneratedAt { get; set; }
-        public int TotalRevenue { get; internal set; }
+        public decimal TotalRevenue { get; set; }
     }
 
     public class DriverreportPerformanceDto

@@ -1949,6 +1949,65 @@ namespace wedeli.Migrations
                     b.ToTable("vehicles");
                 });
 
+            modelBuilder.Entity("wedeli.Models.Domain.VehicleLocation", b =>
+                {
+                    b.Property<int>("LocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("location_id");
+
+                    b.Property<decimal?>("Accuracy")
+                        .HasPrecision(6, 2)
+                        .HasColumnType("decimal(6,2)")
+                        .HasColumnName("accuracy");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp")
+                        .HasColumnName("created_at");
+
+                    b.Property<decimal?>("Heading")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("heading");
+
+                    b.Property<decimal>("Latitude")
+                        .HasPrecision(10, 8)
+                        .HasColumnType("decimal(10,8)")
+                        .HasColumnName("latitude");
+
+                    b.Property<decimal>("Longitude")
+                        .HasPrecision(11, 8)
+                        .HasColumnType("decimal(11,8)")
+                        .HasColumnName("longitude");
+
+                    b.Property<DateTime>("RecordedAt")
+                        .HasColumnType("timestamp")
+                        .HasColumnName("recorded_at");
+
+                    b.Property<decimal?>("Speed")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("speed");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("status");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int")
+                        .HasColumnName("vehicle_id");
+
+                    b.HasKey("LocationId");
+
+                    b.HasIndex(new[] { "RecordedAt" }, "idx_vehicle_locations_recorded_at");
+
+                    b.HasIndex(new[] { "VehicleId" }, "idx_vehicle_locations_vehicle_id");
+
+                    b.ToTable("vehicle_locations");
+                });
+
             modelBuilder.Entity("wedeli.Models.Domain.WarehouseStaff", b =>
                 {
                     b.Property<int>("StaffId")
@@ -2436,6 +2495,17 @@ namespace wedeli.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("wedeli.Models.Domain.VehicleLocation", b =>
+                {
+                    b.HasOne("wedeli.Models.Domain.Vehicle", "Vehicle")
+                        .WithMany("VehicleLocations")
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Vehicle");
+                });
+
             modelBuilder.Entity("wedeli.Models.Domain.WarehouseStaff", b =>
                 {
                     b.HasOne("wedeli.Models.Domain.TransportCompany", "Company")
@@ -2580,6 +2650,8 @@ namespace wedeli.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Trips");
+
+                    b.Navigation("VehicleLocations");
                 });
 #pragma warning restore 612, 618
         }

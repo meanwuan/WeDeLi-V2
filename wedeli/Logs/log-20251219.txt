@@ -1,0 +1,23 @@
+2025-12-19 21:54:53.888 +07:00 [INF] Starting database migration...
+2025-12-19 21:54:55.440 +07:00 [INF] Database is already up to date.
+2025-12-19 21:54:55.698 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-19 21:54:55.721 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-19 21:54:55.911 +07:00 [INF] Database seeding completed successfully.
+2025-12-19 21:54:55.912 +07:00 [INF] Database seeding completed successfully.
+2025-12-19 21:54:55.915 +07:00 [INF] Starting WeDeli API...
+2025-12-19 21:54:56.002 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-19 21:55:28.990 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-12-19 21:55:29.549 +07:00 [INF] Forgot password request for: customer1_seed@gmail.com
+2025-12-19 21:55:34.382 +07:00 [INF] Forgot password email sent for: customer1_seed@gmail.com
+2025-12-19 21:55:34.409 +07:00 [INF] HTTP POST /api/v1/auth/forgot-password responded 200 in 5411.7124 ms
+2025-12-19 21:55:48.359 +07:00 [INF] Login attempt for: superadmin_seed
+2025-12-19 21:55:48.776 +07:00 [INF] Login successful for user: superadmin_seed
+2025-12-19 21:55:48.783 +07:00 [INF] HTTP POST /api/v1/auth/login responded 200 in 438.0141 ms
+2025-12-19 21:56:47.242 +07:00 [INF] Login attempt for: superadmin_seed
+2025-12-19 21:56:47.523 +07:00 [INF] Login successful for user: superadmin_seed
+2025-12-19 21:56:47.524 +07:00 [INF] HTTP POST /api/v1/auth/login responded 200 in 302.4326 ms
+2025-12-19 21:57:54.797 +07:00 [INF] Login attempt for: driver_tb1_seed
+2025-12-19 21:57:55.007 +07:00 [INF] Login successful for user: driver_tb1_seed
+2025-12-19 21:57:55.008 +07:00 [INF] HTTP POST /api/v1/auth/login responded 200 in 214.0106 ms
+2025-12-19 21:57:55.256 +07:00 [INF] Retrieved photos for order: 1
+2025-12-19 21:57:55.259 +07:00 [INF] HTTP GET /api/v1/orders/1/photos responded 200 in 196.8070 ms

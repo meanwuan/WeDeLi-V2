@@ -1,0 +1,15 @@
+2025-12-18 16:21:33.587 +07:00 [INF] Starting database migration...
+2025-12-18 16:21:34.261 +07:00 [INF] Database is already up to date.
+2025-12-18 16:21:34.499 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-18 16:21:34.512 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-18 16:21:34.637 +07:00 [INF] Database seeding completed successfully.
+2025-12-18 16:21:34.638 +07:00 [INF] Database seeding completed successfully.
+2025-12-18 16:21:34.640 +07:00 [INF] Starting WeDeli API...
+2025-12-18 16:21:34.704 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-18 16:21:52.900 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-12-18 16:21:52.951 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 46.5929 ms
+2025-12-18 16:21:52.984 +07:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 12.5014 ms
+2025-12-18 16:21:52.984 +07:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 11.4550 ms
+2025-12-18 16:21:52.999 +07:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 25.5306 ms
+2025-12-18 16:21:53.153 +07:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.3454 ms
+2025-12-18 16:21:53.406 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 222.9541 ms

@@ -66,6 +66,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Vehicle> Vehicles { get; set; }
 
+    public virtual DbSet<VehicleLocation> VehicleLocations { get; set; }
+
     public virtual DbSet<WarehouseStaff> WarehouseStaffs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

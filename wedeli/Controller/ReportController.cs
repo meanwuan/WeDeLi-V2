@@ -6,7 +6,7 @@ using wedeli.Service.Interface;
 
 namespace wedeli.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/reports")]
     [ApiController]
     public class ReportController : ControllerBase
     {
@@ -143,6 +143,43 @@ namespace wedeli.Controllers
             {
                 _logger.LogError(ex, "Error getting last {Days} days summaries", days);
                 return StatusCode(500, new { message = "An error occurred while retrieving daily summaries" });
+            }
+        }
+
+        /// <summary>
+        /// Get monthly report for a specific year and month
+        /// </summary>
+        /// <param name="year">Report year (e.g., 2025)</param>
+        /// <param name="month">Report month (1-12)</param>
+        /// <returns>Monthly summary statistics</returns>
+        [HttpGet("monthly")]
+        [ProducesResponseType(typeof(IEnumerable<DailyReportSummaryDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetMonthlyReport([FromQuery] int year, [FromQuery] int month)
+        {
+            try
+            {
+                if (year < 2000 || year > 2100)
+                {
+                    return BadRequest(new { message = "Year must be between 2000 and 2100" });
+                }
+
+                if (month < 1 || month > 12)
+                {
+                    return BadRequest(new { message = "Month must be between 1 and 12" });
+                }
+
+                var startDate = new DateTime(year, month, 1);
+                var endDate = startDate.AddMonths(1).AddDays(-1);
+
+                var summaries = await _reportService.GetDailySummariesAsync(startDate, endDate);
+                return Ok(summaries);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting monthly report for: {Year}-{Month}", year, month);
+                return StatusCode(500, new { message = "An error occurred while retrieving monthly report" });
             }
         }
 

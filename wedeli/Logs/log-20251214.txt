@@ -1,0 +1,63 @@
+2025-12-14 20:43:52.998 +07:00 [INF] Starting database migration...
+2025-12-14 20:43:55.343 +07:00 [INF] Database is already up to date.
+2025-12-14 20:43:56.098 +07:00 [INF] Users table already has data. Skipping user seeding.
+2025-12-14 20:43:56.137 +07:00 [INF] Skipping Driver, Customer, WarehouseStaff seeding (Users already exist)
+2025-12-14 20:43:56.412 +07:00 [INF] Database seeding completed successfully.
+2025-12-14 20:43:56.413 +07:00 [INF] Database seeding completed successfully.
+2025-12-14 20:43:56.420 +07:00 [INF] Starting WeDeli API...
+2025-12-14 20:43:56.678 +07:00 [WRN] The WebRootPath was not found: C:\Users\wuan\source\wedeli\wedeli\wwwroot. Static files may be unavailable.
+2025-12-14 20:43:58.204 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 63.1841 ms
+2025-12-14 20:43:58.759 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 264.3622 ms
+2025-12-14 20:44:01.631 +07:00 [INF] HTTP GET /api/v1/partnerships/companies/2 responded 200 in 1161.4804 ms
+2025-12-14 20:44:01.814 +07:00 [INF] HTTP GET /api/Dashboard/company/2 responded 200 in 1291.0922 ms
+2025-12-14 20:44:01.814 +07:00 [INF] HTTP GET /api/Dashboard/company/2 responded 200 in 1326.5612 ms
+2025-12-14 20:44:01.821 +07:00 [INF] HTTP GET /api/v1/vehicle-locations/company/2 responded 200 in 1363.4497 ms
+2025-12-14 20:44:01.850 +07:00 [INF] Retrieved all orders - Page: 1, Size: 100
+2025-12-14 20:44:01.892 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 1410.8793 ms
+2025-12-14 20:44:06.725 +07:00 [INF] HTTP GET /api/v1/reports/monthly responded 200 in 28.2677 ms
+2025-12-14 20:44:08.716 +07:00 [INF] Retrieved all orders - Page: 1, Size: 100
+2025-12-14 20:44:08.722 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 28.7595 ms
+2025-12-14 20:44:08.736 +07:00 [INF] HTTP GET /api/v1/vehicle-locations/company/2 responded 200 in 36.0329 ms
+2025-12-14 20:44:08.736 +07:00 [INF] HTTP GET /api/Dashboard/company/2 responded 200 in 44.0745 ms
+2025-12-14 20:44:08.993 +07:00 [INF] HTTP GET /api/Dashboard/company/2 responded 200 in 44.0487 ms
+2025-12-14 20:50:04.104 +07:00 [INF] Login attempt for: phuongtrang_admin_seed
+2025-12-14 20:50:04.803 +07:00 [INF] Login successful for user: phuongtrang_admin_seed
+2025-12-14 20:50:04.807 +07:00 [INF] HTTP POST /api/v1/auth/login responded 200 in 789.9870 ms
+2025-12-14 20:50:04.842 +07:00 [INF] Get user by ID: 16
+2025-12-14 20:50:04.865 +07:00 [INF] HTTP GET /api/v1/users/16 responded 200 in 31.8277 ms
+2025-12-14 20:50:05.255 +07:00 [INF] HTTP GET /api/Dashboard/company/2 responded 200 in 117.2854 ms
+2025-12-14 20:50:05.311 +07:00 [INF] Retrieved all orders - Page: 1, Size: 100
+2025-12-14 20:50:05.322 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 157.7942 ms
+2025-12-14 20:50:05.322 +07:00 [INF] HTTP GET /api/v1/partnerships/companies/2 responded 200 in 99.1309 ms
+2025-12-14 20:50:05.346 +07:00 [INF] HTTP GET /api/v1/vehicle-locations/company/2 responded 200 in 86.1040 ms
+2025-12-14 20:50:05.347 +07:00 [INF] HTTP GET /api/Dashboard/company/2 responded 200 in 92.5797 ms
+2025-12-14 20:50:48.685 +07:00 [INF] Retrieved all orders - Page: 1, Size: 10
+2025-12-14 20:50:48.689 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 14.9532 ms
+2025-12-14 20:50:48.879 +07:00 [INF] Retrieved all orders - Page: 1, Size: 10
+2025-12-14 20:50:48.883 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 10.5849 ms
+2025-12-14 20:51:47.534 +07:00 [INF] Retrieved all orders - Page: 1, Size: 10
+2025-12-14 20:51:47.538 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 31.1877 ms
+2025-12-14 20:51:48.954 +07:00 [INF] Retrieved vehicles for company: 2
+2025-12-14 20:51:48.958 +07:00 [INF] HTTP GET /api/v1/vehicles responded 200 in 61.5951 ms
+2025-12-14 20:51:49.061 +07:00 [INF] Retrieved vehicles for company: 2
+2025-12-14 20:51:49.063 +07:00 [INF] HTTP GET /api/v1/vehicles responded 200 in 7.9239 ms
+2025-12-14 20:52:18.438 +07:00 [INF] HTTP GET /api/v1/reports/monthly responded 200 in 17.8699 ms
+2025-12-14 20:52:44.196 +07:00 [INF] HTTP GET /api/Dashboard/company/2 responded 200 in 23.0597 ms
+2025-12-14 20:57:36.845 +07:00 [INF] Retrieved vehicles for company: 2
+2025-12-14 20:57:36.848 +07:00 [INF] HTTP GET /api/v1/vehicles responded 200 in 48.3820 ms
+2025-12-14 20:57:36.906 +07:00 [INF] Retrieved vehicles for company: 2
+2025-12-14 20:57:36.907 +07:00 [INF] HTTP GET /api/v1/vehicles responded 200 in 7.0380 ms
+2025-12-14 20:57:37.592 +07:00 [INF] Retrieved all orders - Page: 1, Size: 10
+2025-12-14 20:57:37.594 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 8.9332 ms
+2025-12-14 20:57:37.745 +07:00 [INF] Retrieved all orders - Page: 1, Size: 10
+2025-12-14 20:57:37.747 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 8.3927 ms
+2025-12-14 20:57:38.643 +07:00 [INF] Retrieved order details: 3
+2025-12-14 20:57:38.651 +07:00 [INF] HTTP GET /api/v1/orders/3 responded 200 in 55.8947 ms
+2025-12-14 20:57:47.859 +07:00 [INF] Retrieved all orders - Page: 1, Size: 10
+2025-12-14 20:57:47.861 +07:00 [INF] HTTP GET /api/v1/orders responded 200 in 8.7238 ms
+2025-12-14 20:57:49.107 +07:00 [INF] Retrieved vehicles for company: 2
+2025-12-14 20:57:49.108 +07:00 [INF] HTTP GET /api/v1/vehicles responded 200 in 6.5887 ms
+2025-12-14 20:57:49.255 +07:00 [INF] Retrieved vehicles for company: 2
+2025-12-14 20:57:49.256 +07:00 [INF] HTTP GET /api/v1/vehicles responded 200 in 5.8625 ms
+2025-12-14 20:57:50.339 +07:00 [INF] Retrieved vehicle: 7
+2025-12-14 20:57:50.341 +07:00 [INF] HTTP GET /api/v1/vehicles/7 responded 200 in 24.2631 ms
