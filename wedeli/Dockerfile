@@ -3,11 +3,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy csproj and restore dependencies
-COPY ["wedeli.csproj", "./"]
+COPY ["wedeli/wedeli.csproj", "wedeli/"]
+WORKDIR /src/wedeli
 RUN dotnet restore "wedeli.csproj"
 
 # Copy everything else and build
-COPY . .
+COPY wedeli/ .
 RUN dotnet build "wedeli.csproj" -c Release -o /app/build
 
 # Publish stage
