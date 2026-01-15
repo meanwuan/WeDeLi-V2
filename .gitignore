@@ -1,0 +1,35 @@
+# .NET Build outputs
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/
+
+# Logs
+Logs/
+*.log
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Uploads
+wwwroot/uploads/
+
+# Environment files - NEVER commit these
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+*.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+*.swp
+*~
+.idea/

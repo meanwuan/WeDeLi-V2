@@ -1,0 +1,597 @@
+@startuml ERD_Admin_Transport_Company
+!theme plain
+title **Sơ đồ ERD - Admin Nhà Xe (Transport Company Admin)**
+skinparam linetype ortho
+
+' ============================================
+' ĐỊNH NGHĨA CÁC ENTITY
+' ============================================
+
+entity "users" as users {
+    *user_id : INT <<PK>>
+    --
+    username : VARCHAR(100) <<UNIQUE>>
+    password_hash : VARCHAR(255)
+    full_name : VARCHAR(200)
+    phone : VARCHAR(20)
+    email : VARCHAR(100)
+    *role_id : INT <<FK>>
+    is_active : BOOLEAN
+    created_at : TIMESTAMP
+    updated_at : TIMESTAMP
+}
+
+entity "roles" as roles {
+    *role_id : INT <<PK>>
+    --
+    role_name : VARCHAR(50) <<UNIQUE>>
+    description : TEXT
+    created_at : TIMESTAMP
+}
+
+entity "transport_companies" as companies {
+    *company_id : INT <<PK>>
+    --
+    company_name : VARCHAR(200)
+    business_license : VARCHAR(50)
+    address : TEXT
+    phone : VARCHAR(20)
+    email : VARCHAR(100)
+    is_active : BOOLEAN
+    rating : DECIMAL(3,2)
+    latitude : DECIMAL(10,8)
+    longitude : DECIMAL(11,8)
+    user_id : INT <<FK>>
+    created_at : TIMESTAMP
+}
+
+entity "vehicles" as vehicles {
+    *vehicle_id : INT <<PK>>
+    --
+    *company_id : INT <<FK>>
+    license_plate : VARCHAR(20) <<UNIQUE>>
+    vehicle_type : ENUM('truck','van','motorbike')
+    max_weight_kg : DECIMAL(8,2)
+    max_volume_m3 : DECIMAL(6,2)
+    current_weight_kg : DECIMAL(8,2)
+    capacity_percentage : DECIMAL(5,2)
+    overload_threshold : DECIMAL(5,2)
+    allow_overload : BOOLEAN
+    current_status : ENUM('available','in_transit','maintenance','inactive','overloaded')
+    gps_enabled : BOOLEAN
+    created_at : TIMESTAMP
+}
+
+entity "vehicle_locations" as veh_loc {
+    *location_id : INT <<PK>>
+    --
+    *vehicle_id : INT <<FK>>
+    latitude : DECIMAL(10,8)
+    longitude : DECIMAL(11,8)
+    speed : DECIMAL(6,2)
+    heading : DECIMAL(5,2)
+    recorded_at : TIMESTAMP
+}
+
+entity "drivers" as drivers {
+    *driver_id : INT <<PK>>
+    --
+    *user_id : INT <<FK>>
+    *company_id : INT <<FK>>
+    driver_license : VARCHAR(50)
+    license_expiry : DATE
+    total_trips : INT
+    success_rate : DECIMAL(5,2)
+    rating : DECIMAL(3,2)
+    is_active : BOOLEAN
+    created_at : TIMESTAMP
+}
+
+entity "routes" as routes {
+    *route_id : INT <<PK>>
+    --
+    *company_id : INT <<FK>>
+    route_name : VARCHAR(200)
+    origin_province : VARCHAR(100)
+    origin_district : VARCHAR(100)
+    destination_province : VARCHAR(100)
+    destination_district : VARCHAR(100)
+    distance_km : DECIMAL(8,2)
+    estimated_duration_hours : DECIMAL(5,2)
+    base_price : DECIMAL(12,2)
+    is_active : BOOLEAN
+    created_at : TIMESTAMP
+}
+
+entity "trips" as trips {
+    *trip_id : INT <<PK>>
+    --
+    *route_id : INT <<FK>>
+    *vehicle_id : INT <<FK>>
+    *driver_id : INT <<FK>>
+    trip_date : DATE
+    departure_time : TIMESTAMP
+    arrival_time : TIMESTAMP
+    trip_status : ENUM('scheduled','in_progress','completed','cancelled')
+    total_orders : INT
+    total_weight_kg : DECIMAL(8,2)
+    is_return_trip : BOOLEAN
+    created_at : TIMESTAMP
+}
+
+entity "orders" as orders {
+    *order_id : INT <<PK>>
+    --
+    tracking_code : VARCHAR(50) <<UNIQUE>>
+    *customer_id : INT <<FK>>
+    sender_name : VARCHAR(200)
+    sender_phone : VARCHAR(20)
+    sender_address : TEXT
+    receiver_name : VARCHAR(200)
+    receiver_phone : VARCHAR(20)
+    receiver_address : TEXT
+    receiver_province : VARCHAR(100)
+    receiver_district : VARCHAR(100)
+    parcel_type : ENUM
+    weight_kg : DECIMAL(8,2)
+    declared_value : DECIMAL(15,2)
+    special_instructions : TEXT
+    route_id : INT <<FK>>
+    vehicle_id : INT <<FK>>
+    driver_id : INT <<FK>>
+    shipping_fee : DECIMAL(12,2)
+    cod_amount : DECIMAL(15,2)
+    payment_method : ENUM
+    payment_status : ENUM('unpaid','paid','pending')
+    paid_at : TIMESTAMP
+    order_status : ENUM
+    created_at : TIMESTAMP
+    updated_at : TIMESTAMP
+}
+
+entity "trip_orders" as trip_orders {
+    *trip_order_id : INT <<PK>>
+    --
+    *trip_id : INT <<FK>>
+    *order_id : INT <<FK>>
+    sequence_number : INT
+    pickup_confirmed : BOOLEAN
+    delivery_confirmed : BOOLEAN
+}
+
+entity "payments" as payments {
+    *payment_id : INT <<PK>>
+    --
+    *order_id : INT <<FK>>
+    *customer_id : INT <<FK>>
+    amount : DECIMAL(15,2)
+    payment_method : VARCHAR(50)
+    payment_status : ENUM('pending','paid','failed')
+    created_at : TIMESTAMP
+}
+
+entity "company_partnerships" as partnerships {
+    *partnership_id : INT <<PK>>
+    --
+    *company_id : INT <<FK>>
+    *partner_company_id : INT <<FK>>
+    partnership_level : ENUM('regular','premium','exclusive')
+    commission_rate : DECIMAL(5,2)
+    priority_order : INT
+    total_transferred_orders : INT
+    is_active : BOOLEAN
+    created_by : INT <<FK>>
+    created_at : TIMESTAMP
+    updated_at : TIMESTAMP
+}
+
+entity "order_transfers" as transfers {
+    *transfer_id : INT <<PK>>
+    --
+    *order_id : INT <<FK>>
+    *from_company_id : INT <<FK>>
+    *to_company_id : INT <<FK>>
+    original_vehicle_id : INT <<FK>>
+    new_vehicle_id : INT <<FK>>
+    transfer_reason : TEXT
+    transfer_fee : DECIMAL(12,2)
+    commission_paid : DECIMAL(12,2)
+    transfer_status : ENUM('pending','accepted','rejected','completed')
+    *transferred_by : INT <<FK>>
+    transferred_at : TIMESTAMP
+}
+
+entity "warehouse_staff" as warehouse_staff {
+    *staff_id : INT <<PK>>
+    --
+    *user_id : INT <<FK>>
+    *company_id : INT <<FK>>
+    position : VARCHAR(100)
+    is_active : BOOLEAN
+    created_at : TIMESTAMP
+}
+
+' ============================================
+' ĐỊNH NGHĨA CÁC QUAN HỆ
+' ============================================
+
+' User và Role
+roles ||--o{ users : "has"
+
+' TransportCompany và User (1-1)
+users |o--|| companies : "manages"
+
+' TransportCompany với các entity khác
+companies ||--o{ vehicles : "owns"
+companies ||--o{ drivers : "employs"
+companies ||--o{ routes : "operates"
+companies ||--o{ warehouse_staff : "has"
+
+' Driver và User
+users ||--o{ drivers : "is"
+
+' Vehicle và các entity liên quan
+vehicles ||--o{ trips : "used_in"
+vehicles ||--o{ orders : "carries"
+vehicles ||--o{ veh_loc : "tracked_by"
+
+' Driver và các entity liên quan
+drivers ||--o{ trips : "assigned_to"
+drivers ||--o{ orders : "handles"
+
+' Route và các entity liên quan
+routes ||--o{ trips : "follows"
+routes ||--o{ orders : "uses"
+
+' Trip và Order (many-to-many qua TripOrder)
+trips ||--o{ trip_orders : "contains"
+orders ||--o{ trip_orders : "belongs_to"
+
+' Order và Payment
+orders ||--o{ payments : "has"
+
+' Company Partnerships (self-referencing)
+companies ||--o{ partnerships : "initiates"
+companies ||--o{ partnerships : "receives"
+
+' Order Transfers
+companies ||--o{ transfers : "transfers_from"
+companies ||--o{ transfers : "receives_to"
+orders ||--o{ transfers : "transferred"
+users ||--o{ transfers : "executes"
+vehicles ||--o{ transfers : "original"
+vehicles ||--o{ transfers : "new"
+
+' Warehouse Staff
+users ||--o{ warehouse_staff : "is"
+
+@enduml
+
+@startuml Class_Diagram_Admin_Transport_Company
+!theme plain
+title **Class Diagram - Admin Nhà Xe (Transport Company Admin)**
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+skinparam backgroundColor #FEFEFE
+
+' ============================================
+' PHÂN VÙNG CÁC LỚP
+' ============================================
+
+package "Domain Models" #DDDDFF {
+    
+    class User {
+        +int UserId
+        +string Username
+        +string PasswordHash
+        +string FullName
+        +string Phone
+        +string? Email
+        +int RoleId
+        +bool? IsActive
+        +DateTime? CreatedAt
+        +DateTime? UpdatedAt
+        --
+        +Role Role
+        +TransportCompany? TransportCompany
+        +ICollection<Driver> Drivers
+        +ICollection<WarehouseStaff> WarehouseStaffs
+        +ICollection<OrderTransfer> OrderTransfers
+        +ICollection<CompanyPartnership> CompanyPartnerships
+        +ICollection<Notification> Notifications
+    }
+    
+    class Role {
+        +int RoleId
+        +string RoleName
+        +string? Description
+        +DateTime? CreatedAt
+        --
+        +ICollection<User> Users
+    }
+    
+    class TransportCompany {
+        +int CompanyId
+        +string CompanyName
+        +string? BusinessLicense
+        +string? Address
+        +string? Phone
+        +string? Email
+        +bool? IsActive
+        +decimal? Rating
+        +decimal? Latitude
+        +decimal? Longitude
+        +int? UserId
+        +DateTime? CreatedAt
+        --
+        +User? User
+        +ICollection<Vehicle> Vehicles
+        +ICollection<Driver> Drivers
+        +ICollection<Route> Routes
+        +ICollection<WarehouseStaff> WarehouseStaffs
+        +ICollection<CompanyPartnership> CompanyPartnershipCompanies
+        +ICollection<CompanyPartnership> CompanyPartnershipPartnerCompanies
+        +ICollection<OrderTransfer> OrderTransferFromCompanies
+        +ICollection<OrderTransfer> OrderTransferToCompanies
+    }
+    
+    class Vehicle {
+        +int VehicleId
+        +int CompanyId
+        +string LicensePlate
+        +string VehicleType
+        +decimal? MaxWeightKg
+        +decimal? MaxVolumeM3
+        +decimal? CurrentWeightKg
+        +decimal? CapacityPercentage
+        +decimal? OverloadThreshold
+        +bool? AllowOverload
+        +string? CurrentStatus
+        +bool? GpsEnabled
+        +DateTime? CreatedAt
+        --
+        +TransportCompany Company
+        +ICollection<Order> Orders
+        +ICollection<Trip> Trips
+        +ICollection<VehicleLocation> VehicleLocations
+        +ICollection<OrderTransfer> OrderTransferOriginalVehicles
+        +ICollection<OrderTransfer> OrderTransferNewVehicles
+    }
+    
+    class VehicleLocation {
+        +int LocationId
+        +int VehicleId
+        +decimal Latitude
+        +decimal Longitude
+        +decimal? Speed
+        +decimal? Heading
+        +DateTime RecordedAt
+        --
+        +Vehicle Vehicle
+    }
+    
+    class Driver {
+        +int DriverId
+        +int UserId
+        +int CompanyId
+        +string? DriverLicense
+        +DateOnly? LicenseExpiry
+        +int? TotalTrips
+        +decimal? SuccessRate
+        +decimal? Rating
+        +bool? IsActive
+        +DateTime? CreatedAt
+        --
+        +User User
+        +TransportCompany Company
+        +ICollection<Order> Orders
+        +ICollection<Trip> Trips
+        +ICollection<Rating> Ratings
+        +ICollection<CodTransaction> CodTransactions
+        +ICollection<DriverCodSummary> DriverCodSummaries
+    }
+    
+    class Route {
+        +int RouteId
+        +int CompanyId
+        +string RouteName
+        +string? OriginProvince
+        +string? OriginDistrict
+        +string? DestinationProvince
+        +string? DestinationDistrict
+        +decimal? DistanceKm
+        +decimal? EstimatedDurationHours
+        +decimal? BasePrice
+        +bool? IsActive
+        +DateTime? CreatedAt
+        --
+        +TransportCompany Company
+        +ICollection<Order> Orders
+        +ICollection<Trip> Trips
+    }
+    
+    class Trip {
+        +int TripId
+        +int RouteId
+        +int VehicleId
+        +int DriverId
+        +DateOnly TripDate
+        +DateTime? DepartureTime
+        +DateTime? ArrivalTime
+        +string? TripStatus
+        +int? TotalOrders
+        +decimal? TotalWeightKg
+        +bool? IsReturnTrip
+        +DateTime? CreatedAt
+        --
+        +Route Route
+        +Vehicle Vehicle
+        +Driver Driver
+        +ICollection<TripOrder> TripOrders
+    }
+    
+    class TripOrder {
+        +int TripOrderId
+        +int TripId
+        +int OrderId
+        +int? SequenceNumber
+        +bool? PickupConfirmed
+        +bool? DeliveryConfirmed
+        --
+        +Trip Trip
+        +Order Order
+    }
+    
+    class Order {
+        +int OrderId
+        +string TrackingCode
+        +int CustomerId
+        +string SenderName
+        +string SenderPhone
+        +string SenderAddress
+        +string ReceiverName
+        +string ReceiverPhone
+        +string ReceiverAddress
+        +string? ReceiverProvince
+        +string? ReceiverDistrict
+        +string? ParcelType
+        +decimal? WeightKg
+        +decimal? DeclaredValue
+        +string? SpecialInstructions
+        +int? RouteId
+        +int? VehicleId
+        +int? DriverId
+        +decimal ShippingFee
+        +decimal? CodAmount
+        +string PaymentMethod
+        +string? PaymentStatus
+        +DateTime? PaidAt
+        +string? OrderStatus
+        +DateTime? CreatedAt
+        +DateTime? UpdatedAt
+        --
+        +Customer Customer
+        +Route? Route
+        +Vehicle? Vehicle
+        +Driver? Driver
+        +ICollection<TripOrder> TripOrders
+        +ICollection<Payment> Payments
+        +ICollection<OrderTransfer> OrderTransfers
+        +ICollection<Complaint> Complaints
+        +ICollection<Rating> Ratings
+        +ICollection<Notification> Notifications
+        +ICollection<OrderPhoto> OrderPhotos
+        +ICollection<OrderStatusHistory> OrderStatusHistories
+        +ICollection<CodTransaction> CodTransactions
+    }
+    
+    class Payment {
+        +int PaymentId
+        +int OrderId
+        +int CustomerId
+        +decimal Amount
+        +string PaymentMethod
+        +string? PaymentStatus
+        +DateTime? CreatedAt
+        --
+        +Order Order
+        +Customer Customer
+    }
+    
+    class CompanyPartnership {
+        +int PartnershipId
+        +int CompanyId
+        +int PartnerCompanyId
+        +string? PartnershipLevel
+        +decimal? CommissionRate
+        +int? PriorityOrder
+        +int? TotalTransferredOrders
+        +bool? IsActive
+        +int? CreatedBy
+        +DateTime? CreatedAt
+        +DateTime? UpdatedAt
+        --
+        +TransportCompany Company
+        +TransportCompany PartnerCompany
+        +User? CreatedByNavigation
+    }
+    
+    class OrderTransfer {
+        +int TransferId
+        +int OrderId
+        +int FromCompanyId
+        +int ToCompanyId
+        +int? OriginalVehicleId
+        +int? NewVehicleId
+        +string? TransferReason
+        +decimal? TransferFee
+        +decimal? CommissionPaid
+        +string? TransferStatus
+        +int TransferredBy
+        +DateTime? TransferredAt
+        --
+        +Order Order
+        +TransportCompany FromCompany
+        +TransportCompany ToCompany
+        +Vehicle? OriginalVehicle
+        +Vehicle? NewVehicle
+        +User TransferredByNavigation
+    }
+    
+    class WarehouseStaff {
+        +int StaffId
+        +int UserId
+        +int CompanyId
+        +string? Position
+        +bool? IsActive
+        +DateTime? CreatedAt
+        --
+        +User User
+        +TransportCompany Company
+    }
+}
+
+' ============================================
+' QUAN HỆ GIỮA CÁC LỚP
+' ============================================
+
+' User relationships
+Role "1" --> "*" User : contains
+User "1" --> "0..1" TransportCompany : manages
+User "1" --> "*" Driver : is
+User "1" --> "*" WarehouseStaff : is
+
+' TransportCompany relationships
+TransportCompany "1" --> "*" Vehicle : owns
+TransportCompany "1" --> "*" Driver : employs
+TransportCompany "1" --> "*" Route : operates
+TransportCompany "1" --> "*" WarehouseStaff : has
+TransportCompany "1" --> "*" CompanyPartnership : initiates
+TransportCompany "1" --> "*" OrderTransfer : transfers_from
+
+' Vehicle relationships
+Vehicle "1" --> "*" Trip : used_in
+Vehicle "1" --> "*" Order : carries
+Vehicle "1" --> "*" VehicleLocation : tracked_by
+Vehicle "1" --> "*" OrderTransfer : involved_in
+
+' Driver relationships
+Driver "1" --> "*" Trip : assigned
+Driver "1" --> "*" Order : handles
+
+' Route relationships
+Route "1" --> "*" Trip : follows
+Route "1" --> "*" Order : uses
+
+' Trip relationships
+Trip "1" --> "*" TripOrder : contains
+
+' Order relationships
+Order "1" --> "*" TripOrder : belongs_to
+Order "1" --> "*" Payment : has
+Order "1" --> "*" OrderTransfer : transferred
+
+' Partnership relationships
+CompanyPartnership "*" --> "1" TransportCompany : partner
+
+@enduml
