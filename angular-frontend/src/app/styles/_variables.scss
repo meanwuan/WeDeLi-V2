@@ -1,0 +1,197 @@
+// Global CSS Variables - Clean Black/White/Orange Theme
+:root {
+    // Primary Colors - Orange accent
+    --primary-color: #E97632;
+    --primary-hover: #d66828;
+    --primary-light: rgba(233, 118, 50, 0.12);
+    --primary-gradient: linear-gradient(135deg, #E97632 0%, #D25D1A 100%);
+    --primary-gradient-hover: linear-gradient(135deg, #d66828 0%, #bf5116 100%);
+
+    // Secondary Colors
+    --secondary-color: #555555;
+    --secondary-hover: #444444;
+
+    // Accent Colors - Muted for cleaner look
+    --success-color: #2e7d32;
+    --success-bg: rgba(46, 125, 50, 0.1);
+    --warning-color: #ed6c02;
+    --warning-bg: rgba(237, 108, 2, 0.1);
+    --danger-color: #d32f2f;
+    --danger-bg: rgba(211, 47, 47, 0.1);
+    --info-color: #0288d1;
+    --info-bg: rgba(2, 136, 209, 0.1);
+
+    // Text Colors - High contrast for readability
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+
+    // Backgrounds - Clean white/light gray
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-tertiary: #f5f5f5;
+    --bg-elevated: #ffffff;
+    --bg-hover: rgba(0, 0, 0, 0.04);
+
+    // Borders - Subtle
+    --border-color: #e0e0e0;
+    --border-light: #f0f0f0;
+
+    // Sidebar - Dark for contrast
+    --sidebar-bg: #1a1a1a;
+    --sidebar-border: #333333;
+    --sidebar-width: 250px;
+    --sidebar-collapsed-width: 68px;
+
+    // Header
+    --header-height: 60px;
+    --header-bg: rgba(255, 255, 255, 0.95);
+
+    // Shadows - Minimal
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-glow: none;
+
+    // Border Radius - Clean
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --radius-2xl: 16px;
+
+    // Transitions
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    // Cards
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-blur: blur(8px);
+}
+
+// Dark Mode
+[data-theme="dark"] {
+    --text-primary: #f5f5f5;
+    --text-secondary: #b0b0b0;
+    --text-muted: #808080;
+
+    --bg-primary: #121212;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #242424;
+    --bg-elevated: #1e1e1e;
+    --bg-hover: rgba(255, 255, 255, 0.05);
+
+    --border-color: #333333;
+    --border-light: #2a2a2a;
+
+    --sidebar-bg: #0d0d0d;
+    --sidebar-border: #1a1a1a;
+
+    --header-bg: rgba(18, 18, 18, 0.95);
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.5);
+
+    --glass-bg: rgba(26, 26, 26, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin card {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+@mixin glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+@mixin button-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &:hover {
+        background: var(--primary-hover);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@mixin button-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &:hover {
+        background: var(--bg-hover);
+        border-color: var(--text-muted);
+    }
+}
+
+@mixin input-base {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    transition: all var(--transition-fast);
+
+    &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px var(--primary-light);
+    }
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+}
+
+@mixin truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

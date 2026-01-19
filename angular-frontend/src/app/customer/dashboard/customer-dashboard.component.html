@@ -1,0 +1,153 @@
+<div class="customer-dashboard">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="welcome">
+            <h1>Chào, {{ userName }} 👋</h1>
+            <p>Quản lý vận chuyển dễ dàng và nhanh chóng.</p>
+        </div>
+        <div class="header-actions">
+            <button class="notification-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+            </button>
+            <button class="create-order-btn" routerLink="/customer/orders/create">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                TẠO ĐƠN MỚI
+            </button>
+        </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <section class="stats-section">
+        <div class="stat-card">
+            <div class="stat-icon total">📦</div>
+            <div class="stat-info">
+                <span class="stat-label">Tổng đơn</span>
+                <span class="stat-value">{{ stats().totalOrders }}</span>
+                <span class="stat-change positive">↗ +5% tháng này</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon in-progress">🚚</div>
+            <div class="stat-info">
+                <span class="stat-label">Đang giao</span>
+                <span class="stat-value">{{ stats().inProgress }}</span>
+                <span class="stat-sub">Đang hoạt động</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon delivered">✅</div>
+            <div class="stat-info">
+                <span class="stat-label">Đã giao</span>
+                <span class="stat-value">{{ stats().delivered }}</span>
+                <span class="stat-change positive">↗ +12% hoàn thành</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon cancelled">❌</div>
+            <div class="stat-info">
+                <span class="stat-label">Đã hủy</span>
+                <span class="stat-value">{{ stats().cancelled }}</span>
+                <span class="stat-change negative">Tỷ lệ thấp</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <div class="content-grid">
+        <!-- Recent Orders -->
+        <section class="recent-orders-section">
+            <div class="section-header">
+                <h2>Đơn hàng gần đây</h2>
+                <a routerLink="/customer/orders" class="view-all">Xem tất cả →</a>
+            </div>
+
+            <div class="orders-list">
+                @for (order of recentOrders(); track order.orderId) {
+                <div class="order-item">
+                    <div class="order-status-icon" [class]="getStatusClass(order.orderStatus)">
+                        {{ getStatusIcon(order.orderStatus) }}
+                    </div>
+                    <div class="order-info">
+                        <div class="order-code">{{ order.trackingCode }}</div>
+                        <div class="order-meta">Gửi: {{ order.senderName }} • {{ order.createdAt }}</div>
+                    </div>
+                    <div class="order-destination">
+                        <span class="dest-label">ĐIỂM ĐẾN</span>
+                        <span class="dest-value">{{ order.receiverProvince || order.receiverName }}</span>
+                    </div>
+                    <span class="order-status-badge" [class]="getStatusClass(order.orderStatus)">
+                        {{ getStatusLabel(order.orderStatus) }}
+                    </span>
+                </div>
+                }
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions-section">
+            <h2>Thao tác nhanh</h2>
+
+            <div class="quick-actions-grid">
+                <a routerLink="/customer/orders/create" class="quick-action">
+                    <div class="action-icon create">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                    </div>
+                    <span>Tạo đơn mới</span>
+                </a>
+
+                <a routerLink="/tracking" class="quick-action">
+                    <div class="action-icon search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                    </div>
+                    <span>Tra cứu đơn</span>
+                </a>
+
+                <a routerLink="/customer/addresses" class="quick-action">
+                    <div class="action-icon address">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </div>
+                    <span>Quản lý địa chỉ</span>
+                </a>
+
+                <a routerLink="/customer/settings" class="quick-action">
+                    <div class="action-icon support">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                    </div>
+                    <span>Hỗ trợ</span>
+                </a>
+            </div>
+
+            <!-- Promo Banner -->
+            <div class="promo-banner">
+                <div class="promo-content">
+                    <span class="promo-tag">WEDELI PRO</span>
+                    <h3>Giảm 20% phí vận chuyển</h3>
+                    <button class="promo-btn">Tìm hiểu ngay</button>
+                </div>
+                <div class="promo-icon">📦</div>
+            </div>
+        </section>
+    </div>
+</div>

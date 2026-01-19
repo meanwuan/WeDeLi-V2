@@ -1,0 +1,140 @@
+<div class="tracking-modal-overlay" (click)="onClose()">
+    <div class="tracking-modal" (click)="$event.stopPropagation()">
+        <!-- Map Section -->
+        <div class="map-section">
+            <div #mapContainer class="map-container"></div>
+            <div class="speed-badge">
+                {{ vehicle.licensePlate }} • {{ trackingData().speed }}km/h
+            </div>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <!-- Header -->
+            <div class="panel-header">
+                <div class="vehicle-summary">
+                    <span class="plate">{{ vehicle.licensePlate }}</span>
+                    <app-status-badge [label]="getStatusLabel(vehicle.currentStatus)"
+                        [variant]="getStatusVariant(vehicle.currentStatus)" size="small" />
+                </div>
+                <span class="vehicle-type">{{ vehicle.vehicleType }} • {{ vehicle.maxWeightKg }}kg</span>
+                <button class="close-btn" (click)="onClose()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button [class.active]="activeTab() === 'info'" (click)="activeTab.set('info')">Thông tin</button>
+                <button [class.active]="activeTab() === 'orders'" (click)="activeTab.set('orders')">Đơn hàng ({{
+                    currentOrders().length }})</button>
+                <button [class.active]="activeTab() === 'history'" (click)="activeTab.set('history')">Lịch
+                    trình</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                @if (activeTab() === 'info') {
+                <!-- Driver -->
+                <div class="info-card">
+                    <div class="card-label">Tài xế</div>
+                    <div class="driver-info">
+                        <div class="driver-avatar">
+                            {{ trackingData().driverName.charAt(0) }}
+                        </div>
+                        <div class="driver-details">
+                            <span class="name">{{ trackingData().driverName }}</span>
+                            <span class="phone">{{ trackingData().driverPhone }}</span>
+                        </div>
+                        <button class="call-btn">📞</button>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-value">{{ trackingData().speed }}</span>
+                        <span class="stat-unit">km/h</span>
+                        <span class="stat-label">Tốc độ</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">{{ trackingData().fuelLevel }}</span>
+                        <span class="stat-unit">%</span>
+                        <span class="stat-label">Nhiên liệu</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">{{ trackingData().totalDistance }}</span>
+                        <span class="stat-unit">km</span>
+                        <span class="stat-label">Quãng đường</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">{{ trackingData().estimatedArrival }}</span>
+                        <span class="stat-unit"></span>
+                        <span class="stat-label">Dự kiến đến</span>
+                    </div>
+                </div>
+
+                <!-- Route -->
+                <div class="route-section">
+                    <div class="route-header">ĐƠN HÀNG HIỆN TẠI</div>
+                    <div class="route-item pickup">
+                        <div class="route-dot"></div>
+                        <div class="route-info">
+                            <span class="route-type">Kho xuất phát • 08:00</span>
+                            <span class="route-address">{{ trackingData().pickupLocation }}</span>
+                        </div>
+                    </div>
+                    <div class="route-item current">
+                        <div class="route-dot"></div>
+                        <div class="route-info">
+                            <span class="route-type">Đang di chuyển</span>
+                            <span class="route-address">{{ trackingData().currentLocation }}</span>
+                        </div>
+                    </div>
+                    <div class="route-item delivery">
+                        <div class="route-dot"></div>
+                        <div class="route-info">
+                            <span class="route-type">Giao hàng • 15:15</span>
+                            <span class="route-address">{{ trackingData().deliveryLocation }}</span>
+                        </div>
+                    </div>
+                </div>
+                }
+
+                @if (activeTab() === 'orders') {
+                <div class="orders-list">
+                    @for (order of currentOrders(); track order.id) {
+                    <div class="order-item">
+                        <div class="order-id">{{ order.id }}</div>
+                        <div class="order-dest">{{ order.destination }}</div>
+                        <app-status-badge [label]="order.status === 'in_transit' ? 'Đang giao' : 'Chờ giao'"
+                            [variant]="order.status === 'in_transit' ? 'info' : 'warning'" size="small" />
+                    </div>
+                    }
+                </div>
+                }
+
+                @if (activeTab() === 'history') {
+                <div class="history-empty">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <p>Lịch trình sẽ hiển thị khi tích hợp GPS</p>
+                </div>
+                }
+            </div>
+
+            <!-- Actions -->
+            <div class="panel-actions">
+                <button class="btn btn-outline">Lịch sử</button>
+                <button class="btn btn-primary">Liên hệ</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,256 @@
+<div class="orders-page">
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Quản lý đơn hàng</h1>
+        <div class="header-actions">
+            <div class="search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Tìm kiếm theo mã đơn, SĐT..." [ngModel]="searchTerm()"
+                    (ngModelChange)="searchTerm.set($event)" (keyup.enter)="onSearch()" />
+            </div>
+            <div class="date-filter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <input type="date" [ngModel]="dateFrom()"
+                    (ngModelChange)="dateFrom.set($event); onDateFilterChange()" />
+                <span>-</span>
+                <input type="date" [ngModel]="dateTo()" (ngModelChange)="dateTo.set($event); onDateFilterChange()" />
+            </div>
+            <button class="btn btn-primary" routerLink="/orders/create">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Tạo đơn mới
+            </button>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+        <div class="tabs">
+            @for (tab of tabs; track tab.id) {
+            <button class="tab" [class.active]="activeTab() === tab.id" (click)="onTabChange(tab.id)">
+                {{ tab.label }}
+                <span class="tab-count">{{ getTabCount(tab.id) }}</span>
+            </button>
+            }
+        </div>
+    </div>
+
+    <!-- Bulk Actions -->
+    @if (selectedOrders().length > 0) {
+    <div class="bulk-actions">
+        <span class="selected-count">{{ selectedOrders().length }} đơn đã chọn</span>
+        <button class="action-btn" (click)="selectedOrders.set([]); selectAll.set(false)">Bỏ chọn</button>
+        <div class="action-divider"></div>
+        <button class="action-btn" (click)="assignDriver()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Gán tài xế
+        </button>
+        <button class="action-btn" (click)="exportExcel()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Xuất Excel
+        </button>
+        <button class="action-btn" (click)="printOrders()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            In phiếu
+        </button>
+    </div>
+    }
+
+    <!-- Error Alert -->
+    @if (error()) {
+    <div class="alert alert-error">
+        <span>{{ error() }}</span>
+        <button (click)="loadOrders()">Thử lại</button>
+    </div>
+    }
+
+    <!-- Orders Table -->
+    <div class="table-container">
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th class="checkbox-col">
+                        <input type="checkbox" [checked]="selectAll()" (change)="toggleSelectAll()" />
+                    </th>
+                    <th>MÃ ĐƠN</th>
+                    <th>KHÁCH HÀNG</th>
+                    <th>NGƯỜI NHẬN</th>
+                    <th>TUYẾN</th>
+                    <th>TRỌNG LƯỢNG</th>
+                    <th>COD</th>
+                    <th>TRẠNG THÁI</th>
+                    <th>TÀI XẾ</th>
+                    <th>HÀNH ĐỘNG</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (loading()) {
+                @for (i of [1, 2, 3, 4, 5]; track i) {
+                <tr class="loading-row">
+                    @for (j of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track j) {
+                    <td>
+                        <div class="skeleton"></div>
+                    </td>
+                    }
+                </tr>
+                }
+                } @else if (orders().length === 0) {
+                <tr>
+                    <td colspan="10" class="empty-state">
+                        <div class="empty-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                            <p>Không có đơn hàng nào</p>
+                        </div>
+                    </td>
+                </tr>
+                } @else {
+                @for (order of orders(); track order.orderId) {
+                <tr [class.selected]="isSelected(order.orderId)">
+                    <td class="checkbox-col">
+                        <input type="checkbox" [checked]="isSelected(order.orderId)"
+                            (change)="toggleOrderSelection(order.orderId)" />
+                    </td>
+                    <td>
+                        <div class="order-code">
+                            <span class="code">{{ order.trackingCode }}</span>
+                            <span class="time">{{ order.createdAt | date:'HH:mm' }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="customer-info">
+                            <div class="avatar">{{ getInitials(order.customerName) }}</div>
+                            <span>{{ order.customerName }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="receiver-info">
+                            <span class="name">{{ order.receiverName }}</span>
+                            <span class="address">{{ order.receiverAddress | slice:0:25 }}...</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="route-badge">{{ order.vehicleLicensePlate || '--' }}</span>
+                    </td>
+                    <td>{{ order.shippingFee ? (order.shippingFee + ' kg') : '--' }}</td>
+                    <td class="cod-amount">{{ formatCurrency(order.codAmount) }}</td>
+                    <td>
+                        <app-status-badge [label]="getStatusLabel(order.orderStatus)"
+                            [variant]="getStatusVariant(order.orderStatus)" [showDot]="true" />
+                    </td>
+                    <td>
+                        @if (order.driverName) {
+                        <div class="driver-info">
+                            <div class="avatar small">{{ getInitials(order.driverName) }}</div>
+                            <span>{{ order.driverName }}</span>
+                        </div>
+                        } @else {
+                        <span class="no-driver">Chưa gán</span>
+                        }
+                    </td>
+                    <td class="actions-col">
+                        <div class="action-buttons">
+                            <button class="action-btn view" title="Xem chi tiết"
+                                [routerLink]="['/orders', order.orderId]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                            <button class="action-btn edit" title="Chỉnh sửa"
+                                [routerLink]="['/orders', order.orderId, 'edit']">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    @if (totalPages() > 0) {
+    <div class="pagination">
+        <div class="page-size">
+            <span>Hiển thị</span>
+            <select [ngModel]="pageSize()" (ngModelChange)="onPageSizeChange($event)">
+                <option [value]="10">10</option>
+                <option [value]="20">20</option>
+                <option [value]="50">50</option>
+            </select>
+            <span>/ trang</span>
+        </div>
+
+        <div class="page-info">
+            Tổng <strong>{{ totalItems() }}</strong> đơn hàng
+        </div>
+
+        <div class="page-nav">
+            <button class="page-btn" [disabled]="currentPage() === 1" (click)="onPageChange(currentPage() - 1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            @for (page of getVisiblePages(); track $index) {
+            @if (page === -1) {
+            <span class="page-ellipsis">...</span>
+            } @else {
+            <button class="page-btn" [class.active]="currentPage() === page" (click)="onPageChange(page)">
+                {{ page }}
+            </button>
+            }
+            }
+
+            <button class="page-btn" [disabled]="currentPage() === totalPages()"
+                (click)="onPageChange(currentPage() + 1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+    }
+</div>

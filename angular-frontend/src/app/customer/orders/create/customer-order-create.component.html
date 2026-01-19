@@ -1,0 +1,442 @@
+<div class="order-create-wizard">
+    <!-- Success Screen -->
+    @if (orderCreated()) {
+    <div class="success-screen">
+        <div class="success-icon">✅</div>
+        <h1>Đã tạo đơn hàng thành công!</h1>
+        <p>Đơn hàng của bạn đã được chuyển đến hệ thống xử lý. Bạn có thể theo dõi trạng thái ngay bây giờ.</p>
+
+        <div class="success-info">
+            <div class="tracking-code-card">
+                <span class="label">🏷️ MÃ VẬN ĐƠN</span>
+                <span class="code">{{ createdOrderCode }}</span>
+            </div>
+            <div class="qr-card">
+                <span class="label">📱 Quét mã QR</span>
+                <p>Sử dụng ứng dụng mobile để quét và theo dõi nhanh chóng.</p>
+            </div>
+        </div>
+
+        <div class="success-actions">
+            <button class="btn-primary" (click)="createNewOrder()">➕ Tạo đơn mới</button>
+            <button class="btn-secondary" (click)="trackOrder()">📍 Theo dõi đơn</button>
+        </div>
+
+        <a class="back-link" (click)="goHome()">← Về trang chủ</a>
+    </div>
+    } @else {
+
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+        @for (step of steps; track step.number) {
+        <div class="step-item" [class.active]="currentStep() === step.number"
+            [class.completed]="currentStep() > step.number" (click)="goToStep(step.number)">
+            <div class="step-number">
+                @if (currentStep() > step.number) {
+                <span class="check">✓</span>
+                } @else {
+                {{ step.number }}
+                }
+            </div>
+            <span class="step-label">{{ step.label }}</span>
+        </div>
+        @if (step.number < totalSteps) { <div class="step-line" [class.completed]="currentStep() > step.number">
+    </div>
+    }
+    }
+</div>
+
+<!-- Form Container -->
+<div class="form-container">
+
+    <!-- Step 1: Chọn tuyến đường -->
+    @if (currentStep() === 1) {
+    <div class="form-step">
+        <div class="form-header">
+            <h2>🚚 Chọn tuyến đường</h2>
+            <p>Chọn tuyến đường phù hợp với nơi gửi và nơi nhận của bạn.</p>
+        </div>
+
+        <div class="form-content">
+            <!-- Search -->
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <span class="icon">🔍</span>
+                    <input type="text" [(ngModel)]="searchTerm" (input)="filterRoutes()"
+                        placeholder="Tìm tuyến đường, nhà xe, tỉnh thành...">
+                </div>
+            </div>
+
+            <!-- Loading -->
+            @if (loadingRoutes()) {
+            <div class="loading-routes">
+                <span class="spinner"></span> Đang tải danh sách tuyến đường...
+            </div>
+            } @else if (filteredRoutes.length === 0) {
+            <div class="no-routes">
+                <span class="icon">🚫</span>
+                <p>Không tìm thấy tuyến đường nào. Vui lòng thử lại với từ khóa khác.</p>
+            </div>
+            } @else {
+            <!-- Routes List -->
+            <div class="routes-grid">
+                @for (route of filteredRoutes; track route.routeId) {
+                <div class="route-card" [class.selected]="selectedRoute?.routeId === route.routeId"
+                    (click)="selectRoute(route)">
+                    <div class="route-header">
+                        <span class="route-name">{{ route.routeName }}</span>
+                        @if (selectedRoute?.routeId === route.routeId) {
+                        <span class="selected-badge">✓</span>
+                        }
+                    </div>
+                    <div class="route-company">
+                        <span class="company-icon">🏢</span>
+                        <span class="company-name">{{ route.companyName }}</span>
+                    </div>
+                    <div class="route-details">
+                        <div class="route-info">
+                            <span class="info-icon">📍</span>
+                            <span>{{ route.originProvince }} → {{ route.destinationProvince }}</span>
+                        </div>
+                        @if (route.distanceKm) {
+                        <div class="route-info">
+                            <span class="info-icon">📏</span>
+                            <span>{{ route.distanceKm }} km</span>
+                        </div>
+                        }
+                        @if (route.estimatedDurationHours) {
+                        <div class="route-info">
+                            <span class="info-icon">⏱️</span>
+                            <span>~{{ route.estimatedDurationHours }}h</span>
+                        </div>
+                        }
+                    </div>
+                    <div class="route-price">
+                        <span class="price">{{ formatCurrency(route.basePrice) }}</span>
+                        <span class="price-label">Giá cước cơ bản</span>
+                    </div>
+                </div>
+                }
+            </div>
+            }
+
+            <!-- Selected Route Summary -->
+            @if (selectedRoute) {
+            <div class="selected-route-summary">
+                <h4>📦 Tuyến đường đã chọn</h4>
+                <div class="summary-content">
+                    <div class="summary-item">
+                        <span class="label">Tuyến</span>
+                        <span class="value">{{ selectedRoute.routeName }}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Nhà xe</span>
+                        <span class="value">{{ selectedRoute.companyName }}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Giá cước</span>
+                        <span class="value highlight">{{ formatCurrency(selectedRoute.basePrice) }}</span>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+    }
+
+    <!-- Step 2: Sender Info -->
+    @if (currentStep() === 2) {
+    <div class="form-step">
+        <div class="form-header">
+            <h2>👤 Thông tin người gửi</h2>
+            <p>Nhập thông tin người gửi. Địa chỉ gửi dựa trên tuyến: <strong>{{ selectedRoute?.originProvince
+                    }}</strong></p>
+        </div>
+
+        <form [formGroup]="senderForm" class="form-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Họ và tên <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <span class="icon">👤</span>
+                        <input type="text" formControlName="senderName" placeholder="Nhập họ tên đầy đủ">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <span class="icon">📞</span>
+                        <input type="tel" formControlName="senderPhone" placeholder="090 123 4567">
+                    </div>
+                    @if (senderForm.get('senderPhone')?.touched && senderForm.get('senderPhone')?.invalid) {
+                    <span class="error">Số điện thoại không hợp lệ</span>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Địa chỉ chi tiết <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <span class="icon">📍</span>
+                    <input type="text" formControlName="senderAddress"
+                        placeholder="Số nhà, tên đường, tòa nhà, khu dân cư...">
+                </div>
+                <span class="hint">Địa chỉ thuộc: {{ selectedRoute?.originDistrict }}, {{ selectedRoute?.originProvince
+                    }}</span>
+            </div>
+
+            <label class="checkbox-label">
+                <input type="checkbox" formControlName="saveToAddressBook">
+                <span>Lưu địa chỉ này vào danh bạ người gửi</span>
+            </label>
+        </form>
+    </div>
+    }
+
+    <!-- Step 3: Receiver Info -->
+    @if (currentStep() === 3) {
+    <div class="form-step">
+        <div class="form-header">
+            <h2>📦 Thông tin người nhận</h2>
+            <p>Nhập thông tin người nhận hàng. Địa chỉ nhận: <strong>{{ selectedRoute?.destinationProvince }}</strong>
+            </p>
+        </div>
+
+        <form [formGroup]="receiverForm" class="form-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Họ và tên <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <span class="icon">👤</span>
+                        <input type="text" formControlName="receiverName" placeholder="Nhập tên người nhận">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <span class="icon">📞</span>
+                        <input type="tel" formControlName="receiverPhone" placeholder="0912 345 678">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Địa chỉ chi tiết <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <span class="icon">📍</span>
+                    <input type="text" formControlName="receiverAddress" placeholder="Nhập địa chỉ đầy đủ...">
+                </div>
+                <span class="hint">Địa chỉ thuộc: {{ selectedRoute?.destinationDistrict }}, {{
+                    selectedRoute?.destinationProvince }}</span>
+            </div>
+
+            <div class="form-group">
+                <label>Ghi chú cho shipper</label>
+                <textarea formControlName="courierNote"
+                    placeholder="Ví dụ: Gọi trước khi giao, Chỉ giao giờ hành chính..."></textarea>
+            </div>
+
+            <label class="checkbox-label">
+                <input type="checkbox" formControlName="saveToAddressBook">
+                <span>Lưu vào danh bạ người nhận</span>
+            </label>
+        </form>
+    </div>
+    }
+
+    <!-- Step 4: Goods Info -->
+    @if (currentStep() === 4) {
+    <div class="form-step">
+        <div class="form-header">
+            <h2>📋 Thông tin hàng hóa</h2>
+            <p>Nhập thông tin về kiện hàng cần gửi.</p>
+        </div>
+
+        <form [formGroup]="goodsForm" class="form-content">
+            <div class="form-group">
+                <label>Loại hàng hóa <span class="required">*</span></label>
+                <div class="parcel-types">
+                    @for (type of parcelTypes; track type.value) {
+                    <label class="parcel-type-option"
+                        [class.selected]="goodsForm.get('parcelType')?.value === type.value">
+                        <input type="radio" formControlName="parcelType" [value]="type.value">
+                        <span class="icon">{{ type.icon }}</span>
+                        <span class="label">{{ type.label }}</span>
+                    </label>
+                    }
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Khối lượng (kg) <span class="required">*</span></label>
+                    <div class="input-with-addon">
+                        <input type="number" formControlName="weightKg" min="0.1" max="100" step="0.1"
+                            (change)="calculateShippingFee()">
+                        <span class="addon">kg</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Giá trị khai báo</label>
+                    <div class="input-with-addon">
+                        <input type="number" formControlName="declaredValue" min="0">
+                        <span class="addon">VNĐ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Yêu cầu đặc biệt</label>
+                <textarea formControlName="specialInstructions"
+                    placeholder="Ví dụ: Hàng dễ vỡ, cần đóng gói cẩn thận..."></textarea>
+            </div>
+        </form>
+    </div>
+    }
+
+    <!-- Step 5: Payment & Confirm -->
+    @if (currentStep() === 5) {
+    <div class="form-step">
+        <div class="form-header">
+            <h2>💳 Thanh toán & Xác nhận</h2>
+            <p>Chọn phương thức thanh toán và xác nhận đơn hàng.</p>
+        </div>
+
+        <form [formGroup]="paymentForm" class="form-content">
+            <div class="form-group">
+                <label>Phương thức thanh toán</label>
+                <div class="payment-methods">
+                    @for (method of paymentMethods; track method.value) {
+                    <label class="payment-method-option"
+                        [class.selected]="paymentForm.get('paymentMethod')?.value === method.value">
+                        <input type="radio" formControlName="paymentMethod" [value]="method.value">
+                        <span class="icon">{{ method.icon }}</span>
+                        <span class="label">{{ method.label }}</span>
+                    </label>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tiền thu hộ (COD)</label>
+                <div class="input-with-addon">
+                    <input type="number" formControlName="codAmount" min="0" placeholder="0">
+                    <span class="addon">VNĐ</span>
+                </div>
+                <span class="hint">Để trống hoặc nhập 0 nếu không thu hộ</span>
+            </div>
+        </form>
+
+        <!-- Order Summary -->
+        <div class="confirm-content">
+            <div class="confirm-section">
+                <h3>🚚 Tuyến đường</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Tuyến</span>
+                        <span class="value">{{ selectedRoute?.routeName }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Nhà xe</span>
+                        <span class="value">{{ selectedRoute?.companyName }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirm-section">
+                <h3>👤 Người gửi</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Họ tên</span>
+                        <span class="value">{{ senderForm.value.senderName }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Số điện thoại</span>
+                        <span class="value">{{ senderForm.value.senderPhone }}</span>
+                    </div>
+                    <div class="info-item full">
+                        <span class="label">Địa chỉ</span>
+                        <span class="value">{{ senderForm.value.senderAddress }}, {{ selectedRoute?.originDistrict }},
+                            {{ selectedRoute?.originProvince }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirm-section">
+                <h3>📦 Người nhận</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Họ tên</span>
+                        <span class="value">{{ receiverForm.value.receiverName }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Số điện thoại</span>
+                        <span class="value">{{ receiverForm.value.receiverPhone }}</span>
+                    </div>
+                    <div class="info-item full">
+                        <span class="label">Địa chỉ</span>
+                        <span class="value">{{ receiverForm.value.receiverAddress }}, {{
+                            selectedRoute?.destinationDistrict }}, {{ selectedRoute?.destinationProvince }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirm-section">
+                <h3>📋 Hàng hóa</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Loại hàng</span>
+                        <span class="value">{{ getParcelTypeLabel(goodsForm.value.parcelType) }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Khối lượng</span>
+                        <span class="value">{{ goodsForm.value.weightKg }} kg</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fee-summary">
+                <div class="fee-row">
+                    <span>Phí vận chuyển</span>
+                    <span class="amount">{{ formatCurrency(shippingFee()) }}</span>
+                </div>
+                @if (paymentForm.get('codAmount')?.value > 0) {
+                <div class="fee-row">
+                    <span>Tiền thu hộ</span>
+                    <span class="amount">{{ formatCurrency(paymentForm.get('codAmount')?.value) }}</span>
+                </div>
+                }
+                <div class="fee-row total">
+                    <span>Tổng thanh toán</span>
+                    <span class="amount">{{ formatCurrency(shippingFee()) }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<!-- Navigation Buttons -->
+<div class="form-actions">
+    @if (currentStep() > 1) {
+    <button class="btn-secondary" (click)="prevStep()">← Quay lại</button>
+    } @else {
+    <button class="btn-secondary" routerLink="/customer">Hủy bỏ</button>
+    }
+
+    @if (currentStep() < totalSteps) { <button class="btn-primary" (click)="nextStep()"
+        [disabled]="!isStepValid(currentStep())">
+        Tiếp tục →
+        </button>
+        } @else {
+        <button class="btn-primary submit" (click)="submitOrder()" [disabled]="isSubmitting()">
+            @if (isSubmitting()) {
+            <span class="spinner"></span> Đang xử lý...
+            } @else {
+            ✅ Tạo đơn hàng
+            }
+        </button>
+        }
+</div>
+}
+</div>

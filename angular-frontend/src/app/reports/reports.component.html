@@ -1,0 +1,208 @@
+<div class="reports-page">
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Báo cáo & Thống kê</h1>
+        <div class="header-actions">
+            <div class="date-range">
+                <input type="date" [ngModel]="startDate()" (ngModelChange)="startDate.set($event); onDateChange()" />
+                <span>đến</span>
+                <input type="date" [ngModel]="endDate()" (ngModelChange)="endDate.set($event); onDateChange()" />
+            </div>
+            <button class="btn btn-primary" (click)="exportToExcel()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Xuất Excel
+            </button>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+        <div class="tabs">
+            @for (tab of tabs; track tab.id) {
+            <button class="tab" [class.active]="activeTab() === tab.id" (click)="onTabChange(tab.id)">
+                <span class="tab-icon">{{ tab.icon }}</span>
+                {{ tab.label }}
+            </button>
+            }
+        </div>
+    </div>
+
+    <!-- Summary Cards -->
+    @if (summary()) {
+    <div class="summary-grid">
+        <div class="summary-card">
+            <div class="card-icon orders">📦</div>
+            <div class="card-content">
+                <span class="card-value">{{ summary()!.totalOrders }}</span>
+                <span class="card-label">Tổng đơn hàng</span>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="card-icon completed">✅</div>
+            <div class="card-content">
+                <span class="card-value">{{ summary()!.completedOrders }}</span>
+                <span class="card-label">Đã hoàn thành</span>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="card-icon rate">📈</div>
+            <div class="card-content">
+                <span class="card-value">{{ formatPercent(summary()!.completionRate) }}</span>
+                <span class="card-label">Tỷ lệ hoàn thành</span>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="card-icon revenue">💰</div>
+            <div class="card-content">
+                <span class="card-value">{{ formatCurrency(summary()!.totalRevenue) }}</span>
+                <span class="card-label">Tổng doanh thu</span>
+            </div>
+        </div>
+    </div>
+    } @else if (loading()) {
+    <div class="summary-grid">
+        @for (i of [1, 2, 3, 4]; track i) {
+        <div class="summary-card skeleton-card">
+            <div class="skeleton"></div>
+        </div>
+        }
+    </div>
+    }
+
+    <!-- Charts Section -->
+    <div class="charts-row full-width">
+        <!-- Revenue Chart (Line Chart) - Full Width -->
+        <div class="chart-card chart-full">
+            <div class="chart-header">
+                <h3>Doanh thu 7 ngày</h3>
+                <a class="chart-link" routerLink="/reports">Xem chi tiết</a>
+            </div>
+            <div class="chart-content chart-large">
+                @if (dailyData().length > 0) {
+                <div class="line-chart line-chart-large">
+                    <!-- Y Axis Labels -->
+                    <div class="chart-y-axis">
+                        @for (label of getYAxisLabels(); track label) {
+                        <span class="y-label">{{ formatShortCurrency(label) }}</span>
+                        }
+                    </div>
+
+                    <!-- Chart Area -->
+                    <div class="line-chart-area">
+                        <!-- Grid Lines -->
+                        <div class="chart-grid">
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                        </div>
+
+                        <!-- SVG Line -->
+                        <div class="chart-line">
+                            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:0.3" />
+                                        <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+                                <path [attr.d]="getAreaPath()" class="area"></path>
+                                <path [attr.d]="getLinePath()"></path>
+                            </svg>
+                        </div>
+
+                        <!-- Data Points -->
+                        <div class="chart-dots">
+                            @for (item of dailyData(); track item.date; let i = $index) {
+                            <div class="chart-dot" [style.left.%]="getPointX(i)"
+                                [style.bottom.%]="getPointY(item.totalRevenue)"
+                                [title]="formatCurrency(item.totalRevenue)">
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- X Axis Labels -->
+                    <div class="chart-x-axis">
+                        @for (item of dailyData(); track item.date) {
+                        <span class="x-label">{{ item.date | date:'EEE' }}</span>
+                        }
+                    </div>
+                </div>
+                } @else {
+                <div class="empty-chart">
+                    <p>Chưa có dữ liệu</p>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats Row -->
+    <div class="charts-row">
+        <!-- Orders Chart (Compact List) -->
+        <div class="chart-card">
+            <div class="chart-header">
+                <h3>Đơn hàng theo ngày</h3>
+            </div>
+            <div class="chart-content">
+                @if (dailyData().length > 0) {
+                <div class="orders-list compact">
+                    @for (item of dailyData(); track item.date) {
+                    <div class="order-row">
+                        <span class="date">{{ item.date | date:'dd/MM' }}</span>
+                        <div class="order-stats">
+                            <span class="total">{{ item.totalOrders }} đơn</span>
+                            <span class="completed">{{ item.completedOrders }} ✓</span>
+                        </div>
+                    </div>
+                    }
+                </div>
+                } @else {
+                <div class="empty-chart">
+                    <p>Chưa có dữ liệu</p>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    @if (summary()) {
+    <div class="quick-stats">
+        <div class="stat-box">
+            <span class="stat-icon">🚗</span>
+            <div class="stat-info">
+                <span class="stat-label">Xe hoạt động</span>
+                <span class="stat-value">{{ summary()!.totalVehicles }}</span>
+            </div>
+        </div>
+        <div class="stat-box">
+            <span class="stat-icon">👤</span>
+            <div class="stat-info">
+                <span class="stat-label">Tài xế</span>
+                <span class="stat-value">{{ summary()!.totalDrivers }}</span>
+            </div>
+        </div>
+        <div class="stat-box">
+            <span class="stat-icon">❌</span>
+            <div class="stat-info">
+                <span class="stat-label">Đơn bị hủy</span>
+                <span class="stat-value">{{ summary()!.cancelledOrders }}</span>
+            </div>
+        </div>
+        <div class="stat-box">
+            <span class="stat-icon">💵</span>
+            <div class="stat-info">
+                <span class="stat-label">Giá trị TB/đơn</span>
+                <span class="stat-value">{{ formatCurrency(summary()!.averageOrderValue) }}</span>
+            </div>
+        </div>
+    </div>
+    }
+</div>

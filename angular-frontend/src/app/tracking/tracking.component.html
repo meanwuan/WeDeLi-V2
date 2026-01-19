@@ -1,0 +1,233 @@
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Tra cứu đơn hàng</h1>
+        <p class="hero-subtitle">Nhập mã vận đơn để theo dõi hành trình đơn hàng của bạn ngay lập tức</p>
+
+        <div class="search-box">
+            <div class="search-input-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" [(ngModel)]="searchCode" placeholder="WDL-2024-000001" class="search-input"
+                    (keyup.enter)="searchOrder()" />
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <line x1="4" y1="21" x2="4" y2="14" />
+                    <line x1="4" y1="10" x2="4" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12" y2="3" />
+                    <line x1="20" y1="21" x2="20" y2="16" />
+                    <line x1="20" y1="12" x2="20" y2="3" />
+                </svg>
+            </div>
+            <button class="search-btn" (click)="searchOrder()" [disabled]="isSearching()">
+                {{ isSearching() ? 'Đang tìm...' : 'TRA CỨU' }}
+            </button>
+        </div>
+
+        @if (error()) {
+        <div class="error-message">{{ error() }}</div>
+        }
+    </div>
+</section>
+
+<!-- Order Details Section -->
+@if (order(); as orderData) {
+<section class="order-section">
+    <!-- Order Header -->
+    <div class="order-header">
+        <div class="order-info">
+            <div class="order-code">
+                <h2>{{ orderData.trackingCode }}</h2>
+                <button class="copy-btn" title="Copy mã vận đơn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                </button>
+            </div>
+            <p class="order-meta">Tạo đơn: {{ formatDate(orderData.createdAt) }} - Dịch vụ: {{ orderData.serviceType }}
+            </p>
+        </div>
+        <div class="order-status-info">
+            <span class="status-badge" [class]="orderData.orderStatus">
+                {{ getStatusLabel(orderData.orderStatus) }}
+            </span>
+            <div class="expected-delivery">
+                <span class="label">DỰ KIẾN GIAO</span>
+                <span class="date">{{ orderData.expectedDelivery }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Content Grid -->
+    <div class="order-content">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Timeline -->
+            <div class="card timeline-card">
+                <div class="card-header">
+                    <h3>Hành trình đơn hàng</h3>
+                    <button class="detail-link">Chi tiết</button>
+                </div>
+                <div class="timeline">
+                    @for (step of orderData.timeline; track step.status) {
+                    <div class="timeline-item" [class.active]="step.isActive" [class.completed]="step.isCompleted">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">{{ step.title }}</h4>
+                            @if (step.date) {
+                            <span class="timeline-date">{{ step.date }}</span>
+                            }
+                            @if (step.description) {
+                            <p class="timeline-desc">{{ step.description }}</p>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Driver Info -->
+            @if (orderData.driver) {
+            <div class="card driver-card">
+                <h3>Thông tin tài xế</h3>
+                <div class="driver-info">
+                    <img [src]="orderData.driver.avatar" alt="Driver" class="driver-avatar" />
+                    <div class="driver-details">
+                        <h4>{{ orderData.driver.name }}</h4>
+                        <div class="driver-rating">
+                            <span class="rating">{{ orderData.driver.rating }}</span>
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">({{ orderData.driver.reviewCount }} đánh giá)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- Middle Column -->
+        <div class="middle-column">
+            <!-- Map -->
+            <div class="card map-card">
+                <div class="map-header">
+                    <span class="live-badge">
+                        <span class="dot"></span>
+                        LIVE TRACKING
+                    </span>
+                </div>
+                <div class="map-container" #mapContainer></div>
+            </div>
+
+            <!-- Sender Info -->
+            <div class="card info-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    Thông tin người gửi
+                </h3>
+                <div class="info-row">
+                    <span class="label">Họ tên</span>
+                    <span class="value">{{ orderData.senderName }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Số điện thoại</span>
+                    <span class="value">{{ orderData.senderPhone }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Địa chỉ</span>
+                    <span class="value">{{ orderData.senderAddress }}</span>
+                </div>
+            </div>
+
+            <!-- Receiver Info -->
+            <div class="card info-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    Thông tin người nhận
+                </h3>
+                <div class="info-row">
+                    <span class="label">Họ tên</span>
+                    <span class="value">{{ orderData.receiverName }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Số điện thoại</span>
+                    <span class="value">{{ orderData.receiverPhone }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Địa chỉ</span>
+                    <span class="value">{{ orderData.receiverAddress }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <!-- Package Details -->
+            <div class="card package-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="m7.5 4.27 9 5.15" />
+                        <path
+                            d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                        <path d="m3.3 7 8.7 5 8.7-5" />
+                        <path d="M12 22V12" />
+                    </svg>
+                    Chi tiết kiện hàng
+                </h3>
+                <div class="package-stats">
+                    <div class="stat">
+                        <span class="stat-label">Loại hàng</span>
+                        <span class="stat-value">{{ orderData.parcelType }}</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Trọng lượng</span>
+                        <span class="stat-value">{{ orderData.weightKg }} kg</span>
+                    </div>
+                </div>
+                <div class="special-instructions">
+                    <span class="label">Ghi chú đặc biệt</span>
+                    <p>{{ orderData.specialInstructions }}</p>
+                </div>
+            </div>
+
+            <!-- Cost Breakdown -->
+            <div class="card cost-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="23" />
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                    Chi phí
+                </h3>
+                <div class="cost-row">
+                    <span class="label">Phí vận chuyển</span>
+                    <span class="value">{{ formatCurrency(orderData.shippingFee) }}</span>
+                </div>
+                @if (orderData.codAmount > 0) {
+                <div class="cost-row">
+                    <span class="label">Thu hộ (COD)</span>
+                    <span class="value">{{ formatCurrency(orderData.codAmount) }}</span>
+                </div>
+                }
+                <div class="cost-row total">
+                    <span class="label">Tổng thu người nhận</span>
+                    <span class="value highlight">{{ formatCurrency(orderData.totalAmount) }}</span>
+                </div>
+                <div class="payment-status" [class]="orderData.paymentStatus">
+                    {{ orderData.paymentStatus === 'paid' ? 'Đã thanh toán' : 'Chưa thanh toán' }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

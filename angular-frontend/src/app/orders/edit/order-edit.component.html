@@ -1,0 +1,252 @@
+<div class="order-edit-page">
+    <!-- Header -->
+    <div class="page-header">
+        <div class="header-left">
+            <button class="back-btn" (click)="goBack()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                Quay lại
+            </button>
+            @if (order()) {
+            <div class="page-title">
+                <span class="label">Chỉnh sửa đơn hàng</span>
+                <h1 class="tracking-code">{{ order()!.trackingCode }}</h1>
+            </div>
+            }
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary" (click)="goBack()" [disabled]="isSaving()">Hủy</button>
+            <button class="btn btn-primary" (click)="saveOrder()" [disabled]="isSaving()">
+                @if (isSaving()) {
+                <span class="spinner-small"></span>
+                Đang lưu...
+                } @else {
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                Lưu thay đổi
+                }
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    @if (isLoading()) {
+    <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Đang tải thông tin đơn hàng...</p>
+    </div>
+    }
+
+    <!-- Error State -->
+    @if (error()) {
+    <div class="error-state">
+        <h3>Không thể tải đơn hàng</h3>
+        <p>{{ error() }}</p>
+        <button class="btn btn-primary" (click)="goBack()">Quay lại</button>
+    </div>
+    }
+
+    <!-- Form -->
+    @if (!isLoading() && order()) {
+    <form class="edit-form" (ngSubmit)="saveOrder()">
+        <div class="form-grid">
+            <!-- Left Column -->
+            <div class="form-column">
+                <!-- Sender Info -->
+                <div class="form-section">
+                    <h3>👤 Thông tin người gửi</h3>
+                    <div class="form-group">
+                        <label for="senderName">Họ tên *</label>
+                        <input type="text" id="senderName" [ngModel]="formData().senderName"
+                            (ngModelChange)="updateFormField('senderName', $event)" name="senderName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="senderPhone">Số điện thoại *</label>
+                        <input type="tel" id="senderPhone" [ngModel]="formData().senderPhone"
+                            (ngModelChange)="updateFormField('senderPhone', $event)" name="senderPhone" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="senderAddress">Địa chỉ *</label>
+                        <textarea id="senderAddress" [ngModel]="formData().senderAddress" rows="2"
+                            (ngModelChange)="updateFormField('senderAddress', $event)" name="senderAddress"
+                            required></textarea>
+                    </div>
+                </div>
+
+                <!-- Receiver Info -->
+                <div class="form-section">
+                    <h3>📦 Thông tin người nhận</h3>
+                    <div class="form-group">
+                        <label for="receiverName">Họ tên *</label>
+                        <input type="text" id="receiverName" [ngModel]="formData().receiverName"
+                            (ngModelChange)="updateFormField('receiverName', $event)" name="receiverName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="receiverPhone">Số điện thoại *</label>
+                        <input type="tel" id="receiverPhone" [ngModel]="formData().receiverPhone"
+                            (ngModelChange)="updateFormField('receiverPhone', $event)" name="receiverPhone" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="receiverAddress">Địa chỉ *</label>
+                        <textarea id="receiverAddress" [ngModel]="formData().receiverAddress" rows="2"
+                            (ngModelChange)="updateFormField('receiverAddress', $event)" name="receiverAddress"
+                            required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="receiverProvince">Tỉnh/Thành phố *</label>
+                            <input type="text" id="receiverProvince" [ngModel]="formData().receiverProvince"
+                                (ngModelChange)="updateFormField('receiverProvince', $event)" name="receiverProvince"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <label for="receiverDistrict">Quận/Huyện *</label>
+                            <input type="text" id="receiverDistrict" [ngModel]="formData().receiverDistrict"
+                                (ngModelChange)="updateFormField('receiverDistrict', $event)" name="receiverDistrict"
+                                required />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parcel Info -->
+                <div class="form-section">
+                    <h3>📋 Thông tin hàng hóa</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parcelType">Loại hàng *</label>
+                            <select id="parcelType" [ngModel]="formData().parcelType"
+                                (ngModelChange)="updateFormField('parcelType', $event)" name="parcelType">
+                                @for (type of parcelTypes; track type.value) {
+                                <option [value]="type.value">{{ type.label }}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="weightKg">Khối lượng (kg) *</label>
+                            <input type="number" id="weightKg" [ngModel]="formData().weightKg" step="0.1" min="0"
+                                (ngModelChange)="updateFormField('weightKg', $event)" name="weightKg" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="declaredValue">Giá trị khai báo (VNĐ)</label>
+                        <input type="number" id="declaredValue" [ngModel]="formData().declaredValue" min="0"
+                            (ngModelChange)="updateFormField('declaredValue', $event)" name="declaredValue" />
+                    </div>
+                    <div class="form-group">
+                        <label for="specialInstructions">Ghi chú đặc biệt</label>
+                        <textarea id="specialInstructions" [ngModel]="formData().specialInstructions" rows="3"
+                            (ngModelChange)="updateFormField('specialInstructions', $event)" name="specialInstructions"
+                            placeholder="VD: Hàng dễ vỡ, giao giờ hành chính..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="form-column">
+                <!-- Assignment -->
+                <div class="form-section">
+                    <h3>🚚 Phân công vận chuyển</h3>
+                    <div class="form-group">
+                        <label for="routeId">Tuyến đường</label>
+                        <select id="routeId" [ngModel]="formData().routeId"
+                            (ngModelChange)="updateFormField('routeId', $event)" name="routeId">
+                            <option [ngValue]="null">-- Chọn tuyến đường --</option>
+                            @for (route of routes(); track route.routeId) {
+                            <option [ngValue]="route.routeId">{{ route.routeName }}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleId">Xe</label>
+                        <select id="vehicleId" [ngModel]="formData().vehicleId"
+                            (ngModelChange)="updateFormField('vehicleId', $event)" name="vehicleId">
+                            <option [ngValue]="null">-- Chọn xe --</option>
+                            @for (vehicle of vehicles(); track vehicle.vehicleId) {
+                            <option [ngValue]="vehicle.vehicleId">{{ vehicle.licensePlate }} ({{ vehicle.vehicleType
+                                }})</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="driverId">Tài xế</label>
+                        <select id="driverId" [ngModel]="formData().driverId"
+                            (ngModelChange)="updateFormField('driverId', $event)" name="driverId">
+                            <option [ngValue]="null">-- Chọn tài xế --</option>
+                            @for (driver of drivers(); track driver.driverId) {
+                            <option [ngValue]="driver.driverId">{{ driver.fullName }} - {{ driver.phone }}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="form-section">
+                    <h3>📅 Lịch hẹn</h3>
+                    <div class="form-group">
+                        <label for="pickupScheduledAt">Hẹn lấy hàng</label>
+                        <input type="datetime-local" id="pickupScheduledAt" [ngModel]="formData().pickupScheduledAt"
+                            (ngModelChange)="updateFormField('pickupScheduledAt', $event)" name="pickupScheduledAt" />
+                    </div>
+                </div>
+
+                <!-- COD -->
+                <div class="form-section">
+                    <h3>💰 Thu hộ (COD)</h3>
+                    <div class="form-group">
+                        <label for="codAmount">Số tiền thu hộ (VNĐ)</label>
+                        <input type="number" id="codAmount" [ngModel]="formData().codAmount" min="0"
+                            (ngModelChange)="updateFormField('codAmount', $event)" name="codAmount" />
+                        <span class="help-text">Để 0 nếu không thu hộ</span>
+                    </div>
+                </div>
+
+                <!-- Order Status -->
+                <div class="form-section">
+                    <h3>📊 Trạng thái đơn hàng</h3>
+                    <div class="form-group">
+                        <label for="orderStatus">Trạng thái đơn hàng *</label>
+                        <select id="orderStatus" [ngModel]="formData().orderStatus"
+                            (ngModelChange)="updateFormField('orderStatus', $event)" name="orderStatus" required>
+                            @for (status of orderStatuses; track status.value) {
+                            <option [value]="status.value">{{ status.label }}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentStatus">Trạng thái thanh toán *</label>
+                        <select id="paymentStatus" [ngModel]="formData().paymentStatus"
+                            (ngModelChange)="updateFormField('paymentStatus', $event)" name="paymentStatus" required>
+                            @for (status of paymentStatuses; track status.value) {
+                            <option [value]="status.value">{{ status.label }}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Order Info (Read-only) -->
+                <div class="form-section info-section">
+                    <h3>ℹ️ Thông tin đơn hàng</h3>
+                    <div class="info-row">
+                        <span class="label">Phí vận chuyển</span>
+                        <span class="value">{{ order()!.shippingFee | number }}đ</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Phương thức TT</span>
+                        <span class="value">{{ order()!.paymentMethod }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Ngày tạo</span>
+                        <span class="value">{{ order()!.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    }
+</div>

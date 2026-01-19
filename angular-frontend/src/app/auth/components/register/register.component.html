@@ -1,0 +1,192 @@
+<div class="auth-container">
+    <div class="auth-card">
+        <!-- Header -->
+        <div class="auth-header">
+            <h1 class="auth-title">Tạo tài khoản</h1>
+            <p class="auth-subtitle">Tham gia mạng lưới vận chuyển hàng đầu WeDeLi</p>
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="error-alert">
+            {{ errorMessage }}
+        </div>
+
+        <!-- Register Form -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label class="form-label">Họ và tên</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </span>
+                    <input type="text" formControlName="fullName" placeholder="Nguyễn Văn A" class="form-input"
+                        [class.input-error]="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
+                </div>
+                <div *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched"
+                    class="error-text">
+                    Vui lòng nhập họ và tên
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </span>
+                    <input type="email" formControlName="email" placeholder="example@wedeli.com" class="form-input"
+                        [class.input-error]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                </div>
+                <div *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched"
+                    class="error-text">
+                    Email không hợp lệ
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label class="form-label">Số điện thoại</label>
+                <div class="phone-input-wrapper">
+                    <span class="phone-prefix">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="margin-right: 4px;">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        +84
+                    </span>
+                    <input type="tel" formControlName="phone" placeholder="901 234 567" class="form-input phone-input"
+                        [class.input-error]="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+                </div>
+                <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched"
+                    class="error-text">
+                    Số điện thoại không hợp lệ (VD: 0901234567)
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label class="form-label">Mật khẩu</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </span>
+                    <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                        placeholder="Nhập mật khẩu" class="form-input"
+                        [class.input-error]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                    <button type="button" class="toggle-password" (click)="togglePassword()">
+                        <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                            </path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Password Strength Indicator -->
+                <div class="password-strength" *ngIf="registerForm.get('password')?.value">
+                    <div class="strength-bars">
+                        <div class="strength-bar" [class.weak]="passwordStrength.level >= 1"
+                            [class.medium]="passwordStrength.level >= 2" [class.strong]="passwordStrength.level >= 3">
+                        </div>
+                        <div class="strength-bar" [class.medium]="passwordStrength.level >= 2"
+                            [class.strong]="passwordStrength.level >= 3"></div>
+                        <div class="strength-bar" [class.strong]="passwordStrength.level >= 3"></div>
+                    </div>
+                    <span class="strength-text" [class.weak]="passwordStrength.level === 1"
+                        [class.medium]="passwordStrength.level === 2" [class.strong]="passwordStrength.level === 3">
+                        Độ mạnh: {{ passwordStrength.text }}
+                    </span>
+                </div>
+
+                <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                    class="error-text">
+                    Mật khẩu phải có ít nhất 6 ký tự, bao gồm chữ hoa, chữ thường và số
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label class="form-label">Xác nhận mật khẩu</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirmPassword"
+                        placeholder="Nhập lại mật khẩu" class="form-input"
+                        [class.input-error]="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+                    <button type="button" class="toggle-password" (click)="toggleConfirmPassword()">
+                        <svg *ngIf="!showConfirmPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg *ngIf="showConfirmPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                            </path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div *ngIf="registerForm.get('confirmPassword')?.hasError('mismatch') && registerForm.get('confirmPassword')?.touched"
+                    class="error-text">
+                    Mật khẩu xác nhận không khớp
+                </div>
+            </div>
+
+            <!-- Terms Checkbox -->
+            <div class="terms-checkbox">
+                <label>
+                    <input type="checkbox" formControlName="agreeTerms">
+                    <span class="terms-text">
+                        Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a> của
+                        WeDeLi.
+                    </span>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-primary" [disabled]="isLoading || registerForm.invalid">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L15 22l-4-8-8-4 19-8z"></path>
+                </svg>
+                <span *ngIf="isLoading" class="spinner"></span>
+                {{ isLoading ? 'ĐANG XỬ LÝ...' : 'ĐĂNG KÝ' }}
+            </button>
+        </form>
+
+        <!-- Login Link -->
+        <p class="auth-footer">
+            Đã có tài khoản? <a routerLink="/auth/login" class="link-primary">Đăng nhập</a>
+        </p>
+    </div>
+</div>

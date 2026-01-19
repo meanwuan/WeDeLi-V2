@@ -1,0 +1,179 @@
+// Customer Layout Styles
+// Light theme with orange accent matching mockup
+
+.customer-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+// ===== Sidebar =====
+.sidebar {
+    width: 220px;
+    background: #ffffff;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .logo-icon {
+        font-size: 1.5rem;
+    }
+
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+
+        .brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        .subtitle {
+            font-size: 0.7rem;
+            color: #888;
+        }
+    }
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+
+    &:hover {
+        background: #fff7ed;
+        color: #f97316;
+    }
+
+    &.active {
+        background: #fff7ed;
+        color: #f97316;
+
+        .nav-icon svg {
+            stroke: #f97316;
+        }
+    }
+
+    .nav-icon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
+        }
+    }
+}
+
+.sidebar-footer {
+    padding: 16px;
+    border-top: 1px solid #eee;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: #666;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        background: #fef2f2;
+        color: #ef4444;
+
+        svg {
+            stroke: #ef4444;
+        }
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2;
+    }
+}
+
+// ===== Main Content =====
+.main-content {
+    flex: 1;
+    margin-left: 220px;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+
+        .logo-text {
+            display: none;
+        }
+
+        .nav-label {
+            display: none;
+        }
+
+        .logout-btn span {
+            display: none;
+        }
+
+        .nav-item {
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .logout-btn {
+            justify-content: center;
+            padding: 12px;
+        }
+    }
+
+    .main-content {
+        margin-left: 70px;
+        padding: 16px;
+    }
+}

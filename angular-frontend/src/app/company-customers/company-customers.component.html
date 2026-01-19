@@ -1,0 +1,243 @@
+<div class="company-customers-page">
+    <!-- Header -->
+    <div class="page-header">
+        <div class="header-left">
+            <h1>Khách hàng quen thuộc</h1>
+            <p class="subtitle">Quản lý giá riêng cho khách hàng thân thiết</p>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-primary" (click)="openAddModal()">
+                <span class="icon">+</span>
+                Thêm khách hàng
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon customers">👥</div>
+            <div class="stat-info">
+                <span class="stat-value">{{ totalCustomers }}</span>
+                <span class="stat-label">Tổng khách hàng</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon vip">⭐</div>
+            <div class="stat-info">
+                <span class="stat-value">{{ vipCount }}</span>
+                <span class="stat-label">Khách VIP</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon revenue">💰</div>
+            <div class="stat-info">
+                <span class="stat-value">{{ formatCurrency(totalRevenue) }}</span>
+                <span class="stat-label">Tổng doanh thu</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-bar">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Tìm theo tên, SĐT, email..." [value]="searchTerm()"
+                (input)="onSearch($event)" />
+        </div>
+        <button class="filter-btn" [class.active]="filterVipOnly()" (click)="toggleVipFilter()">
+            ⭐ Chỉ khách VIP
+        </button>
+    </div>
+
+    <!-- Loading -->
+    @if (isLoading()) {
+    <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Đang tải...</p>
+    </div>
+    }
+
+    <!-- Empty State -->
+    @if (!isLoading() && filteredCustomers().length === 0) {
+    <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <h3>Chưa có khách hàng quen thuộc</h3>
+        <p>Thêm khách hàng đầu tiên để quản lý giá riêng</p>
+        <button class="btn btn-primary" (click)="openAddModal()">
+            Thêm khách hàng
+        </button>
+    </div>
+    }
+
+    <!-- Customer Table -->
+    @if (!isLoading() && filteredCustomers().length > 0) {
+    <div class="table-container">
+        <table class="customers-table">
+            <thead>
+                <tr>
+                    <th>Khách hàng</th>
+                    <th>Liên hệ</th>
+                    <th>Định giá</th>
+                    <th>Thống kê</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (customer of filteredCustomers(); track customer.companyCustomerId) {
+                <tr>
+                    <td class="customer-info">
+                        <div class="customer-name">
+                            @if (customer.isVip) {
+                            <span class="vip-badge">⭐</span>
+                            }
+                            {{ customer.fullName }}
+                        </div>
+                        @if (customer.notes) {
+                        <div class="customer-notes">{{ customer.notes }}</div>
+                        }
+                    </td>
+                    <td class="contact-info">
+                        <div class="phone">📞 {{ customer.phone }}</div>
+                        @if (customer.email) {
+                        <div class="email">✉️ {{ customer.email }}</div>
+                        }
+                    </td>
+                    <td class="pricing-info">
+                        <span class="pricing-badge" [class.custom]="customer.customPrice || customer.discountPercent">
+                            {{ customer.pricingDescription }}
+                        </span>
+                    </td>
+                    <td class="stats-info">
+                        <div class="stats-row">
+                            <span class="stat-item">📦 {{ customer.totalOrders }} đơn</span>
+                            <span class="stat-item">💵 {{ formatCurrency(customer.totalRevenue) }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="vip-toggle" [class.is-vip]="customer.isVip" (click)="toggleVip(customer)"
+                            title="Toggle VIP">
+                            {{ customer.isVip ? '⭐ VIP' : '☆ Thường' }}
+                        </button>
+                    </td>
+                    <td class="actions">
+                        <button class="action-btn pricing" (click)="openPricingModal(customer)" title="Cập nhật giá">
+                            💲
+                        </button>
+                        <button class="action-btn edit" (click)="editCustomer(customer)" title="Sửa">
+                            ✏️
+                        </button>
+                        <button class="action-btn delete" (click)="deleteCustomer(customer)" title="Xóa">
+                            🗑️
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+</div>
+
+<!-- Add/Edit Customer Modal -->
+@if (showAddModal()) {
+<div class="modal-overlay" (click)="closeAddModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>{{ selectedCustomer() ? 'Sửa khách hàng' : 'Thêm khách hàng quen thuộc' }}</h2>
+            <button class="close-btn" (click)="closeAddModal()">×</button>
+        </div>
+        <form [formGroup]="customerForm" (ngSubmit)="saveCustomer()">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Họ tên *</label>
+                    <input type="text" formControlName="fullName" placeholder="Nguyễn Văn A" />
+                    @if (customerForm.get('fullName')?.invalid && customerForm.get('fullName')?.touched) {
+                    <span class="error">Vui lòng nhập họ tên</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label>Số điện thoại *</label>
+                    <input type="tel" formControlName="phone" placeholder="0901234567" />
+                    @if (customerForm.get('phone')?.invalid && customerForm.get('phone')?.touched) {
+                    <span class="error">Số điện thoại không hợp lệ</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" formControlName="email" placeholder="email@example.com" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Giá cố định (VND)</label>
+                        <input type="number" formControlName="customPrice" placeholder="Để trống = giá mặc định" />
+                    </div>
+                    <div class="form-group half">
+                        <label>Giảm giá (%)</label>
+                        <input type="number" formControlName="discountPercent" placeholder="0-100" min="0" max="100" />
+                    </div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" formControlName="isVip" />
+                        <span>⭐ Khách hàng VIP</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea formControlName="notes" placeholder="Ghi chú nội bộ..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeAddModal()">Hủy</button>
+                <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid || isSaving()">
+                    {{ isSaving() ? 'Đang lưu...' : 'Lưu' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+}
+
+<!-- Pricing Modal -->
+@if (showPricingModal()) {
+<div class="modal-overlay" (click)="closePricingModal()">
+    <div class="modal modal-sm" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>Cập nhật giá - {{ selectedCustomer()?.fullName }}</h2>
+            <button class="close-btn" (click)="closePricingModal()">×</button>
+        </div>
+        <form [formGroup]="pricingForm" (ngSubmit)="savePricing()">
+            <div class="modal-body">
+                <div class="pricing-info-box">
+                    <p>Giá ưu tiên: <strong>Giá cố định > Giảm giá % > Giá mặc định</strong></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Giá cố định (VND)</label>
+                    <input type="number" formControlName="customPrice" placeholder="Để trống = không áp dụng" />
+                    <span class="hint">Nếu có giá cố định, sẽ bỏ qua giảm giá %</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Giảm giá (%)</label>
+                    <input type="number" formControlName="discountPercent" placeholder="0-100" min="0" max="100" />
+                    <span class="hint">Áp dụng khi không có giá cố định</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closePricingModal()">Hủy</button>
+                <button type="submit" class="btn btn-primary" [disabled]="pricingForm.invalid || isSaving()">
+                    {{ isSaving() ? 'Đang lưu...' : 'Cập nhật giá' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+}

@@ -1,0 +1,356 @@
+<div class="drivers-page">
+    <!-- Header -->
+    <div class="page-header">
+        <div class="header-left">
+            <h1>Quản lý tài xế</h1>
+            <p class="subtitle">Theo dõi hiệu suất và thông tin đội ngũ tài xế</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-primary" routerLink="/drivers/create">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Thêm tài xế
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Performers Section -->
+    <section class="top-performers-section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
+                </svg>
+            </div>
+            <h2>Top Performers</h2>
+        </div>
+        <div class="performers-grid">
+            @for (performer of topPerformers(); track performer.driverId; let i = $index) {
+            <div class="performer-card" [class.rank-1]="i === 0" [class.rank-2]="i === 1" [class.rank-3]="i === 2">
+                @if (i === 0) {
+                <div class="rank-badge gold">1</div>
+                }
+                <div class="performer-header">
+                    <div class="performer-avatar">
+                        {{ getInitials(performer.fullName) }}
+                    </div>
+                    <div class="performer-info">
+                        <h3 class="performer-name">{{ performer.fullName }}</h3>
+                        <div class="performer-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="#fbbf24" stroke="#fbbf24" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                </polygon>
+                            </svg>
+                            <span class="rating-value">{{ formatRating(performer.rating) }}</span>
+                            <span class="review-count">(240 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="performer-stats">
+                    <div class="stat">
+                        <span class="stat-label">Total Trips</span>
+                        <span class="stat-value">{{ performer.totalTrips }}</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Success Rate</span>
+                        <span class="stat-value success">{{ formatSuccessRate(performer.successRate) }}</span>
+                    </div>
+                </div>
+            </div>
+            }
+            @if (topPerformers().length === 0) {
+            <div class="no-performers">
+                <p>Chưa có dữ liệu top performers</p>
+            </div>
+            }
+        </div>
+    </section>
+
+    <!-- Filters & Search -->
+    <div class="filters-bar">
+        <div class="search-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Tìm kiếm theo tên hoặc SĐT..." [ngModel]="searchTerm()"
+                (ngModelChange)="searchTerm.set($event)" (keyup.enter)="onSearch()" />
+        </div>
+        <div class="filter-group">
+            <div class="filter-select">
+                <select [ngModel]="statusFilter()" (ngModelChange)="onStatusFilterChange($event)">
+                    <option value="all">Trạng thái: Tất cả</option>
+                    <option value="active">Đang hoạt động</option>
+                    <option value="inactive">Đang nghỉ</option>
+                </select>
+                <svg class="select-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="filter-select">
+                <select [ngModel]="ratingFilter()" (ngModelChange)="onRatingFilterChange($event)">
+                    <option value="all">Đánh giá: Tất cả</option>
+                    <option value="4plus">Đánh giá: 4.0+</option>
+                </select>
+                <svg class="select-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Alert -->
+    @if (error()) {
+    <div class="alert alert-error">
+        <span>{{ error() }}</span>
+        <button (click)="loadDrivers()">Thử lại</button>
+    </div>
+    }
+
+    <!-- Main Content -->
+    <div class="content-wrapper" [class.has-detail]="showDetailPanel()">
+        <!-- Drivers Table -->
+        <div class="table-card">
+            <table class="drivers-table">
+                <thead>
+                    <tr>
+                        <th>Tài xế</th>
+                        <th>SĐT</th>
+                        <th>Bằng lái</th>
+                        <th>Hết hạn</th>
+                        <th>Số chuyến</th>
+                        <th>Tỷ lệ</th>
+                        <th>Rating</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (loading()) {
+                    @for (i of [1, 2, 3, 4, 5]; track i) {
+                    <tr class="loading-row">
+                        <td colspan="9">
+                            <div class="skeleton"></div>
+                        </td>
+                    </tr>
+                    }
+                    } @else if (drivers().length === 0) {
+                    <tr>
+                        <td colspan="9">
+                            <div class="empty-state">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <p>Không có tài xế nào</p>
+                            </div>
+                        </td>
+                    </tr>
+                    } @else {
+                    @for (driver of drivers(); track driver.driverId) {
+                    <tr [class.selected]="selectedDriver()?.driverId === driver.driverId"
+                        (click)="selectDriver(driver)">
+                        <td>
+                            <div class="driver-cell">
+                                <div class="driver-avatar">{{ getInitials(driver.fullName) }}</div>
+                                <div class="driver-info">
+                                    <span class="driver-name">{{ driver.fullName }}</span>
+                                    <span class="driver-id">TX-WDL{{ driver.driverId.toString().padStart(3, '0')
+                                        }}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="phone-number">{{ driver.phone }}</span>
+                        </td>
+                        <td>
+                            <span class="license-type">Hạng {{ driver.driverLicense ?
+                                driver.driverLicense.charAt(0).toUpperCase() : 'C' }}</span>
+                        </td>
+                        <td>
+                            <div class="expiry-cell">
+                                @if (driver.licenseExpiry) {
+                                <span class="expiry-date">{{ driver.licenseExpiry | date:'dd/MM/yyyy' }}</span>
+                                @if (isLicenseExpiringSoon(driver.licenseExpiry)) {
+                                <span class="expiry-badge warning">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M12 2L1 21h22L12 2zm0 3.83L19.17 19H4.83L12 5.83zM11 16h2v2h-2zm0-6h2v4h-2z" />
+                                    </svg>
+                                    {{ getExpiryBadgeText(driver.licenseExpiry) }}
+                                </span>
+                                }
+                                @if (isLicenseExpired(driver.licenseExpiry)) {
+                                <span class="expiry-badge danger">Đã hết hạn</span>
+                                }
+                                } @else {
+                                <span class="text-muted">—</span>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <span class="trip-count">{{ driver.totalTrips }}</span>
+                        </td>
+                        <td>
+                            <span class="success-rate" [class.high]="driver.successRate >= 90">
+                                {{ formatSuccessRate(driver.successRate) }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="rating">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="#fbbf24" stroke="#fbbf24" stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                                <span>{{ formatRating(driver.rating) }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <app-status-badge [label]="getStatusLabel(driver.isActive)"
+                                [variant]="getStatusVariant(driver.isActive)" [showDot]="true" />
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn view" [routerLink]="['/drivers', driver.driverId]"
+                                    title="Xem chi tiết" (click)="$event.stopPropagation()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                                <button class="action-btn toggle" [class.active]="driver.isActive"
+                                    (click)="toggleDriverStatus(driver, $event)"
+                                    [title]="driver.isActive ? 'Tạm ngưng' : 'Kích hoạt'">
+                                    @if (driver.isActive) {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="6" y="4" width="4" height="16"></rect>
+                                        <rect x="14" y="4" width="4" height="16"></rect>
+                                    </svg>
+                                    } @else {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                    }
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Detail Panel -->
+        @if (showDetailPanel() && selectedDriver()) {
+        <div class="detail-panel">
+            <div class="panel-header">
+                <h2>Chi tiết tài xế</h2>
+                <button class="close-btn" (click)="closeDetailPanel()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="detail-avatar">
+                    {{ getInitials(selectedDriver()!.fullName) }}
+                </div>
+                <h3 class="detail-name">{{ selectedDriver()!.fullName }}</h3>
+                <app-status-badge [label]="getStatusLabel(selectedDriver()!.isActive)"
+                    [variant]="getStatusVariant(selectedDriver()!.isActive)" [showDot]="true" />
+
+                <div class="detail-section">
+                    <h4>Thông tin liên hệ</h4>
+                    <div class="detail-row">
+                        <span class="label">Điện thoại</span>
+                        <span class="value">{{ selectedDriver()!.phone }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Email</span>
+                        <span class="value">{{ selectedDriver()!.email || '—' }}</span>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Bằng lái</h4>
+                    <div class="detail-row">
+                        <span class="label">Số bằng lái</span>
+                        <span class="value">{{ selectedDriver()!.driverLicense }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Hết hạn</span>
+                        <span class="value">{{ selectedDriver()!.licenseExpiry | date:'dd/MM/yyyy' }}</span>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Thống kê</h4>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="stat-value">{{ selectedDriver()!.totalTrips }}</span>
+                            <span class="stat-label">Chuyến đi</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">{{ formatSuccessRate(selectedDriver()!.successRate) }}</span>
+                            <span class="stat-label">Tỷ lệ</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">{{ formatRating(selectedDriver()!.rating) }}</span>
+                            <span class="stat-label">Đánh giá</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-actions">
+                    <button class="btn btn-outline" [routerLink]="['/drivers', selectedDriver()!.driverId]">
+                        Xem chi tiết
+                    </button>
+                    <button class="btn btn-primary">
+                        Liên hệ
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Pagination -->
+    @if (totalPages() > 1) {
+    <div class="pagination">
+        <div class="page-info">
+            Hiển thị {{ drivers().length }} / {{ totalItems() }} tài xế
+        </div>
+        <div class="page-nav">
+            <button class="page-btn" [disabled]="currentPage() === 1" (click)="onPageChange(currentPage() - 1)">
+                ←
+            </button>
+            <span class="page-current">{{ currentPage() }} / {{ totalPages() }}</span>
+            <button class="page-btn" [disabled]="currentPage() === totalPages()"
+                (click)="onPageChange(currentPage() + 1)">
+                →
+            </button>
+        </div>
+    </div>
+    }
+</div>

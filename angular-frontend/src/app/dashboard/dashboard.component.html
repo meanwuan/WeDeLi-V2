@@ -1,0 +1,178 @@
+<div class="dashboard">
+    <!-- Error Banner -->
+    @if (error()) {
+    <div class="alert alert-error">
+        <span>{{ error() }}</span>
+        <button (click)="loadDashboardData()">Thử lại</button>
+    </div>
+    }
+
+    <!-- Stat Cards -->
+    <div class="stats-grid">
+        <app-stat-card title="Đơn hàng hôm nay" [value]="stats()?.totalOrders ?? 0" icon="orders" variant="default"
+            [trend]="12.5" trendLabel="so với hôm qua" [loading]="loading()" />
+        <app-stat-card title="Tài xế hoạt động" [value]="stats()?.activeDrivers ?? 0" icon="drivers" variant="default"
+            [loading]="loading()" />
+        <app-stat-card title="Xe đang chạy" [value]="stats()?.activeVehicles ?? 0" icon="vehicles" variant="default"
+            subtitle="Hệ thống ổn định" [loading]="loading()" />
+        <app-stat-card title="Doanh thu hôm nay" [value]="formatCurrency(stats()?.todayRevenue ?? 0) + 'đ'"
+            icon="revenue" variant="primary" [trend]="5.2" [loading]="loading()" />
+    </div>
+
+    <!-- Charts Row - Split 2 columns -->
+    <div class="charts-row">
+        <!-- Revenue Chart (Left) -->
+        <div class="chart-card">
+            <div class="chart-header">
+                <h3>Doanh thu 7 ngày</h3>
+                <a href="#" class="chart-link">Xem chi tiết</a>
+            </div>
+            <div class="chart-content">
+                <div class="line-chart-wrapper with-y-axis">
+                    <!-- Y-axis labels -->
+                    <div class="chart-y-labels">
+                        <span class="y-label">{{ formatShortCurrency(getMaxRevenue()) }}</span>
+                        <span class="y-label">{{ formatShortCurrency(getMaxRevenue() * 0.75) }}</span>
+                        <span class="y-label">{{ formatShortCurrency(getMaxRevenue() * 0.50) }}</span>
+                        <span class="y-label">{{ formatShortCurrency(getMaxRevenue() * 0.25) }}</span>
+                        <span class="y-label">0</span>
+                    </div>
+
+                    <!-- Chart area -->
+                    <div class="chart-area">
+                        <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="revenue-chart-svg">
+                            <!-- Horizontal grid lines (at y=5, 12.5, 20, 27.5, 35) -->
+                            <line x1="0" y1="5" x2="100" y2="5" stroke="#f3f4f6" stroke-width="0.3" />
+                            <line x1="0" y1="12.5" x2="100" y2="12.5" stroke="#f3f4f6" stroke-width="0.3" />
+                            <line x1="0" y1="20" x2="100" y2="20" stroke="#f3f4f6" stroke-width="0.3" />
+                            <line x1="0" y1="27.5" x2="100" y2="27.5" stroke="#f3f4f6" stroke-width="0.3" />
+                            <line x1="0" y1="35" x2="100" y2="35" stroke="#e5e7eb" stroke-width="0.3" />
+
+                            <!-- Revenue line path (orange) -->
+                            <path [attr.d]="getRevenuePathNew()" fill="none" stroke="#FF6B35" stroke-width="0.6"
+                                stroke-linecap="round" stroke-linejoin="round" />
+
+                            <!-- Revenue data points -->
+                            @for (item of revenueData(); track $index; let i = $index) {
+                            <circle [attr.cx]="getPointXNew(i)" [attr.cy]="getPointYNew(item.revenue)" r="0.8"
+                                fill="#FF6B35" />
+                            }
+                        </svg>
+
+                        <!-- X-axis labels -->
+                        <div class="chart-x-labels">
+                            @for (item of revenueData(); track $index) {
+                            <span class="x-label">{{ item.date }}</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Status Chart (Right) -->
+        <div class="chart-card status-chart">
+            <div class="chart-header">
+                <h3>Đơn hàng theo trạng thái</h3>
+            </div>
+            <div class="chart-content bar-chart">
+                @for (item of orderStatusData(); track item.status) {
+                <div class="bar-wrapper">
+                    <div class="bar" [style.height.px]="getBarHeight(item.count)" [style.background]="item.color"></div>
+                    <span class="bar-label">{{ item.label }}</span>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Orders -->
+    <div class="orders-section">
+        <div class="section-header">
+            <h3>Đơn hàng gần đây</h3>
+            <div class="section-actions">
+                <button class="btn btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                    </svg>
+                    Lọc
+                </button>
+                <button class="btn btn-primary" routerLink="/orders/create">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Tạo đơn
+                </button>
+            </div>
+        </div>
+
+        <div class="orders-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Khách hàng</th>
+                        <th>Tuyến</th>
+                        <th>Trạng thái</th>
+                        <th>Thời gian</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (loading()) {
+                    @for (i of [1, 2, 3, 4, 5]; track i) {
+                    <tr class="loading-row">
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                    </tr>
+                    }
+                    } @else {
+                    @for (order of recentOrders(); track order.orderId) {
+                    <tr>
+                        <td>
+                            <span class="order-code">{{ order.trackingCode }}</span>
+                        </td>
+                        <td>
+                            <div class="customer-cell">
+                                <div class="customer-avatar">
+                                    {{ getCustomerInitials(order.customerName) }}
+                                </div>
+                                <span>{{ order.customerName }}</span>
+                            </div>
+                        </td>
+                        <td>{{ order.receiverAddress | slice:0:30 }}...</td>
+                        <td>
+                            <app-status-badge [label]="getStatusLabel(order.orderStatus)"
+                                [variant]="getStatusVariant(order.orderStatus)" [showDot]="true" />
+                        </td>
+                        <td>{{ order.createdAt | date:'HH:mm' }}</td>
+                        <td>
+                            <a [routerLink]="['/orders', order.orderId]" class="action-link">Chi tiết</a>
+                        </td>
+                    </tr>
+                    }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

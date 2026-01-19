@@ -70,7 +70,7 @@ namespace wedeli.Models.DTO.Vehicle
         [Range(0.1, 100000, ErrorMessage = "Max Weight must be positive")]
         public decimal? MaxWeightKg { get; set; }
 
-        [Range(0, 1000, ErrorMessage = "Max Volume must be positive")]
+        [Range(0.1, 1000, ErrorMessage = "Max Volume must be between 0.1 and 1000")]
         public decimal? MaxVolumeM3 { get; set; }
 
         [Range(50, 100, ErrorMessage = "Overload Threshold must be between 50 and 100")]

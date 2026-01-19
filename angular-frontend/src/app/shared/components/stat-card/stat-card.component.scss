@@ -1,0 +1,195 @@
+.stat-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 22px 26px;
+    border-radius: var(--radius-xl);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--primary-gradient);
+        opacity: 0;
+        transition: opacity var(--transition-fast);
+    }
+
+    &:hover {
+        border-color: var(--border-light);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    // Variants
+    &.variant-primary {
+        background: var(--primary-gradient);
+        border: none;
+
+        &::before {
+            display: none;
+        }
+
+        .stat-title,
+        .stat-value,
+        .stat-unit,
+        .stat-trend,
+        .trend-label {
+            color: white;
+        }
+
+        .stat-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(4px);
+        }
+
+        .trend-up,
+        .trend-down {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+    }
+
+    &.variant-success {
+        &::before {
+            background: linear-gradient(90deg, var(--success-color), #4ade80);
+        }
+
+        .stat-icon {
+            background: var(--success-bg);
+            color: var(--success-color);
+        }
+    }
+
+    &.variant-warning {
+        &::before {
+            background: linear-gradient(90deg, var(--warning-color), #fbbf24);
+        }
+
+        .stat-icon {
+            background: var(--warning-bg);
+            color: var(--warning-color);
+        }
+    }
+
+    &.variant-danger {
+        &::before {
+            background: linear-gradient(90deg, var(--danger-color), #f87171);
+        }
+
+        .stat-icon {
+            background: var(--danger-bg);
+            color: var(--danger-color);
+        }
+    }
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-title {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.stat-value-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.stat-value {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.stat-unit {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.stat-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+
+    &.trend-up {
+        background: var(--success-bg);
+        color: var(--success-color);
+    }
+
+    &.trend-down {
+        background: var(--danger-bg);
+        color: var(--danger-color);
+    }
+}
+
+.trend-label {
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-tertiary);
+    color: var(--primary-color);
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.stat-skeleton {
+    width: 120px;
+    height: 32px;
+    background: linear-gradient(90deg,
+            var(--bg-tertiary) 25%,
+            var(--border-color) 50%,
+            var(--bg-tertiary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}

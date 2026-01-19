@@ -1,0 +1,283 @@
+<div class="vehicles-page">
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Quản lý xe</h1>
+        <div class="header-actions">
+            <div class="search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Tìm kiếm theo biển số, tên xe..." [ngModel]="searchTerm()"
+                    (ngModelChange)="searchTerm.set($event)" (keyup.enter)="onSearch()" />
+            </div>
+            <select class="type-filter" [ngModel]="selectedType()"
+                (ngModelChange)="selectedType.set($event); onTypeFilterChange()">
+                @for (type of vehicleTypes; track type.value) {
+                <option [value]="type.value">{{ type.label }}</option>
+                }
+            </select>
+            <div class="view-toggle">
+                <button class="toggle-btn" [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                </button>
+                <button class="toggle-btn" [class.active]="viewMode() === 'map'" (click)="viewMode.set('map')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                        <line x1="8" y1="2" x2="8" y2="18"></line>
+                        <line x1="16" y1="6" x2="16" y2="22"></line>
+                    </svg>
+                </button>
+            </div>
+            <button class="btn btn-primary" routerLink="/vehicles/create">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Thêm xe
+            </button>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+        <div class="tabs">
+            @for (tab of tabs; track tab.id) {
+            <button class="tab" [class.active]="activeTab() === tab.id" (click)="onTabChange(tab.id)">
+                {{ tab.label }}
+                <span class="tab-count">{{ getTabCount(tab.id) }}</span>
+            </button>
+            }
+        </div>
+    </div>
+
+    <!-- Error Alert -->
+    @if (error()) {
+    <div class="alert alert-error">
+        <span>{{ error() }}</span>
+        <button (click)="loadVehicles()">Thử lại</button>
+    </div>
+    }
+
+    <!-- Main Content -->
+    <div class="content-wrapper" [class.has-detail]="showDetailPanel()">
+        <!-- List View -->
+        @if (viewMode() === 'list') {
+        <div class="vehicles-grid">
+            @if (loading()) {
+            @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+            <div class="vehicle-card skeleton-card">
+                <div class="skeleton skeleton-image"></div>
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text"></div>
+            </div>
+            }
+            } @else if (vehicles().length === 0) {
+            <div class="empty-state">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                <p>Không có xe nào</p>
+            </div>
+            } @else {
+            @for (vehicle of vehicles(); track vehicle.vehicleId) {
+            <div class="vehicle-card" [class.selected]="selectedVehicle()?.vehicleId === vehicle.vehicleId"
+                (click)="selectVehicle(vehicle)">
+                <div class="vehicle-icon">
+                    <span>{{ getTypeIcon(vehicle.vehicleType) }}</span>
+                </div>
+                <div class="vehicle-info">
+                    <h3 class="license-plate">{{ vehicle.licensePlate }}</h3>
+                    <p class="vehicle-type">{{ getTypeLabel(vehicle.vehicleType) }}</p>
+                    <div class="vehicle-meta">
+                        <span class="capacity">{{ formatCapacity(vehicle.maxWeightKg) }}</span>
+                        <app-status-badge [label]="getStatusLabel(vehicle.currentStatus)"
+                            [variant]="getStatusVariant(vehicle.currentStatus)" [showDot]="true" />
+                    </div>
+                    @if (vehicle.driverName) {
+                    <p class="driver-name">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        {{ vehicle.driverName }}
+                    </p>
+                    }
+                </div>
+            </div>
+            }
+            }
+        </div>
+        }
+
+        <!-- Map View -->
+        @if (viewMode() === 'map') {
+        <div class="map-container">
+            <app-vehicles-map [vehicles]="vehicles()" />
+        </div>
+        }
+
+        <!-- Detail Panel -->
+        @if (showDetailPanel() && selectedVehicle()) {
+        <div class="detail-panel">
+            <div class="panel-header">
+                <h2>Chi tiết xe</h2>
+                <button class="close-btn" (click)="closeDetailPanel()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="detail-icon">
+                    {{ getTypeIcon(selectedVehicle()!.vehicleType) }}
+                </div>
+                <h3 class="detail-plate">{{ selectedVehicle()!.licensePlate }}</h3>
+                <app-status-badge [label]="getStatusLabel(selectedVehicle()!.currentStatus)"
+                    [variant]="getStatusVariant(selectedVehicle()!.currentStatus)" [showDot]="true" />
+
+                <div class="detail-section">
+                    <h4>Thông tin xe</h4>
+                    <div class="detail-row">
+                        <span class="label">Loại xe</span>
+                        <span class="value">{{ getTypeLabel(selectedVehicle()!.vehicleType) }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Tải trọng</span>
+                        <span class="value">{{ formatCapacity(selectedVehicle()!.maxWeightKg) }}</span>
+                    </div>
+                    @if (selectedVehicle()!.driverName) {
+                    <div class="detail-row">
+                        <span class="label">Tài xế</span>
+                        <span class="value">{{ selectedVehicle()!.driverName }}</span>
+                    </div>
+                    }
+                </div>
+
+                <div class="panel-actions">
+                    <button class="btn btn-outline" [routerLink]="['/vehicles', selectedVehicle()!.vehicleId]">
+                        Xem chi tiết
+                    </button>
+                    <button class="btn btn-secondary" (click)="openEditModal(selectedVehicle()!)">
+                        Chỉnh sửa
+                    </button>
+                    <button class="btn btn-primary" (click)="openTracking(selectedVehicle()!)">
+                        Theo dõi
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Pagination -->
+    @if (totalPages() > 1 && viewMode() === 'list') {
+    <div class="pagination">
+        <div class="page-info">
+            Hiển thị {{ vehicles().length }} / {{ totalItems() }} xe
+        </div>
+        <div class="page-nav">
+            <button class="page-btn" [disabled]="currentPage() === 1" (click)="onPageChange(currentPage() - 1)">
+                ←
+            </button>
+            <span class="page-current">{{ currentPage() }} / {{ totalPages() }}</span>
+            <button class="page-btn" [disabled]="currentPage() === totalPages()"
+                (click)="onPageChange(currentPage() + 1)">
+                →
+            </button>
+        </div>
+    </div>
+    }
+</div>
+
+<!-- Tracking Modal -->
+@if (showTrackingModal() && trackingVehicle()) {
+<app-vehicle-tracking-modal [vehicle]="trackingVehicle()!" (close)="closeTracking()" />
+}
+
+<!-- Edit Vehicle Modal -->
+@if (showEditModal() && editingVehicle()) {
+<div class="modal-overlay" (click)="closeEditModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>Chỉnh sửa xe</h2>
+            <button class="close-btn" (click)="closeEditModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Biển số xe</label>
+                <input type="text" [(ngModel)]="editFormData.licensePlate" placeholder="VD: 51A-12345" />
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Loại xe</label>
+                    <select [(ngModel)]="editFormData.vehicleType">
+                        @for (type of vehicleTypes; track type.value) {
+                        @if (type.value) {
+                        <option [value]="type.value">{{ type.label }}</option>
+                        }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select [(ngModel)]="editFormData.currentStatus">
+                        @for (status of statusOptions; track status.value) {
+                        <option [value]="status.value">{{ status.label }}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tải trọng tối đa (kg)</label>
+                    <input type="number" [(ngModel)]="editFormData.maxWeightKg" placeholder="VD: 1500" min="0.1"
+                        max="100000" step="0.1" />
+                </div>
+                <div class="form-group">
+                    <label>Thể tích tối đa (m³)</label>
+                    <input type="number" [(ngModel)]="editFormData.maxVolumeM3" placeholder="VD: 10" min="0.1"
+                        max="1000" step="0.1" />
+                </div>
+            </div>
+            <div class="form-group toggle-group">
+                <label>GPS</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" [(ngModel)]="editFormData.gpsEnabled" />
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" (click)="closeEditModal()" [disabled]="saving()">Hủy</button>
+            <button class="btn btn-primary" (click)="saveVehicle()" [disabled]="saving()">
+                {{ saving() ? 'Đang lưu...' : 'Lưu thay đổi' }}
+            </button>
+        </div>
+    </div>
+</div>
+}
